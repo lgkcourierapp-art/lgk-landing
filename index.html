@@ -231,7 +231,7 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
       <button class="lb on" onclick="setL('en')">EN</button>
       <button class="lb" onclick="setL('pl')">PL</button>
     </div>
-    <button class="nav-btn" onclick="scrollTo('waitlist')" data-t="joinBeta">Join beta</button>
+    <button class="nav-btn" onclick="lgkScroll('waitlist')" data-t="joinBeta">Join beta</button>
   </div>
 </nav>
 
@@ -243,8 +243,8 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
   <p class="hero-story" data-t="hStory">You're new to the route. Three apps open. Food going cold. You can't find the entrance. The code isn't anywhere. You feel lost — but it's not you. The system was never built for you.</p>
   <p class="hero-hook" data-t="hHook">LGK is <strong>like having a mate who's done every building before you.</strong> Gate codes. Clustered stops. All carriers in one place. Works where your signal doesn't.</p>
   <div class="cta-wrap">
-    <button class="btn-y" onclick="scrollTo('waitlist')"><span>⚡</span><span data-t="heroCta">Get early access — free</span></button>
-    <button class="btn-g" onclick="scrollTo('app-show')" data-t="heroSee">See the app</button>
+    <button class="btn-y" onclick="lgkScroll('waitlist')"><span>⚡</span><span data-t="heroCta">Get early access — free</span></button>
+    <button class="btn-g" onclick="lgkScroll('app-show')" data-t="heroSee">See the app</button>
     <p class="legal" data-t="legal">No tracking. No ads. Your data stays with you.</p>
   </div>
   <div class="scroll-hint"><div class="sa"></div></div>
@@ -699,7 +699,7 @@ function startTabTimer(){
   tabTimer=setInterval(()=>showTab((curTab+1)%3),7000);
 }
 
-function scrollTo(id){
+function lgkScroll(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
@@ -715,19 +715,25 @@ async function doSubmit(e){
     city:document.getElementById('fc').value,
     carrier:document.getElementById('fcar').value,
     delivery_type:document.getElementById('ft').value,
-    lang,source:'landing',
+    lang:lang,source:'landing',
     created_at:new Date().toISOString(),
   };
   try{
-    await fetch(`${SB_URL}/rest/v1/waitlist`,{
+    const res = await fetch(`${SB_URL}/rest/v1/waitlist`,{
       method:'POST',
       headers:{
-        'apikey':SB_KEY,'Authorization':`Bearer ${SB_KEY}`,
-        'Content-Type':'application/json','Prefer':'return=minimal',
+        'apikey':SB_KEY,
+        'Authorization':`Bearer ${SB_KEY}`,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal',
       },
       body:JSON.stringify(data),
     });
-  }catch(err){}
+    console.log('Supabase response:', res.status);
+  }catch(err){
+    console.log('Supabase error:', err);
+  }
+  // Always show success regardless of Supabase result
   spots=Math.max(0,spots-1);
   document.getElementById('wform').style.display='none';
   document.getElementById('succ').style.display='block';
