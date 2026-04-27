@@ -209,6 +209,8 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
 /* UTILS */
 .fu{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
 .fu.vis{opacity:1;transform:translateY(0)}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes prog{0%{width:60%}100%{width:95%}}
 
 @media(max-width:768px){
   .app-inner{grid-template-columns:1fr;gap:40px}
@@ -302,24 +304,24 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
       <p class="app-sub" data-t="appSub">Built for the courier who has been let down by every other app. No noise. No bloat. Just what matters at the door.</p>
       <div class="app-tabs">
         <div class="app-tab on" onclick="showTab(0)">
-          <div class="app-tab-icon">🔐</div>
+          <div class="app-tab-icon">📋</div>
           <div>
-            <p class="app-tab-h" data-t="t0h">Brama codes — auto-revealed</p>
-            <p class="app-tab-p" data-t="t0p">The gate code appears on your screen at 100m. Community-verified by real couriers. GPS-triggered. You don't tap anything. You just walk in.</p>
+            <p class="app-tab-h" data-t="t0h">All carriers. One import.</p>
+            <p class="app-tab-p" data-t="t0p">InPost, DPD, Amazon, Glovo — import all your manifests in one tap. LGK builds your route before you leave the depot.</p>
           </div>
         </div>
         <div class="app-tab" onclick="showTab(1)">
           <div class="app-tab-icon">📦</div>
           <div>
-            <p class="app-tab-h" data-t="t1h">All carriers. One route.</p>
-            <p class="app-tab-p" data-t="t1p">InPost, DPD, Amazon, Glovo — all grouped by building, ordered by priority. Park once. Deliver everything. Move on. No switching apps.</p>
+            <p class="app-tab-h" data-t="t1h">Clustered by building. Not by carrier.</p>
+            <p class="app-tab-p" data-t="t1p">Three carriers in the same building? One visit. Stops grouped by location, sorted by priority. Park once. Deliver everything.</p>
           </div>
         </div>
         <div class="app-tab" onclick="showTab(2)">
           <div class="app-tab-icon">🧭</div>
           <div>
             <p class="app-tab-h" data-t="t2h">Gets you inside. Not just there.</p>
-            <p class="app-tab-p" data-t="t2p">Google Maps stops at the door. LGK starts there. The last 50m navigator shows direction and distance as the compass warms up — Cold to Burning to Arrived.</p>
+            <p class="app-tab-p" data-t="t2p">Google Maps stops at the door. LGK starts there. Warms up as you approach — Cold to Burning to Arrived. Then the gate code appears.</p>
           </div>
         </div>
       </div>
@@ -332,66 +334,80 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
           <div class="notch"></div>
           <div class="screen">
 
-            <!-- Screen 0: Brama -->
+            <!-- Screen 0: Manifest Import — morning start -->
             <div class="pscreen on" id="ps0">
               <div style="padding:2px 4px">
-                <div style="font-size:8px;color:#444;margin-bottom:6px" data-pt="stop14">🏠 14 Marszalkowska · Apt 4B · 2nd floor</div>
-                <div class="brama-card">
-                  <div class="bl">🔐 BRAMA</div>
-                  <div class="bc">1247</div>
-                  <div class="bs"><div class="bdot"></div><span class="bt" data-pt="unlocked">GPS UNLOCKED · 43m</span></div>
+                <div style="font-size:8px;color:#444;margin-bottom:10px;letter-spacing:1px" data-pt="importHeader">IMPORTING ROUTE</div>
+                <div style="background:#111;border-radius:10px;overflow:hidden;margin-bottom:8px">
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#FFD700">InPost</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops23">23 stops</span>
+                  </div>
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#DC0032">DPD</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops11">11 stops</span>
+                  </div>
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#FF9900">Amazon</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops8">8 stops</span>
+                  </div>
+                  <div style="padding:10px;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#FFC444;display:inline-block;animation:spin 1s linear infinite">⟳</span>
+                      <span style="font-size:9px;font-weight:700;color:#FFC444">Glovo</span>
+                    </div>
+                    <span style="font-size:9px;color:#555" data-pt="loading">loading...</span>
+                  </div>
                 </div>
-                <div class="intel-card">
-                  <div class="ic-label" data-pt="locLabel">📍 LOCATION</div>
-                  <div class="ic-text" data-pt="locText">Main entrance on Marszalkowska side. Lift out of order — stairs left.</div>
-                </div>
-                <div class="intel-card">
-                  <div class="ic-label" data-pt="parkLabel">🚗 PARKING</div>
-                  <div class="ic-text" data-pt="parkText">Lay-by outside. 15 min max. Warden 9am–1pm.</div>
-                </div>
-                <div class="intel-card">
-                  <div class="ic-label" data-pt="riskLabel">⚠️ RISK</div>
-                  <div class="ic-text" data-pt="riskText">Aggressive dog in hallway. Ring bell slowly.</div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.15);border-radius:10px;padding:12px">
+                  <div style="font-size:16px;font-weight:900;color:#D4FF00;letter-spacing:-0.5px;margin-bottom:4px" data-pt="totalStops">42 stops</div>
+                  <div style="font-size:8px;color:#555;margin-bottom:8px" data-pt="clustered">3 zones · ~4.2h · Clustered and ready</div>
+                  <div style="height:3px;background:#1A1A1A;border-radius:2px;overflow:hidden">
+                    <div style="height:3px;background:#D4FF00;border-radius:2px;animation:prog 2s ease-in-out infinite alternate"></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Screen 1: Zones -->
+            <!-- Screen 1: Zone clustering -->
             <div class="pscreen" id="ps1">
               <div style="padding:2px 4px">
-                <div class="zone-h" data-pt="routeHeader">ROUTE — 2 ZONES · 5 STOPS</div>
-                <div class="zcard">
-                  <div class="zh">
-                    <div class="zb">A</div>
+                <div style="font-size:8px;color:#444;margin-bottom:8px;letter-spacing:1px" data-pt="routeHeader">ROUTE — 2 ZONES · 5 STOPS</div>
+                <div style="background:#111;border-radius:10px;padding:10px;margin-bottom:8px;border-left:2px solid #D4FF00">
+                  <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                    <div style="width:22px;height:22px;border-radius:11px;background:#D4FF00;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000">A</div>
                     <div>
-                      <div class="zt" data-pt="zA">Zone A · Śródmieście</div>
-                      <div class="zs" data-pt="zASub">3 buildings · 6 pkg · ~8 min walk</div>
+                      <div style="font-size:10px;font-weight:700;color:#fff" data-pt="zA">Zone A · Śródmieście</div>
+                      <div style="font-size:8px;color:#555" data-pt="zASub">3 buildings · 6 pkg · ~8 min walk</div>
                     </div>
                   </div>
-                  <div class="brow">
-                    <div class="br-addr">14 Marszalkowska St 🔐</div>
-                    <div class="zpills">
-                      <span class="zp pi">InPost</span>
-                      <span class="zp pd">DPD</span>
-                      <span class="zp pa">Amazon</span>
+                  <div style="background:#0A0A0A;border-radius:7px;padding:7px;margin-bottom:5px">
+                    <div style="font-size:9px;color:#ccc;margin-bottom:3px">14 Marszalkowska St 🔐</div>
+                    <div style="display:flex;gap:3px">
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,215,0,0.15);color:#FFD700">InPost</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(220,0,50,0.15);color:#DC0032">DPD</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,153,0,0.15);color:#FF9900">Amazon</span>
                     </div>
                   </div>
-                  <div class="brow" style="margin-top:5px">
-                    <div class="br-addr">44 Nowy Swiat St ⚠️</div>
-                    <div class="zpills"><span class="zp pd">DPD</span><span class="zp pg">Glovo</span></div>
-                  </div>
-                </div>
-                <div class="zcard b">
-                  <div class="zh">
-                    <div class="zb b">B</div>
-                    <div>
-                      <div class="zt" data-pt="zB">Zone B · Mokotów</div>
-                      <div class="zs" data-pt="zBSub">2 buildings · 3 pkg · ~5 min</div>
+                  <div style="background:#0A0A0A;border-radius:7px;padding:7px">
+                    <div style="font-size:9px;color:#ccc;margin-bottom:3px">44 Nowy Swiat St ⚠️</div>
+                    <div style="display:flex;gap:3px">
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(220,0,50,0.15);color:#DC0032">DPD</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,196,68,0.15);color:#FFC444">Glovo</span>
                     </div>
                   </div>
                 </div>
-                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.1);border-radius:8px;padding:8px;margin-top:4px">
-                  <div style="font-size:8px;color:var(--primary);font-weight:700;margin-bottom:2px" data-pt="clusterNote">📦 InPost + DPD + Amazon</div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.1);border-radius:8px;padding:8px">
+                  <div style="font-size:8px;color:#D4FF00;font-weight:700;margin-bottom:2px" data-pt="clusterNote">📦 InPost + DPD + Amazon</div>
                   <div style="font-size:8px;color:#555" data-pt="clusterSub">Same building. One visit. All delivered.</div>
                 </div>
               </div>
@@ -401,23 +417,50 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
             <div class="pscreen" id="ps2">
               <div style="padding:2px 4px">
                 <div style="font-size:8px;color:#444;margin-bottom:6px" data-pt="stop7">🏠 7 Puławska St · Apt 3</div>
-                <div class="comp-wrap">
-                  <div class="ct-label">🟠 <span data-pt="tempHot">HOT · Very close</span></div>
-                  <div class="ct-bar"><div class="ct-fill"></div></div>
-                  <div class="arr-ring"><div class="arr">↗</div></div>
-                  <div class="dist">67m</div>
-                  <div class="inst" data-pt="bearRight">Bear right</div>
-                  <div class="maps-btn">
+                <div style="background:#000;border-radius:12px;padding:14px;margin:4px 0 8px">
+                  <div style="font-size:8px;color:#FF9500;margin-bottom:6px;display:flex;align-items:center;gap:4px">🟠 <span data-pt="tempHot">HOT · Very close</span></div>
+                  <div style="height:3px;background:#1A1A1A;border-radius:2px;margin-bottom:12px;overflow:hidden">
+                    <div style="height:3px;background:#FF9500;border-radius:2px;width:72%"></div>
+                  </div>
+                  <div style="width:70px;height:70px;border-radius:35px;border:2.5px solid #FF9500;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;background:rgba(255,149,0,0.08)">
+                    <span style="font-size:34px;color:#FF9500">↗</span>
+                  </div>
+                  <div style="font-size:22px;font-weight:900;color:#FF9500;text-align:center">67m</div>
+                  <div style="font-size:10px;color:#fff;text-align:center;margin-top:3px" data-pt="bearRight">Bear right</div>
+                  <div style="margin-top:10px;background:rgba(255,149,0,0.1);border:1px solid rgba(255,149,0,0.25);border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;gap:5px">
                     <span style="font-size:12px">🗺</span>
-                    <span class="maps-t" data-pt="openMaps">Open in Maps</span>
+                    <span style="font-size:9px;color:#FF9500;font-weight:700" data-pt="openMaps">Open in Maps</span>
                   </div>
                 </div>
-                <div class="diff-note">
-                  <div class="diff-t" data-pt="diffH">Google Maps stops at the door.</div>
-                  <div class="diff-s" data-pt="diffS">LGK gets you inside. Floor, staircase, klatka — all mapped by couriers who've been here before.</div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.15);border-radius:8px;padding:10px">
+                  <div style="font-size:9px;color:#D4FF00;font-weight:700;margin-bottom:3px" data-pt="diffH">Google Maps stops at the door.</div>
+                  <div style="font-size:8px;color:#555;line-height:1.4" data-pt="diffS">LGK gets you inside. Floor, staircase, klatka — mapped by couriers.</div>
                 </div>
               </div>
             </div>
+
+            <!-- Screen 3: Brama reveal — the finish -->
+            <div class="pscreen" id="ps3">
+              <div style="padding:2px 4px">
+                <div style="font-size:8px;color:#444;margin-bottom:6px" data-pt="stop14">🏠 14 Marszalkowska · Apt 4B</div>
+                <div style="background:#000;border-radius:12px;padding:14px;margin-bottom:8px">
+                  <div style="font-size:8px;color:#444;letter-spacing:1px;margin-bottom:8px">🔐 BRAMA</div>
+                  <div style="font-size:42px;font-weight:900;color:#D4FF00;letter-spacing:10px;text-align:center;font-family:monospace;line-height:1">1247</div>
+                  <div style="display:flex;align-items:center;gap:4px;justify-content:center;margin-top:8px">
+                    <div style="width:5px;height:5px;border-radius:50%;background:#00C853"></div>
+                    <span style="font-size:8px;color:#00C853;font-weight:600" data-pt="unlocked">GPS UNLOCKED · 43m</span>
+                  </div>
+                </div>
+                <div style="background:#0F0F0F;border-radius:8px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:7px;color:#444;letter-spacing:0.8px;margin-bottom:4px;font-weight:600" data-pt="locLabel">📍 LOCATION</div>
+                  <div style="font-size:10px;color:#888;line-height:1.4" data-pt="locText">Main entrance on Marszalkowska side. Lift out of order.</div>
+                </div>
+                <div style="background:#0F0F0F;border-radius:8px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:7px;color:#444;letter-spacing:0.8px;margin-bottom:4px;font-weight:600" data-pt="parkLabel">🚗 PARKING</div>
+                  <div style="font-size:10px;color:#888;line-height:1.4" data-pt="parkText">Lay-by outside. 15 min. Warden 9am–1pm.</div>
+                </div>
+              </div>
+            </div></div>
 
           </div>
         </div>
@@ -521,6 +564,12 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
         </button>
         <p class="spots"><strong id="sleft" data-t="spots">17 spots remaining</strong></p>
       </form>
+      <div class="already" id="already" style="display:none;text-align:center;padding:24px">
+        <div style="font-size:44px;margin-bottom:14px">👋</div>
+        <h3 style="font-size:20px;font-weight:900;margin-bottom:8px" data-t="alreadyH">You're already on the list.</h3>
+        <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:16px" data-t="alreadyS">We have your details. We'll reach out personally when your spot is ready.</p>
+        <p style="font-size:12px;color:#444" data-t="alreadyC">Can't wait? Share LGK with another courier and help us grow faster.</p>
+      </div>
       <div class="success" id="succ">
         <div class="sicon">✓</div>
         <h3 class="sh" data-t="succH">You're in.</h3>
@@ -572,9 +621,9 @@ const T={
     s1:'Active couriers',s2:'Verified codes',s3:'Carriers',s4:'Countries ready',
     appLabel:'Inside the app',appH:'One place.',appH2:'Everything you need.',
     appSub:'Built for the courier who has been let down by every other app. No noise. No bloat. Just what matters at the door.',
-    t0h:'Brama codes — auto-revealed',t0p:"The gate code appears on your screen at 100m. Community-verified by real couriers. GPS-triggered. You don't tap anything. You just walk in.",
-    t1h:'All carriers. One route.',t1p:'InPost, DPD, Amazon, Glovo — all grouped by building, ordered by priority. Park once. Deliver everything. No switching apps.',
-    t2h:'Gets you inside. Not just there.',t2p:"Google Maps stops at the door. LGK starts there. The last 50m navigator shows direction and distance as the compass warms — Cold to Burning to Arrived.",
+    t0h:'All carriers. One import.',t0p:'InPost, DPD, Amazon, Glovo — import all your manifests in one tap. LGK reads them all and builds your route before you leave the depot.',
+    t1h:'Clustered by building. Not by carrier.',t1p:'Three carriers in the same building? One visit. Stops grouped by location, sorted by priority. Park once. Deliver everything. Move on.',
+    t2h:'Gets you inside. Not just there.',t2p:'Google Maps stops at the door. LGK starts there. The last 50m navigator warms up as you approach — Cold to Burning to Arrived. Then the gate code appears.',
     offH:'Works where your <em>signal doesn\'t.</em>',
     offP:"Concrete basement. Underground car park. Building stairwell. Every other app fails there. LGK downloads your entire route — codes, intel, fine zones — before you leave. No signal needed.",
     cLabel:'Works with every carrier',cH:'One app.',cH2:'Every company you work for.',
@@ -587,7 +636,7 @@ const T={
     sbtnT:'Join the founding 20',spots:'17 spots remaining',
     succH:"You're on the list.",succS:"We'll reach out personally when your spot is ready. Thank you for believing in this early.",
     apkT:'',betaN:'',
-    joinBeta:'Join beta',ftag:'Less guessing. More doing.',fPriv:'Privacy',fTerms:'Terms',
+    joinBeta:'Join beta',ftag:'Less guessing. More doing.',fPriv:'Privacy',fTerms:'Terms',alreadyH:'You\'re already on the list.',alreadyS:'We have your details. We\'ll reach out personally when your spot is ready.',alreadyC:'Can\'t wait? Share LGK with another courier and help us grow faster.',importHeader:'IMPORTING ROUTE',stops23:'23 stops',stops11:'11 stops',stops8:'8 stops',loading:'loading...',totalStops:'42 stops',clustered:'3 zones · ~4.2h · Clustered and ready',
     stop14:'🏠 14 Marszalkowska · Apt 4B · 2nd floor',unlocked:'GPS UNLOCKED · 43m',
     locLabel:'📍 LOCATION',locText:'Main entrance on Marszalkowska side. Lift out of order — stairs left.',
     parkLabel:'🚗 PARKING',parkText:'Lay-by outside. 15 min max. Warden 9am–1pm.',
@@ -626,9 +675,9 @@ const T={
     s1:'Aktywni kurierzy',s2:'Zweryfikowane kody',s3:'Przewoźnicy',s4:'Gotowe kraje',
     appLabel:'Wewnątrz aplikacji',appH:'Jedno miejsce.',appH2:'Wszystko czego potrzebujesz.',
     appSub:'Stworzone dla kuriera, którego zawiodła każda inna aplikacja. Bez szumu. Bez zbędnych rzeczy. Tylko to co liczy się przy drzwiach.',
-    t0h:'Kody bram — auto-odkrycie',t0p:'Kod bramy pojawia się na ekranie w 100m. Zweryfikowany przez prawdziwych kurierów. Aktywowany GPS. Nie dotykasz nic. Po prostu wchodzisz.',
-    t1h:'Wszyscy przewoźnicy. Jedna trasa.',t1p:'InPost, DPD, Amazon, Glovo — zgrupowane według budynku, posortowane priorytetowo. Parkujesz raz. Dostarczasz wszystko. Bez przełączania aplikacji.',
-    t2h:'Dostaje Cię do środka. Nie tylko na miejsce.',t2p:'Google Maps zatrzymuje się przy drzwiach. LGK zaczyna tam. Nawigator ostatnich 50m pokazuje kierunek i odległość — od Zimnego do Pali do Dotarłeś.',
+    t0h:'Wszyscy przewoźnicy. Jeden import.',t0p:'InPost, DPD, Amazon, Glovo — zaimportuj wszystkie manifesty jednym tapnięciem. LGK czyta je wszystkie i buduje trasę zanim wyjedziesz z magazynu.',
+    t1h:'Zgrupowane według budynku. Nie według przewoźnika.',t1p:'Trzech przewoźników w tym samym budynku? Jedna wizyta. Przystanki pogrupowane według lokalizacji, posortowane priorytetowo. Parkujesz raz. Dostarczasz wszystko.',
+    t2h:'Dostaje Cię do środka. Nie tylko na miejsce.',t2p:'Google Maps zatrzymuje się przy drzwiach. LGK zaczyna tam. Nawigator ostatnich 50m nagrzewa się gdy się zbliżasz — od Zimnego do Pali do Dotarłeś. Potem pojawia się kod bramy.',
     offH:'Działa tam gdzie <em>nie ma sygnału.</em>',
     offP:'Betonowa piwnica. Podziemny parking. Klatka schodowa budynku. Każda inna aplikacja tu zawodzi. LGK pobiera całą Twoją trasę — kody, informacje, strefy mandatów — zanim wyjdziesz. Bez sygnału. Bez wymówek.',
     cLabel:'Działa z każdym przewoźnikiem',cH:'Jedna aplikacja.',cH2:'Każda firma dla której pracujesz.',
@@ -641,7 +690,7 @@ const T={
     sbtnT:'Dołącz do założycielskich 20',spots:'Pozostało 17 miejsc',
     succH:'Jesteś na liście.',succS:'Odezwiemy się osobiście gdy Twoje miejsce będzie gotowe. Dziękujemy za wiarę w to na wczesnym etapie.',
     apkT:'',betaN:'',
-    joinBeta:'Dołącz do bety',ftag:'Mniej zgadywania. Więcej działania.',fPriv:'Prywatność',fTerms:'Regulamin',
+    joinBeta:'Dołącz do bety',ftag:'Mniej zgadywania. Więcej działania.',fPriv:'Prywatność',fTerms:'Regulamin',alreadyH:'Jesteś już na liście.',alreadyS:'Mamy Twoje dane. Odezwiemy się osobiście gdy Twoje miejsce będzie gotowe.',alreadyC:'Nie możesz czekać? Podziel się LGK z innym kurierem i pomóż nam rosnąć szybciej.',importHeader:'IMPORTOWANIE TRASY',stops23:'23 przystanki',stops11:'11 przystanków',stops8:'8 przystanków',loading:'ładowanie...',totalStops:'42 przystanki',clustered:'3 strefy · ~4.2h · Zgrupowane i gotowe',
     stop14:'🏠 14 Marszałkowska · Apt 4B · 2. piętro',unlocked:'GPS ODBLOKOWANY · 43m',
     locLabel:'📍 LOKALIZACJA',locText:'Główne wejście od strony Marszałkowskiej. Winda nieczynna — schody w lewo.',
     parkLabel:'🚗 PARKING',parkText:'Zatoka przed budynkiem. Maks. 15 min. Warden 9:00–13:00.',
@@ -691,12 +740,37 @@ function detectLang(){
 function showTab(i){
   document.querySelectorAll('.app-tab').forEach((t,idx)=>t.classList.toggle('on',idx===i));
   document.querySelectorAll('.pscreen').forEach((s,idx)=>s.classList.toggle('on',idx===i));
+  document.querySelectorAll('.app-tab-p').forEach((p,idx)=>{
+    p.style.display = idx===i ? 'block' : 'none';
+  });
   curTab=i;
 }
 
 function startTabTimer(){
   clearInterval(tabTimer);
-  tabTimer=setInterval(()=>showTab((curTab+1)%3),7000);
+  tabTimer=setInterval(()=>{
+  const nextPhone = (curTab+1)%4;
+  // Update phone screen
+  document.querySelectorAll('.pscreen').forEach((s,idx)=>s.classList.toggle('on',idx===nextPhone));
+  // Tab highlight — only highlight if phone screen has a matching tab (0,1,2)
+  // Screen 3 (brama) has no tab — clear all highlights
+  document.querySelectorAll('.app-tab').forEach((t,idx)=>{
+    if(nextPhone < 3){
+      t.classList.toggle('on', idx===nextPhone);
+    } else {
+      t.classList.remove('on');
+    }
+  });
+  // Feature items follow same logic
+  document.querySelectorAll('.feature-item').forEach((f,idx)=>{
+    if(nextPhone < 3){
+      f.classList.toggle('active', idx===nextPhone);
+    } else {
+      f.classList.remove('active');
+    }
+  });
+  curTab=nextPhone;
+},7000);
 }
 
 function lgkScroll(id){
@@ -708,16 +782,26 @@ async function doSubmit(e){
   const btn=document.getElementById('sbtn');
   btn.disabled=true;
   btn.innerHTML='<span>⟳</span><span>Submitting...</span>';
+
   const data={
-    name:document.getElementById('fn').value,
-    phone:document.getElementById('fp').value,
-    email:document.getElementById('fe').value,
+    name:document.getElementById('fn').value.trim(),
+    phone:document.getElementById('fp').value.trim(),
+    email:document.getElementById('fe').value.trim().toLowerCase(),
     city:document.getElementById('fc').value,
     carrier:document.getElementById('fcar').value,
     delivery_type:document.getElementById('ft').value,
     lang:lang,source:'landing',
     created_at:new Date().toISOString(),
   };
+
+  // Basic input validation
+  if(!data.name||!data.phone||!data.email||!data.city||!data.carrier||!data.delivery_type){
+    showFormError(lang==='pl'?'Wypełnij wszystkie pola.':'Please fill in all fields.');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span data-t="sbtnT">'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
   try{
     const res = await fetch(`${SB_URL}/rest/v1/waitlist`,{
       method:'POST',
@@ -725,20 +809,51 @@ async function doSubmit(e){
         'apikey':SB_KEY,
         'Authorization':`Bearer ${SB_KEY}`,
         'Content-Type':'application/json',
-        'Prefer':'return=minimal',
+        'Prefer':'return=representation',
       },
       body:JSON.stringify(data),
     });
-    console.log('Supabase response:', res.status);
-  }catch(err){
-    console.log('Supabase error:', err);
+
+    if(res.status === 201 || res.status === 200){
+      // Success
+      showSuccess();
+    } else if(res.status === 409){
+      // Duplicate — unique constraint violation
+      showAlreadyRegistered();
+    } else {
+      // Unknown error — still show success (don't block courier)
+      showSuccess();
+    }
+  } catch(err){
+    console.log('Submit error:', err);
+    showSuccess();
   }
-  // Always show success regardless of Supabase result
+}
+
+function showFormError(msg){
+  let el = document.getElementById('form-error');
+  if(!el){
+    el = document.createElement('p');
+    el.id = 'form-error';
+    el.style.cssText = 'color:#FF3B30;font-size:13px;text-align:center;margin-top:8px;';
+    document.getElementById('sbtn').after(el);
+  }
+  el.textContent = msg;
+}
+
+function showSuccess(){
   spots=Math.max(0,spots-1);
   document.getElementById('wform').style.display='none';
   document.getElementById('succ').style.display='block';
+  document.getElementById('already').style.display='none';
   document.getElementById('sleft').textContent=
     lang==='pl'?`Pozostało ${spots} miejsc`:`${spots} spots remaining`;
+}
+
+function showAlreadyRegistered(){
+  document.getElementById('wform').style.display='none';
+  document.getElementById('succ').style.display='none';
+  document.getElementById('already').style.display='block';
 }
 
 // Scroll animations
@@ -751,7 +866,10 @@ detectLang();
 startTabTimer();
 // Allow manual tab click to reset timer
 document.querySelectorAll('.app-tab').forEach((t,i)=>{
-  t.addEventListener('click',()=>{showTab(i);startTabTimer();});
+  t.addEventListener('click',()=>{
+    showTab(i);
+    startTabTimer();
+  });
 });
 </script>
 </body>
