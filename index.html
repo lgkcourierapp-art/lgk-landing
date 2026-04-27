@@ -777,30 +777,85 @@ function lgkScroll(id){
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 
+function validateEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validatePhone(phone){
+  // Accept formats: +48 000 000 000, +48000000000, 000000000 (min 9 digits)
+  const digits = phone.replace(/[\s\-\(\)]/g,'');
+  return digits.length >= 9 && /^[\+\d][\d]{8,14}$/.test(digits);
+}
+
+async function checkDuplicate(email, phone){
+  // Check email
+  try {
+    const emailRes = await fetch(
+      `${SB_URL}/rest/v1/waitlist?email=eq.${encodeURIComponent(email)}&select=id`,
+      { headers:{ 'apikey':SB_KEY, 'Authorization':`Bearer ${SB_KEY}` } }
+    );
+    const emailData = await emailRes.json();
+    if(emailData && emailData.length > 0) return 'email';
+
+    // Check phone
+    const phoneRes = await fetch(
+      `${SB_URL}/rest/v1/waitlist?phone=eq.${encodeURIComponent(phone)}&select=id`,
+      { headers:{ 'apikey':SB_KEY, 'Authorization':`Bearer ${SB_KEY}` } }
+    );
+    const phoneData = await phoneRes.json();
+    if(phoneData && phoneData.length > 0) return 'phone';
+  } catch(err){
+    console.log('Duplicate check error:', err);
+  }
+  return null;
+}
+
 async function doSubmit(e){
   e.preventDefault();
   const btn=document.getElementById('sbtn');
   btn.disabled=true;
-  btn.innerHTML='<span>⟳</span><span>Submitting...</span>';
+  btn.innerHTML='<span>⟳</span><span>Checking...</span>';
 
-  const data={
-    name:document.getElementById('fn').value.trim(),
-    phone:document.getElementById('fp').value.trim(),
-    email:document.getElementById('fe').value.trim().toLowerCase(),
-    city:document.getElementById('fc').value,
-    carrier:document.getElementById('fcar').value,
-    delivery_type:document.getElementById('ft').value,
-    lang:lang,source:'landing',
-    created_at:new Date().toISOString(),
-  };
+  const name = document.getElementById('fn').value.trim();
+  const phone = document.getElementById('fp').value.trim();
+  const email = document.getElementById('fe').value.trim().toLowerCase();
+  const city = document.getElementById('fc').value;
+  const carrier = document.getElementById('fcar').value;
+  const delivery_type = document.getElementById('ft').value;
 
-  // Basic input validation
-  if(!data.name||!data.phone||!data.email||!data.city||!data.carrier||!data.delivery_type){
+  // Validation
+  if(!name||!phone||!email||!city||!carrier||!delivery_type){
     showFormError(lang==='pl'?'Wypełnij wszystkie pola.':'Please fill in all fields.');
     btn.disabled=false;
-    btn.innerHTML='<span>⚡</span><span data-t="sbtnT">'+T[lang].sbtnT+'</span>';
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
     return;
   }
+
+  if(!validateEmail(email)){
+    showFormError(lang==='pl'?'Podaj prawidłowy adres email.':'Please enter a valid email address.');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
+  if(!validatePhone(phone)){
+    showFormError(lang==='pl'?'Podaj prawidłowy numer telefonu (min. 9 cyfr).':'Please enter a valid phone number (min. 9 digits).');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
+  // Check for duplicates before submitting
+  btn.innerHTML='<span>⟳</span><span>'+(lang==='pl'?'Sprawdzanie...':'Checking...')+'</span>';
+  const duplicate = await checkDuplicate(email, phone);
+  if(duplicate){
+    showAlreadyRegistered();
+    return;
+  }
+
+  btn.innerHTML='<span>⟳</span><span>'+(lang==='pl'?'Zapisywanie...':'Saving...')+'</span>';
+
+  const data={ name, phone, email, city, carrier, delivery_type, lang, source:'landing', created_at:new Date().toISOString() };
 
   try{
     const res = await fetch(`${SB_URL}/rest/v1/waitlist`,{
@@ -809,19 +864,18 @@ async function doSubmit(e){
         'apikey':SB_KEY,
         'Authorization':`Bearer ${SB_KEY}`,
         'Content-Type':'application/json',
-        'Prefer':'return=representation',
+        'Prefer':'return=minimal',
       },
       body:JSON.stringify(data),
     });
 
     if(res.status === 201 || res.status === 200){
-      // Success
       showSuccess();
     } else if(res.status === 409){
-      // Duplicate — unique constraint violation
+      // Fallback duplicate catch from DB constraint
       showAlreadyRegistered();
     } else {
-      // Unknown error — still show success (don't block courier)
+      // Still show success — don't block courier
       showSuccess();
     }
   } catch(err){
