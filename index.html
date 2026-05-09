@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGK Courier — Less guessing. More doing.</title>
+<meta name="description" content="Like having a mate who's done every building before you. The only app that works for the courier, not the company.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0A0A0A;--surface:#111111;--s2:#1A1A1A;--border:#1E1E1E;
+  --primary:#D4FF00;--text:#F0F0F0;--muted:#666;--dim:#2A2A2A;
+  --success:#00C853;--danger:#FF3B30;--warning:#FF9500;--info:#007BFF;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.lmark{width:32px;height:32px;background:var(--primary);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#000;flex-shrink:0}
+.logo span{font-weight:800;font-size:16px;color:var(--text);letter-spacing:-0.3px}
+.nav-r{display:flex;align-items:center;gap:10px}
+.lang-wrap{display:flex;background:var(--s2);border-radius:7px;padding:3px;border:1px solid var(--border)}
+.lb{padding:4px 11px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s}
+.lb.on{background:var(--primary);color:#000}
+.nav-btn{background:var(--primary);color:#000;border:none;padding:8px 18px;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:var(--font)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px 60px;text-align:center;position:relative;overflow:hidden}
+.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(212,255,0,0.07) 0%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--muted);margin-bottom:32px;letter-spacing:0.5px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--success);animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(1.4)}}
+.hero h1{font-size:clamp(44px,8vw,96px);font-weight:900;letter-spacing:-4px;line-height:0.95;margin-bottom:24px;max-width:800px}
+.hero h1 em{color:var(--primary);font-style:normal}
+.hero-story{font-size:clamp(16px,2vw,21px);color:#888;max-width:580px;line-height:1.75;margin-bottom:16px}
+.hero-hook{font-size:clamp(15px,1.8vw,19px);color:var(--text);max-width:520px;line-height:1.7;margin-bottom:48px;font-weight:500}
+.hero-hook strong{color:var(--primary)}
+.cta-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:380px}
+.btn-y{width:100%;height:56px;background:var(--primary);color:#000;border:none;border-radius:13px;font-size:16px;font-weight:800;cursor:pointer;font-family:var(--font);display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s}
+.btn-y:hover{background:#c4ef00;transform:translateY(-2px)}
+.btn-g{width:100%;height:48px;background:transparent;color:var(--muted);border:1px solid var(--border);border-radius:13px;font-size:14px;cursor:pointer;font-family:var(--font);transition:all .2s}
+.btn-g:hover{border-color:#444;color:var(--text)}
+.legal{font-size:11px;color:var(--dim);margin-top:4px}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);opacity:0.3}
+.sa{width:18px;height:18px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);animation:b 2s infinite}
+@keyframes b{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(6px)}}
+
+/* THE MOMENT */
+.moment{padding:100px 24px;max-width:760px;margin:0 auto;text-align:center}
+.moment-label{font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px}
+.moment h2{font-size:clamp(28px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:28px}
+.moment h2 em{color:var(--primary);font-style:normal}
+.moment-scene{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:36px;text-align:left;position:relative;overflow:hidden}
+.moment-scene::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--primary),transparent)}
+.scene-time{font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:20px;font-weight:600}
+.scene-p{font-size:clamp(16px,2vw,19px);color:#aaa;line-height:1.8;margin-bottom:16px}
+.scene-p:last-child{margin-bottom:0}
+.scene-p strong{color:var(--text)}
+.scene-p em{color:var(--primary);font-style:normal;font-weight:600}
+
+/* THE FLIP */
+.flip{padding:80px 24px;max-width:900px;margin:0 auto}
+.flip-line{font-size:clamp(24px,4.5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.1;text-align:center;margin-bottom:60px}
+.flip-line em{color:var(--primary);font-style:normal}
+.flip-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;border-radius:16px;overflow:hidden}
+.flip-col{padding:36px;background:var(--surface)}
+.flip-col.before{opacity:0.5}
+.flip-col-label{font-size:10px;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:20px;color:var(--muted)}
+.flip-col.after .flip-col-label{color:var(--primary)}
+.flip-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.flip-icon{font-size:14px;margin-top:2px;flex-shrink:0}
+.flip-text{font-size:14px;color:#aaa;line-height:1.5}
+.flip-col.after .flip-text{color:var(--text)}
+@media(max-width:600px){.flip-grid{grid-template-columns:1fr}}
+
+/* APP SHOW */
+.app-section{padding:100px 24px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.app-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.app-text{}
+.app-label{font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:16px}
+.app-h{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
+.app-h em{color:var(--primary);font-style:normal}
+.app-sub{font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:36px}
+.app-tabs{display:flex;flex-direction:column;gap:8px}
+.app-tab{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:all .2s;background:transparent}
+.app-tab.on{background:var(--s2);border-color:var(--border)}
+.app-tab-icon{width:38px;height:38px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.app-tab.on .app-tab-icon{background:rgba(212,255,0,0.12)}
+.app-tab-h{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--muted)}
+.app-tab.on .app-tab-h{color:var(--text)}
+.app-tab-p{font-size:12px;color:var(--muted);line-height:1.5;display:none}
+.app-tab.on .app-tab-p{display:block}
+
+/* PHONE */
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone{width:260px;height:530px;background:#050505;border-radius:44px;border:2px solid #222;position:relative;overflow:hidden;box-shadow:0 60px 120px rgba(0,0,0,0.8),0 0 0 1px #111}
+.phone-inner{position:absolute;inset:10px;border-radius:34px;background:var(--bg);overflow:hidden}
+.notch{width:90px;height:24px;background:#050505;border-radius:0 0 14px 14px;margin:0 auto;position:relative;z-index:10}
+.screen{position:absolute;inset:0;overflow:hidden}
+.pscreen{position:absolute;inset:0;padding:10px;transition:opacity .6s,transform .6s;opacity:0;transform:translateY(16px)}
+.pscreen.on{opacity:1;transform:translateY(0)}
+
+/* Screen 0 — brama */
+.brama-card{background:#000;border-radius:12px;padding:14px;margin:4px 0 8px}
+.bl{font-size:8px;color:#444;letter-spacing:1px;margin-bottom:8px}
+.bc{font-size:42px;font-weight:900;color:var(--primary);letter-spacing:10px;text-align:center;font-family:monospace;line-height:1}
+.bs{display:flex;align-items:center;gap:4px;justify-content:center;margin-top:8px}
+.bdot{width:5px;height:5px;border-radius:50%;background:var(--success)}
+.bt{font-size:8px;color:var(--success);font-weight:600}
+.intel-card{background:#0F0F0F;border-radius:8px;padding:10px;margin-bottom:6px}
+.ic-label{font-size:7px;color:#444;letter-spacing:0.8px;margin-bottom:4px;font-weight:600}
+.ic-text{font-size:10px;color:#888;line-height:1.4}
+
+/* Screen 1 — zones */
+.zone-h{font-size:8px;color:#444;letter-spacing:1px;margin-bottom:8px;font-weight:600}
+.zcard{background:#111;border-radius:10px;padding:10px;margin-bottom:8px;border-left:2px solid var(--primary)}
+.zcard.b{border-left-color:var(--info);opacity:0.6}
+.zh{display:flex;align-items:center;gap:7px;margin-bottom:7px}
+.zb{width:22px;height:22px;border-radius:11px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000}
+.zb.b{background:var(--info)}
+.zt{font-size:10px;font-weight:700;color:#fff}
+.zs{font-size:8px;color:#555}
+.zpills{display:flex;gap:3px;flex-wrap:wrap}
+.zp{font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700}
+.pi{background:rgba(255,215,0,0.15);color:#FFD700}
+.pd{background:rgba(220,0,50,0.15);color:#DC0032}
+.pa{background:rgba(255,153,0,0.15);color:#FF9900}
+.pg{background:rgba(255,196,68,0.15);color:#FFC444}
+.brow{background:#0A0A0A;border-radius:7px;padding:7px;margin-top:6px}
+.br-addr{font-size:9px;color:#ccc;margin-bottom:3px}
+
+/* Screen 2 — compass */
+.comp-wrap{background:#000;border-radius:12px;padding:14px;margin:4px 0 8px}
+.ct-label{font-size:8px;color:var(--warning);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.ct-bar{height:3px;background:#1A1A1A;border-radius:2px;margin-bottom:12px;overflow:hidden}
+.ct-fill{height:100%;background:var(--warning);border-radius:2px;width:72%}
+.arr-ring{width:70px;height:70px;border-radius:35px;border:2.5px solid var(--warning);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;background:rgba(255,149,0,0.08)}
+.arr{font-size:34px;color:var(--warning)}
+.dist{font-size:22px;font-weight:900;color:var(--warning);text-align:center}
+.inst{font-size:10px;color:#fff;text-align:center;margin-top:3px}
+.maps-btn{margin-top:10px;background:rgba(255,149,0,0.1);border:1px solid rgba(255,149,0,0.25);border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;gap:5px}
+.maps-t{font-size:9px;color:var(--warning);font-weight:700}
+.diff-note{background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.15);border-radius:8px;padding:10px;margin-top:6px}
+.diff-t{font-size:9px;color:var(--primary);font-weight:700;margin-bottom:3px}
+.diff-s{font-size:8px;color:#555;line-height:1.4}
+
+/* STATS */
+.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sv{flex:1;min-width:130px;text-align:center;padding:28px 20px;border-right:1px solid var(--border)}
+.sv:last-child{border-right:none}
+.sn{font-size:32px;font-weight:900;color:var(--primary);letter-spacing:-1px;display:block;line-height:1}
+.sl{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:0.3px}
+
+/* OFFLINE */
+.offline{padding:80px 24px;max-width:760px;margin:0 auto}
+.offline-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;display:flex;align-items:flex-start;gap:24px;position:relative;overflow:hidden}
+.offline-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary),transparent)}
+.offline-icon{font-size:40px;flex-shrink:0}
+.offline-h{font-size:clamp(20px,3vw,30px);font-weight:900;letter-spacing:-1px;margin-bottom:10px}
+.offline-h em{color:var(--primary);font-style:normal}
+.offline-p{font-size:15px;color:var(--muted);line-height:1.7}
+
+/* CARRIERS */
+.carriers{padding:80px 24px;max-width:1000px;margin:0 auto}
+.carriers-label{font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:12px}
+.carriers-h{font-size:clamp(24px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:32px}
+.carriers-h em{color:var(--primary);font-style:normal}
+.ctags{display:flex;flex-wrap:wrap;gap:8px}
+.ctag{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:7px 13px;font-size:12px;font-weight:600;color:var(--muted);transition:all .2s}
+.ctag:hover{border-color:#333;color:var(--text)}
+.ctag.f{border-color:rgba(212,255,0,0.2);color:var(--primary);background:rgba(212,255,0,0.04)}
+
+/* FORM */
+.form-section{padding:80px 24px;background:var(--surface);border-top:1px solid var(--border)}
+.form-inner{max-width:520px;margin:0 auto;text-align:center}
+.form-label{font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:12px}
+.form-h{font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:14px}
+.form-h em{color:var(--primary);font-style:normal}
+.form-sub{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px}
+.fcard{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:32px;text-align:left}
+.fbadge{background:rgba(212,255,0,0.06);border:1px solid rgba(212,255,0,0.15);border-radius:10px;padding:12px 16px;margin-bottom:24px;display:flex;align-items:center;gap:10px}
+.fbadge-icon{font-size:18px}
+.fbadge-h{font-size:12px;color:var(--primary);font-weight:700}
+.fbadge-s{font-size:11px;color:var(--muted);margin-top:2px}
+.fg{margin-bottom:14px}
+.fl{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:0.3px;margin-bottom:5px;display:block}
+.fi{width:100%;height:46px;background:var(--s2);border:1px solid var(--border);border-radius:9px;padding:0 13px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .2s}
+.fi:focus{border-color:var(--primary)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.spots{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+.spots strong{color:var(--primary)}
+.success{display:none;text-align:center;padding:24px}
+.sicon{font-size:44px;margin-bottom:14px}
+.sh{font-size:22px;font-weight:900;margin-bottom:8px}
+.ss{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.apk{display:inline-flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:11px 18px;color:var(--text);text-decoration:none;font-size:13px;font-weight:600}
+.beta{font-size:11px;color:var(--dim);margin-top:8px}
+
+/* FOOTER */
+footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;max-width:1100px;margin:0 auto}
+.fl2{font-size:12px;color:var(--muted)}
+.flinks{display:flex;gap:18px}
+.flinks a{font-size:12px;color:var(--muted);text-decoration:none}
+.flinks a:hover{color:var(--text)}
+
+/* UTILS */
+.fu{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.fu.vis{opacity:1;transform:translateY(0)}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes prog{0%{width:60%}100%{width:95%}}
+
+@media(max-width:768px){
+  .app-inner{grid-template-columns:1fr;gap:40px}
+  .phone-wrap{order:-1}
+  .frow{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+  .offline-card{flex-direction:column}
+}
+
+.page-tabs{display:flex;background:var(--s2);border-radius:7px;padding:3px;border:1px solid var(--border);margin-right:8px}
+.ptab{padding:5px 14px;border-radius:5px;border:none;background:transparent;color:var(--muted);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--font);transition:all .15s;white-space:nowrap}
+.ptab.on{background:var(--primary);color:#000}
+.landing-page{display:none}
+.landing-page.on{display:block}
+.biz-hero{padding:120px 24px 60px;text-align:center;position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.biz-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(212,255,0,0.06) 0%,transparent 70%);pointer-events:none}
+.biz-h1{font-size:clamp(36px,6vw,80px);font-weight:900;letter-spacing:-3px;line-height:0.95;margin-bottom:20px;max-width:780px}
+.biz-h1 em{color:var(--primary);font-style:normal}
+.biz-sub{font-size:clamp(15px,2vw,20px);color:#888;max-width:600px;line-height:1.8;margin-bottom:16px}
+.biz-hook{font-size:clamp(14px,1.8vw,18px);color:var(--text);max-width:540px;line-height:1.7;margin-bottom:48px;font-weight:500}
+.biz-hook strong{color:var(--primary)}
+.biz-cta{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:380px}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px;border-radius:16px;overflow:hidden;margin-top:40px}
+.how-step{background:var(--surface);padding:36px 28px}
+.how-num{font-size:52px;font-weight:900;color:var(--primary);line-height:1;margin-bottom:16px;opacity:.8}
+.how-title{font-size:18px;font-weight:700;margin-bottom:10px}
+.how-body{font-size:14px;color:var(--muted);line-height:1.7}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:40px}
+.price-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;position:relative}
+.price-card.hot{border-color:var(--primary)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--primary);color:#000;font-size:10px;font-weight:800;padding:4px 14px;border-radius:10px;white-space:nowrap}
+.price-name{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
+.price-val{font-size:38px;font-weight:900;letter-spacing:-1px;line-height:1;margin-bottom:4px}
+.price-unit{font-size:13px;color:var(--muted);margin-bottom:20px}
+.price-feat{font-size:13px;color:#aaa;padding:6px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;line-height:1.4}
+.price-feat:last-child{border-bottom:none}
+.price-feat::before{content:"✓";color:var(--success);font-weight:700;flex-shrink:0}
+.compare-wrap{overflow-x:auto;margin-top:40px;border-radius:16px;overflow:hidden}
+.compare-tbl{width:100%;border-collapse:collapse;font-size:14px;min-width:500px}
+.compare-tbl th{padding:14px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;background:var(--surface)}
+.compare-tbl td{padding:13px 20px;border-bottom:1px solid var(--border);background:var(--bg)}
+.compare-tbl tr:last-child td{border-bottom:none}
+.compare-tbl td:first-child{color:var(--text);font-weight:600}
+.compare-tbl .yes{color:var(--success);font-weight:700}
+.compare-tbl .no{color:var(--danger)}
+.compare-tbl .lgk{background:rgba(212,255,0,0.04)}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
+.proof-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px}
+.proof-icon{font-size:32px;margin-bottom:14px}
+.proof-title{font-size:16px;font-weight:700;margin-bottom:10px}
+.proof-body{font-size:14px;color:var(--muted);line-height:1.7}
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:32px}
+.ind-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center}
+.ind-icon{font-size:26px;margin-bottom:8px}
+.ind-name{font-size:13px;font-weight:600;margin-bottom:4px}
+.ind-desc{font-size:11px;color:var(--muted);line-height:1.4}
+.bfg{margin-bottom:14px;text-align:left}
+.bfg label{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px;display:block;margin-bottom:5px}
+.bfg input,.bfg select{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:14px;font-family:var(--font);outline:none;transition:border-color .2s;appearance:none}
+.bfg input:focus,.bfg select:focus{border-color:var(--primary)}
+.bfr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.bfr{grid-template-columns:1fr}.page-tabs{display:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#">
+    <div class="lmark">L</div>
+    <span>LGK Courier</span>
+  </a>
+  <div class="nav-r">
+    <div class="page-tabs">
+      <button class="ptab on" id="tab-courier" onclick="showLandingPage('courier',this)">For couriers</button>
+      <button class="ptab" id="tab-business" onclick="showLandingPage('business',this)">For business</button>
+    </div>
+    <div class="lang-wrap">
+      <button class="lb on" onclick="setL('en')">EN</button>
+      <button class="lb" onclick="setL('pl')">PL</button>
+      <button class="lb" onclick="setL('ar')">AR</button>
+    </div>
+    <button class="nav-btn" onclick="lgkScroll('waitlist')" data-t="joinBeta">Join waitlist</button>
+  </div>
+</nav>
+
+<div id="page-courier" class="landing-page on">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span class="pulse"></span><span data-t="badge">Open beta · Poland · 20 founding spots</span></div>
+  <h1><span data-t="h1a">Less guessing.</span><br><em data-t="h1b">More doing.</em></h1>
+  <p class="hero-story" data-t="hStory">You're new to the route. Three apps open. Food going cold. You can't find the entrance. The code isn't anywhere. You feel lost — but it's not you. The system was never built for you.</p>
+  <p class="hero-hook" data-t="hHook">LGK is <strong>like having a mate who's done every building before you.</strong> Gate codes. Clustered stops. All carriers in one place. Works where your signal doesn't.</p>
+  <div class="cta-wrap">
+    <button class="btn-y" onclick="lgkScroll('waitlist')"><span>⚡</span><span data-t="heroCta">Get early access — free</span></button>
+    <button class="btn-g" onclick="lgkScroll('app-show')" data-t="heroSee">See the app</button>
+    <p class="legal" data-t="legal">No tracking. No ads. Your data stays with you.</p>
+  </div>
+  <div class="scroll-hint"><div class="sa"></div></div>
+</section>
+
+<!-- THE MOMENT -->
+<section class="moment fu">
+  <p class="moment-label" data-t="sceneLabel">Sound familiar?</p>
+  <h2><em data-t="sceneH1">8am.</em> <span data-t="sceneH2">Locked gate. Three apps. No code.</span></h2>
+  <div class="moment-scene">
+    <p class="scene-time" data-t="sceneTime">7:58am · Śródmieście · Stop 3 of 47</p>
+    <p class="scene-p" data-t="scene1"><strong>You've been standing outside for 4 minutes.</strong> You've tried the intercom. No answer. You check the DPD app — nothing. The InPost app — different building. Google Maps says you're standing exactly where you need to be.</p>
+    <p class="scene-p" data-t="scene2">The next stop is <strong>visible from where you're standing.</strong> The food is getting cold. The package needs to be back at the depot if it's a third failed attempt. <em>Your scan rate drops. Your manager notices.</em></p>
+    <p class="scene-p" data-t="scene3">You did everything right. <strong>The system failed you.</strong> Because the system was never built for you — it was built to watch you.</p>
+  </div>
+</section>
+
+<!-- THE FLIP -->
+<section class="flip fu">
+  <p class="flip-line" data-t="flipLine"><em data-t="flipEm">Every other app</em> <span data-t="flipRest">is watching you work. LGK works for you.</span></p>
+  <div class="flip-grid">
+    <div class="flip-col before">
+      <p class="flip-col-label" data-t="beforeLabel">Without LGK</p>
+      <div class="flip-item"><span class="flip-icon">✗</span><p class="flip-text" data-t="b1">Standing outside a locked gate. No code anywhere.</p></div>
+      <div class="flip-item"><span class="flip-icon">✗</span><p class="flip-text" data-t="b2">Three apps open. InPost. DPD. Glovo. All separate.</p></div>
+      <div class="flip-item"><span class="flip-icon">✗</span><p class="flip-text" data-t="b3">Fine zone you find out about after the ticket.</p></div>
+      <div class="flip-item"><span class="flip-icon">✗</span><p class="flip-text" data-t="b4">Customer dispute. No proof. Your word against theirs.</p></div>
+      <div class="flip-item"><span class="flip-icon">✗</span><p class="flip-text" data-t="b5">No signal in the basement. Nothing loads.</p></div>
+    </div>
+    <div class="flip-col after">
+      <p class="flip-col-label" data-t="afterLabel">With LGK</p>
+      <div class="flip-item"><span class="flip-icon" style="color:var(--primary)">✓</span><p class="flip-text" data-t="a1">Code reveals at 100m. On your lock screen. Before you park.</p></div>
+      <div class="flip-item"><span class="flip-icon" style="color:var(--primary)">✓</span><p class="flip-text" data-t="a2">InPost + DPD + Amazon in the same building. One visit.</p></div>
+      <div class="flip-item"><span class="flip-icon" style="color:var(--primary)">✓</span><p class="flip-text" data-t="a3">Fine zones on your route. Before you get there.</p></div>
+      <div class="flip-item"><span class="flip-icon" style="color:var(--primary)">✓</span><p class="flip-text" data-t="a4">GPS proof photo. 11:43am. Watermarked. Case closed.</p></div>
+      <div class="flip-item"><span class="flip-icon" style="color:var(--primary)">✓</span><p class="flip-text" data-t="a5">Downloaded before you left. Works offline. Always.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="sv"><span class="sn">247</span><span class="sl" data-t="s1">Active couriers</span></div>
+  <div class="sv"><span class="sn">3,841</span><span class="sl" data-t="s2">Verified codes</span></div>
+  <div class="sv"><span class="sn">30+</span><span class="sl" data-t="s3">Carriers</span></div>
+  <div class="sv"><span class="sn">7</span><span class="sl" data-t="s4">Countries ready</span></div>
+</div>
+
+<!-- APP SHOW -->
+<section class="app-section" id="app-show">
+  <div class="app-inner">
+    <div class="app-text fu">
+      <p class="app-label" data-t="appLabel">Inside the app</p>
+      <h2 class="app-h"><em data-t="appH">One place.</em> <span data-t="appH2">Everything you need.</span></h2>
+      <p class="app-sub" data-t="appSub">Built for the courier who has been let down by every other app. No noise. No bloat. Just what matters at the door.</p>
+      <div class="app-tabs">
+        <div class="app-tab on" onclick="showTab(0)">
+          <div class="app-tab-icon">📋</div>
+          <div>
+            <p class="app-tab-h" data-t="t0h">All carriers. One import.</p>
+            <p class="app-tab-p" data-t="t0p">InPost, DPD, Amazon, Glovo — import all your manifests in one tap. LGK builds your route before you leave the depot.</p>
+          </div>
+        </div>
+        <div class="app-tab" onclick="showTab(1)">
+          <div class="app-tab-icon">📦</div>
+          <div>
+            <p class="app-tab-h" data-t="t1h">Clustered by building. Not by carrier.</p>
+            <p class="app-tab-p" data-t="t1p">Three carriers in the same building? One visit. Stops grouped by location, sorted by priority. Park once. Deliver everything.</p>
+          </div>
+        </div>
+        <div class="app-tab" onclick="showTab(2)">
+          <div class="app-tab-icon">🧭</div>
+          <div>
+            <p class="app-tab-h" data-t="t2h">Gets you inside. Not just there.</p>
+            <p class="app-tab-p" data-t="t2p">Google Maps stops at the door. LGK starts there. Warms up as you approach — Cold to Burning to Arrived. Then the gate code appears.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone-wrap fu">
+      <div class="phone">
+        <div class="phone-inner">
+          <div class="notch"></div>
+          <div class="screen">
+
+            <!-- Screen 0: Manifest Import — morning start -->
+            <div class="pscreen on" id="ps0">
+              <div style="padding:2px 4px">
+                <div style="font-size:8px;color:#444;margin-bottom:10px;letter-spacing:1px" data-pt="importHeader">IMPORTING ROUTE</div>
+                <div style="background:#111;border-radius:10px;overflow:hidden;margin-bottom:8px">
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#FFD700">InPost</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops23">23 stops</span>
+                  </div>
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#DC0032">DPD</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops11">11 stops</span>
+                  </div>
+                  <div style="padding:10px;border-bottom:1px solid #1A1A1A;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#00C853">✓</span>
+                      <span style="font-size:9px;font-weight:700;color:#FF9900">Amazon</span>
+                    </div>
+                    <span style="font-size:9px;color:#888" data-pt="stops8">8 stops</span>
+                  </div>
+                  <div style="padding:10px;display:flex;align-items:center;justify-content:space-between">
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <span style="font-size:10px;color:#FFC444;display:inline-block;animation:spin 1s linear infinite">⟳</span>
+                      <span style="font-size:9px;font-weight:700;color:#FFC444">Glovo</span>
+                    </div>
+                    <span style="font-size:9px;color:#555" data-pt="loading">loading...</span>
+                  </div>
+                </div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.15);border-radius:10px;padding:12px">
+                  <div style="font-size:16px;font-weight:900;color:#D4FF00;letter-spacing:-0.5px;margin-bottom:4px" data-pt="totalStops">42 stops</div>
+                  <div style="font-size:8px;color:#555;margin-bottom:8px" data-pt="clustered">3 zones · ~4.2h · Clustered and ready</div>
+                  <div style="height:3px;background:#1A1A1A;border-radius:2px;overflow:hidden">
+                    <div style="height:3px;background:#D4FF00;border-radius:2px;animation:prog 2s ease-in-out infinite alternate"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 1: Zone clustering -->
+            <div class="pscreen" id="ps1">
+              <div style="padding:2px 4px">
+                <div style="font-size:8px;color:#444;margin-bottom:8px;letter-spacing:1px" data-pt="routeHeader">ROUTE — 2 ZONES · 5 STOPS</div>
+                <div style="background:#111;border-radius:10px;padding:10px;margin-bottom:8px;border-left:2px solid #D4FF00">
+                  <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">
+                    <div style="width:22px;height:22px;border-radius:11px;background:#D4FF00;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000">A</div>
+                    <div>
+                      <div style="font-size:10px;font-weight:700;color:#fff" data-pt="zA">Zone A · Śródmieście</div>
+                      <div style="font-size:8px;color:#555" data-pt="zASub">3 buildings · 6 pkg · ~8 min walk</div>
+                    </div>
+                  </div>
+                  <div style="background:#0A0A0A;border-radius:7px;padding:7px;margin-bottom:5px">
+                    <div style="font-size:9px;color:#ccc;margin-bottom:3px">14 Marszalkowska St 🔐</div>
+                    <div style="display:flex;gap:3px">
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,215,0,0.15);color:#FFD700">InPost</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(220,0,50,0.15);color:#DC0032">DPD</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,153,0,0.15);color:#FF9900">Amazon</span>
+                    </div>
+                  </div>
+                  <div style="background:#0A0A0A;border-radius:7px;padding:7px">
+                    <div style="font-size:9px;color:#ccc;margin-bottom:3px">44 Nowy Swiat St ⚠️</div>
+                    <div style="display:flex;gap:3px">
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(220,0,50,0.15);color:#DC0032">DPD</span>
+                      <span style="font-size:7px;padding:2px 5px;border-radius:3px;font-weight:700;background:rgba(255,196,68,0.15);color:#FFC444">Glovo</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.1);border-radius:8px;padding:8px">
+                  <div style="font-size:8px;color:#D4FF00;font-weight:700;margin-bottom:2px" data-pt="clusterNote">📦 InPost + DPD + Amazon</div>
+                  <div style="font-size:8px;color:#555" data-pt="clusterSub">Same building. One visit. All delivered.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Navigator -->
+            <div class="pscreen" id="ps2">
+              <div style="padding:2px 4px">
+                <div style="font-size:8px;color:#444;margin-bottom:6px" data-pt="stop7">🏠 7 Puławska St · Apt 3</div>
+                <div style="background:#000;border-radius:12px;padding:14px;margin:4px 0 8px">
+                  <div style="font-size:8px;color:#FF9500;margin-bottom:6px;display:flex;align-items:center;gap:4px">🟠 <span data-pt="tempHot">HOT · Very close</span></div>
+                  <div style="height:3px;background:#1A1A1A;border-radius:2px;margin-bottom:12px;overflow:hidden">
+                    <div style="height:3px;background:#FF9500;border-radius:2px;width:72%"></div>
+                  </div>
+                  <div style="width:70px;height:70px;border-radius:35px;border:2.5px solid #FF9500;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;background:rgba(255,149,0,0.08)">
+                    <span style="font-size:34px;color:#FF9500">↗</span>
+                  </div>
+                  <div style="font-size:22px;font-weight:900;color:#FF9500;text-align:center">67m</div>
+                  <div style="font-size:10px;color:#fff;text-align:center;margin-top:3px" data-pt="bearRight">Bear right</div>
+                  <div style="margin-top:10px;background:rgba(255,149,0,0.1);border:1px solid rgba(255,149,0,0.25);border-radius:8px;padding:8px;display:flex;align-items:center;justify-content:center;gap:5px">
+                    <span style="font-size:12px">🗺</span>
+                    <span style="font-size:9px;color:#FF9500;font-weight:700" data-pt="openMaps">Open in Maps</span>
+                  </div>
+                </div>
+                <div style="background:rgba(212,255,0,0.05);border:1px solid rgba(212,255,0,0.15);border-radius:8px;padding:10px">
+                  <div style="font-size:9px;color:#D4FF00;font-weight:700;margin-bottom:3px" data-pt="diffH">Google Maps stops at the door.</div>
+                  <div style="font-size:8px;color:#555;line-height:1.4" data-pt="diffS">LGK gets you inside. Floor, staircase, klatka — mapped by couriers.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 3: Brama reveal — the finish -->
+            <div class="pscreen" id="ps3">
+              <div style="padding:2px 4px">
+                <div style="font-size:8px;color:#444;margin-bottom:6px" data-pt="stop14">🏠 14 Marszalkowska · Apt 4B</div>
+                <div style="background:#000;border-radius:12px;padding:14px;margin-bottom:8px">
+                  <div style="font-size:8px;color:#444;letter-spacing:1px;margin-bottom:8px">🔐 BRAMA</div>
+                  <div style="font-size:42px;font-weight:900;color:#D4FF00;letter-spacing:10px;text-align:center;font-family:monospace;line-height:1">1247</div>
+                  <div style="display:flex;align-items:center;gap:4px;justify-content:center;margin-top:8px">
+                    <div style="width:5px;height:5px;border-radius:50%;background:#00C853"></div>
+                    <span style="font-size:8px;color:#00C853;font-weight:600" data-pt="unlocked">GPS UNLOCKED · 43m</span>
+                  </div>
+                </div>
+                <div style="background:#0F0F0F;border-radius:8px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:7px;color:#444;letter-spacing:0.8px;margin-bottom:4px;font-weight:600" data-pt="locLabel">📍 LOCATION</div>
+                  <div style="font-size:10px;color:#888;line-height:1.4" data-pt="locText">Main entrance on Marszalkowska side. Lift out of order.</div>
+                </div>
+                <div style="background:#0F0F0F;border-radius:8px;padding:10px;margin-bottom:6px">
+                  <div style="font-size:7px;color:#444;letter-spacing:0.8px;margin-bottom:4px;font-weight:600" data-pt="parkLabel">🚗 PARKING</div>
+                  <div style="font-size:10px;color:#888;line-height:1.4" data-pt="parkText">Lay-by outside. 15 min. Warden 9am–1pm.</div>
+                </div>
+              </div>
+            </div></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFLINE -->
+<section class="offline fu">
+  <div class="offline-card">
+    <div class="offline-icon">📵</div>
+    <div>
+      <h3 class="offline-h" data-t="offH">Works where your <em>signal doesn't.</em></h3>
+      <p class="offline-p" data-t="offP">Concrete basement. Underground car park. Building stairwell. Every other app fails there. LGK downloads your entire route — brama codes, stop intel, fine zones — before you leave. No signal needed. No excuses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CARRIERS -->
+<section class="carriers fu">
+  <p class="carriers-label" data-t="cLabel">Works with every carrier</p>
+  <h2 class="carriers-h"><em data-t="cH">One app.</em> <span data-t="cH2">Every company you work for.</span></h2>
+  <div class="ctags">
+    <span class="ctag f">InPost</span><span class="ctag f">DPD</span><span class="ctag f">Amazon Logistics</span>
+    <span class="ctag f">DHL</span><span class="ctag f">GLS</span><span class="ctag f">Glovo</span>
+    <span class="ctag f">Uber Eats</span><span class="ctag f">Wolt</span>
+    <span class="ctag">Poczta Polska</span><span class="ctag">Allegro One</span><span class="ctag">Orlen Paczka</span>
+    <span class="ctag">Bolt Food</span><span class="ctag">Pyszne.pl</span><span class="ctag">UPS</span>
+    <span class="ctag">FedEx</span><span class="ctag">Royal Mail</span><span class="ctag">Evri</span>
+    <span class="ctag">Yodel</span><span class="ctag">Parcelforce</span><span class="ctag">Deliveroo</span>
+    <span class="ctag">Just Eat</span><span class="ctag">Stuart</span><span class="ctag">PostNord</span>
+    <span class="ctag">DB Schenker</span><span class="ctag">Bring</span><span class="ctag">Colissimo</span>
+    <span class="ctag">Foodora</span><span class="ctag">Budbee</span><span class="ctag">Sendy</span>
+    <span class="ctag">+ more added weekly</span>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="waitlist">
+  <div class="form-inner">
+    <p class="form-label" data-t="formLabel">Founding 20</p>
+    <h2 class="form-h"><em data-t="formH">Be first.</em> <span data-t="formH2">Deliver better.</span></h2>
+    <p class="form-sub" data-t="formSub">Join the first 20 founding couriers. Map 20 buildings. Get Lifetime Pro — free forever.</p>
+    <div class="fcard">
+      <div class="fbadge">
+        <span class="fbadge-icon">⚡</span>
+        <div>
+          <div class="fbadge-h" data-t="fbH">Founding courier offer</div>
+          <div class="fbadge-s" data-t="fbS">20 buildings → Lifetime Pro → Free forever</div>
+        </div>
+      </div>
+      <form id="wform" onsubmit="doSubmit(event)">
+        <div class="frow">
+          <div class="fg">
+            <label class="fl" data-t="fName">Name</label>
+            <input class="fi" type="text" id="fn" required placeholder="Jan Kowalski">
+          </div>
+          <div class="fg">
+            <label class="fl" data-t="fPhone">Phone</label>
+            <input class="fi" type="tel" id="fp" required placeholder="+48 000 000 000">
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fl" data-t="fEmail">Email</label>
+          <input class="fi" type="email" id="fe" required placeholder="jan@example.com">
+        </div>
+        <div class="frow">
+          <div class="fg">
+            <label class="fl" data-t="fCity">City</label>
+            <select class="fi" id="fc" required style="appearance:none;cursor:pointer">
+              <option value="" data-t="fCityDef">Select city</option>
+              <option>Szczecin</option><option>Warszawa</option><option>Kraków</option>
+              <option>Wrocław</option><option>Gdańsk</option><option>Poznań</option>
+              <option>Łódź</option><option>Katowice</option><option>Other Poland</option>
+              <option>UK</option><option>Germany</option><option>Ukraine</option><option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fl" data-t="fCarrier">Main carrier</label>
+            <select class="fi" id="fcar" required style="appearance:none;cursor:pointer">
+              <option value="" data-t="fCarrierDef">Select carrier</option>
+              <option>InPost</option><option>DPD</option><option>Amazon Logistics</option>
+              <option>DHL</option><option>GLS</option><option>Glovo</option>
+              <option>Uber Eats</option><option>Wolt</option><option>Bolt Food</option>
+              <option>Multiple</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fl" data-t="fType">Delivery type</label>
+          <select class="fi" id="ft" required style="appearance:none;cursor:pointer">
+            <option value="" data-t="fTypeDef">Select type</option>
+            <option value="parcel" data-t="tParcel">Parcel — van or cargo bike</option>
+            <option value="food" data-t="tFood">Food — scooter or bicycle</option>
+            <option value="both" data-t="tBoth">Both</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-y" style="margin-top:6px" id="sbtn">
+          <span>⚡</span><span data-t="sbtnT">Join the founding 20</span>
+        </button>
+        <p class="spots"><strong id="sleft" data-t="spots">17 spots remaining</strong></p>
+      </form>
+      <div class="already" id="already" style="display:none;text-align:center;padding:24px">
+        <div style="font-size:44px;margin-bottom:14px">👋</div>
+        <h3 style="font-size:20px;font-weight:900;margin-bottom:8px" data-t="alreadyH">You're already on the list.</h3>
+        <p style="font-size:14px;color:#666;line-height:1.6;margin-bottom:16px" data-t="alreadyS">We have your details. We'll reach out personally when your spot is ready.</p>
+        <p style="font-size:12px;color:#444" data-t="alreadyC">Can't wait? Share LGK with another courier and help us grow faster.</p>
+      </div>
+      <div class="success" id="succ">
+        <div class="sicon">✓</div>
+        <h3 class="sh" data-t="succH">You're in.</h3>
+        <p class="ss" data-t="succS">We'll contact you within 24 hours. Download the beta and start exploring.</p>
+<p style="font-size:13px;color:#555;margin-top:8px" data-t="betaN"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fl2">© 2026 LGK Courier · <em data-t="ftag">Less guessing. More doing.</em></span>
+  <div class="flinks">
+    <a href="#" data-t="fPriv">Privacy</a>
+    <a href="#" data-t="fTerms">Terms</a>
+    <a href="mailto:lgkcourierapp@gmail.com">lgkcourierapp@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+const SB_URL='https://ytoituxrrgrjjscnmsch.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0b2l0dXhycmdyampzY25tc2NoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTc2MTIsImV4cCI6MjA5MTkzMzYxMn0.P1XzRxw2rkfWq4fwMdNeXXpaVJjRzzQQWazMfGzsgfY';
+
+const T={
+  en:{
+    badge:'Open beta · Poland · 20 founding spots',
+    h1a:'Less guessing.',h1b:'More doing.',
+    hStory:"You're new to the route. Three apps open. Food going cold. You can't find the entrance. The code isn't anywhere. You feel lost — but it's not you. The system was never built for you.",
+    hHook:'LGK is <strong>like having a mate who\'s done every building before you.</strong> Gate codes. Clustered stops. All carriers in one place. Works where your signal doesn\'t.',
+    heroCta:'Get early access — free',heroSee:'See the app',
+    legal:'No tracking. No ads. Your data stays with you.',
+    sceneLabel:'Sound familiar?',sceneH1:'8am.',sceneH2:'Locked gate. Three apps. No code.',
+    sceneTime:'7:58am · Śródmieście · Stop 3 of 47',
+    scene1:"<strong>You've been standing outside for 4 minutes.</strong> You've tried the intercom. No answer. You check the DPD app — nothing. The InPost app — different building. Google Maps says you're standing exactly where you need to be.",
+    scene2:'The next stop is <strong>visible from where you\'re standing.</strong> The food is getting cold. <em>Your scan rate drops. Your manager notices.</em>',
+    scene3:'You did everything right. <strong>The system failed you.</strong> Because the system was never built for you — it was built to watch you.',
+    flipLine:'',flipEm:'Every other app',flipRest:"is watching you work. LGK works for you.",
+    beforeLabel:'Without LGK',afterLabel:'With LGK',
+    b1:'Standing outside a locked gate. No code anywhere.',
+    b2:'Three apps open. InPost. DPD. Glovo. All separate.',
+    b3:'Fine zone you find out about after the ticket.',
+    b4:'Customer dispute. No proof. Your word against theirs.',
+    b5:'No signal in the basement. Nothing loads.',
+    a1:'Code reveals at 100m. On your lock screen. Before you park.',
+    a2:'InPost + DPD + Amazon in the same building. One visit.',
+    a3:'Fine zones on your route. Before you get there.',
+    a4:'GPS proof photo. 11:43am. Watermarked. Case closed.',
+    a5:'Downloaded before you left. Works offline. Always.',
+    s1:'Active couriers',s2:'Verified codes',s3:'Carriers',s4:'Countries ready',
+    appLabel:'Inside the app',appH:'One place.',appH2:'Everything you need.',
+    appSub:'Built for the courier who has been let down by every other app. No noise. No bloat. Just what matters at the door.',
+    t0h:'All carriers. One import.',t0p:'InPost, DPD, Amazon, Glovo — import all your manifests in one tap. LGK reads them all and builds your route before you leave the depot.',
+    t1h:'Clustered by building. Not by carrier.',t1p:'Three carriers in the same building? One visit. Stops grouped by location, sorted by priority. Park once. Deliver everything. Move on.',
+    t2h:'Gets you inside. Not just there.',t2p:'Google Maps stops at the door. LGK starts there. The last 50m navigator warms up as you approach — Cold to Burning to Arrived. Then the gate code appears.',
+    offH:'Works where your <em>signal doesn\'t.</em>',
+    offP:"Concrete basement. Underground car park. Building stairwell. Every other app fails there. LGK downloads your entire route — codes, intel, fine zones — before you leave. No signal needed.",
+    cLabel:'Works with every carrier',cH:'One app.',cH2:'Every company you work for.',
+    formLabel:'Founding 20',formH:'Be first.',formH2:'Deliver better.',
+    formSub:'Join the first 20 founding couriers. Map 20 buildings. Get Lifetime Pro — free forever.',
+    fbH:'Founding courier offer',fbS:'20 buildings → Lifetime Pro → Free forever',
+    fName:'Name',fPhone:'Phone',fEmail:'Email',fCity:'City',fCityDef:'Select city',
+    fCarrier:'Main carrier',fCarrierDef:'Select carrier',fType:'Delivery type',fTypeDef:'Select type',
+    tParcel:'Parcel — van or cargo bike',tFood:'Food — scooter or bicycle',tBoth:'Both',
+    sbtnT:'Join the founding 20',spots:'17 spots remaining',
+    succH:"You're on the list.",succS:"We'll reach out personally when your spot is ready. Thank you for believing in this early.",
+    apkT:'',betaN:'',
+    joinBeta:'Join beta',ftag:'Less guessing. More doing.',fPriv:'Privacy',fTerms:'Terms',alreadyH:'You\'re already on the list.',alreadyS:'We have your details. We\'ll reach out personally when your spot is ready.',alreadyC:'Can\'t wait? Share LGK with another courier and help us grow faster.',importHeader:'IMPORTING ROUTE',stops23:'23 stops',stops11:'11 stops',stops8:'8 stops',loading:'loading...',totalStops:'42 stops',clustered:'3 zones · ~4.2h · Clustered and ready',
+    stop14:'🏠 14 Marszalkowska · Apt 4B · 2nd floor',unlocked:'GPS UNLOCKED · 43m',
+    locLabel:'📍 LOCATION',locText:'Main entrance on Marszalkowska side. Lift out of order — stairs left.',
+    parkLabel:'🚗 PARKING',parkText:'Lay-by outside. 15 min max. Warden 9am–1pm.',
+    riskLabel:'⚠️ RISK',riskText:'Aggressive dog in hallway. Ring bell slowly.',
+    routeHeader:'ROUTE — 2 ZONES · 5 STOPS',zA:'Zone A · Śródmieście',zASub:'3 buildings · 6 pkg · ~8 min walk',
+    zB:'Zone B · Mokotów',zBSub:'2 buildings · 3 pkg · ~5 min',
+    clusterNote:'📦 InPost + DPD + Amazon',clusterSub:'Same building. One visit. All delivered.',
+    stop7:'🏠 7 Puławska St · Apt 3',tempHot:'HOT · Very close',bearRight:'Bear right',
+    openMaps:'Open in Maps · Driving',
+    diffH:'Google Maps stops at the door.',diffS:"LGK gets you inside. Floor, staircase, klatka — all mapped by couriers who've been here before.",
+  },
+  pl:{
+    badge:'Otwarta beta · Polska · 20 miejsc założycielskich',
+    h1a:'Mniej zgadywania.',h1b:'Więcej działania.',
+    hStory:'Jesteś nowy na trasie. Trzy aplikacje otwarte. Jedzenie stygnie. Nie możesz znaleźć wejścia. Kodu nigdzie nie ma. Czujesz się zagubiony — ale to nie Ty. System nigdy nie był zbudowany dla Ciebie.',
+    hHook:'LGK to <strong>jak kolega, który był w każdym budynku przed Tobą.</strong> Kody bram. Zgrupowane przystanki. Wszyscy przewoźnicy w jednym miejscu. Działa bez sygnału.',
+    heroCta:'Uzyskaj wczesny dostęp — bezpłatnie',heroSee:'Zobacz aplikację',
+    legal:'Bez śledzenia. Bez reklam. Twoje dane zostają z Tobą.',
+    sceneLabel:'Brzmi znajomo?',sceneH1:'8:00.',sceneH2:'Zamknięta brama. Trzy aplikacje. Zero kodu.',
+    sceneTime:'7:58 · Śródmieście · Przystanek 3 z 47',
+    scene1:'<strong>Stoisz na zewnątrz od 4 minut.</strong> Próbowałeś domofonu. Brak odpowiedzi. Sprawdzasz aplikację DPD — nic. Aplikację InPost — inny budynek. Google Maps mówi, że stoisz dokładnie tam gdzie powinieneś.',
+    scene2:'Następny przystanek jest <strong>widoczny z miejsca gdzie stoisz.</strong> Jedzenie stygnie. <em>Twój wskaźnik skanowania spada. Kierownik zauważa.</em>',
+    scene3:'Zrobiłeś wszystko dobrze. <strong>System Cię zawiódł.</strong> Bo system nie był zbudowany dla Ciebie — był zbudowany żeby Cię obserwować.',
+    flipLine:'',flipEm:'Każda inna aplikacja',flipRest:'obserwuje Twoją pracę. LGK pracuje dla Ciebie.',
+    beforeLabel:'Bez LGK',afterLabel:'Z LGK',
+    b1:'Stoisz przed zamkniętą bramą. Kodu nigdzie nie ma.',
+    b2:'Trzy aplikacje otwarte. InPost. DPD. Glovo. Wszystko osobno.',
+    b3:'Strefa mandatów — dowiadujesz się po mandacie.',
+    b4:'Spór z klientem. Brak dowodu. Twoje słowo kontra ich.',
+    b5:'Brak sygnału w piwnicy. Nic się nie ładuje.',
+    a1:'Kod pojawia się w 100m. Na ekranie blokady. Przed parkowaniem.',
+    a2:'InPost + DPD + Amazon w tym samym budynku. Jedna wizyta.',
+    a3:'Strefy mandatów na Twojej trasie. Zanim tam dotrzesz.',
+    a4:'Zdjęcie GPS. 11:43. Ze znakiem wodnym. Sprawa zamknięta.',
+    a5:'Pobrane przed wyjazdem. Działa offline. Zawsze.',
+    s1:'Aktywni kurierzy',s2:'Zweryfikowane kody',s3:'Przewoźnicy',s4:'Gotowe kraje',
+    appLabel:'Wewnątrz aplikacji',appH:'Jedno miejsce.',appH2:'Wszystko czego potrzebujesz.',
+    appSub:'Stworzone dla kuriera, którego zawiodła każda inna aplikacja. Bez szumu. Bez zbędnych rzeczy. Tylko to co liczy się przy drzwiach.',
+    t0h:'Wszyscy przewoźnicy. Jeden import.',t0p:'InPost, DPD, Amazon, Glovo — zaimportuj wszystkie manifesty jednym tapnięciem. LGK czyta je wszystkie i buduje trasę zanim wyjedziesz z magazynu.',
+    t1h:'Zgrupowane według budynku. Nie według przewoźnika.',t1p:'Trzech przewoźników w tym samym budynku? Jedna wizyta. Przystanki pogrupowane według lokalizacji, posortowane priorytetowo. Parkujesz raz. Dostarczasz wszystko.',
+    t2h:'Dostaje Cię do środka. Nie tylko na miejsce.',t2p:'Google Maps zatrzymuje się przy drzwiach. LGK zaczyna tam. Nawigator ostatnich 50m nagrzewa się gdy się zbliżasz — od Zimnego do Pali do Dotarłeś. Potem pojawia się kod bramy.',
+    offH:'Działa tam gdzie <em>nie ma sygnału.</em>',
+    offP:'Betonowa piwnica. Podziemny parking. Klatka schodowa budynku. Każda inna aplikacja tu zawodzi. LGK pobiera całą Twoją trasę — kody, informacje, strefy mandatów — zanim wyjdziesz. Bez sygnału. Bez wymówek.',
+    cLabel:'Działa z każdym przewoźnikiem',cH:'Jedna aplikacja.',cH2:'Każda firma dla której pracujesz.',
+    formLabel:'Założycielskie 20',formH:'Bądź pierwszy.',formH2:'Dostarczaj lepiej.',
+    formSub:'Dołącz do pierwszych 20 kurierów-założycieli. Zmapuj 20 budynków. Zdobądź dożywotnie Pro — za darmo na zawsze.',
+    fbH:'Oferta kuriera-założyciela',fbS:'20 budynków → Dożywotnie Pro → Za darmo na zawsze',
+    fName:'Imię i nazwisko',fPhone:'Telefon',fEmail:'Email',fCity:'Miasto',fCityDef:'Wybierz miasto',
+    fCarrier:'Główny przewoźnik',fCarrierDef:'Wybierz przewoźnika',fType:'Typ dostawy',fTypeDef:'Wybierz typ',
+    tParcel:'Paczki — van lub rower cargo',tFood:'Jedzenie — skuter lub rower',tBoth:'Oba',
+    sbtnT:'Dołącz do założycielskich 20',spots:'Pozostało 17 miejsc',
+    succH:'Jesteś na liście.',succS:'Odezwiemy się osobiście gdy Twoje miejsce będzie gotowe. Dziękujemy za wiarę w to na wczesnym etapie.',
+    apkT:'',betaN:'',
+    joinBeta:'Dołącz do bety',ftag:'Mniej zgadywania. Więcej działania.',fPriv:'Prywatność',fTerms:'Regulamin',alreadyH:'Jesteś już na liście.',alreadyS:'Mamy Twoje dane. Odezwiemy się osobiście gdy Twoje miejsce będzie gotowe.',alreadyC:'Nie możesz czekać? Podziel się LGK z innym kurierem i pomóż nam rosnąć szybciej.',importHeader:'IMPORTOWANIE TRASY',stops23:'23 przystanki',stops11:'11 przystanków',stops8:'8 przystanków',loading:'ładowanie...',totalStops:'42 przystanki',clustered:'3 strefy · ~4.2h · Zgrupowane i gotowe',
+    stop14:'🏠 14 Marszałkowska · Apt 4B · 2. piętro',unlocked:'GPS ODBLOKOWANY · 43m',
+    locLabel:'📍 LOKALIZACJA',locText:'Główne wejście od strony Marszałkowskiej. Winda nieczynna — schody w lewo.',
+    parkLabel:'🚗 PARKING',parkText:'Zatoka przed budynkiem. Maks. 15 min. Warden 9:00–13:00.',
+    riskLabel:'⚠️ OSTRZEŻENIE',riskText:'Agresywny pies na korytarzu. Dzwoń powoli.',
+    routeHeader:'TRASA — 2 STREFY · 5 PRZYSTANKÓW',zA:'Strefa A · Śródmieście',zASum:'3 budynki · 6 paczek · ~8 min spacer',
+    zB:'Strefa B · Mokotów',zBSub:'2 budynki · 3 paczki · ~5 min',
+    clusterNote:'📦 InPost + DPD + Amazon',clusterSub:'Ten sam budynek. Jedna wizyta. Wszystko dostarczone.',
+    stop7:'🏠 7 Puławska · Apt 3',tempHot:'GORĄCY · Bardzo blisko',bearRight:'Lekko w prawo',
+    openMaps:'Otwórz w Mapach · Jazda',
+    diffH:'Google Maps zatrzymuje się przy drzwiach.',diffS:'LGK dostaje Cię do środka. Piętro, klatka — wszystko zmapowane przez kurierów którzy tu byli.',
+  }
+};
+
+let lang='en';
+let spots=17;
+let curTab=0;
+let tabTimer;
+
+function setL(l){
+  lang=l;
+  document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
+  document.querySelector(`.lb[onclick="setL('${l}')"]`).classList.add('on');
+  document.documentElement.lang=l;
+  // Update data-t elements
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const k=el.getAttribute('data-t');
+    if(T[l]&&T[l][k]!==undefined){
+      if(k==='offH'||k==='hHook'||k.startsWith('scene')||k==='flipLine'){
+        el.innerHTML=T[l][k];
+      } else {
+        el.textContent=T[l][k];
+      }
+    }
+  });
+  // Update data-pt elements (phone screen text)
+  document.querySelectorAll('[data-pt]').forEach(el=>{
+    const k=el.getAttribute('data-pt');
+    if(T[l]&&T[l][k]!==undefined) el.textContent=T[l][k];
+  });
+}
+
+function showLandingPage(page,btn){
+  document.querySelectorAll('.landing-page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
+  const el=document.getElementById('page-'+page);
+  if(el)el.classList.add('on');
+  if(btn)btn.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function bizSubmit(){
+  const name=document.getElementById('biz-name').value.trim();
+  const company=document.getElementById('biz-company').value.trim();
+  const city=document.getElementById('biz-city').value;
+  const phone=document.getElementById('biz-phone').value.trim();
+  const email=document.getElementById('biz-email').value.trim().toLowerCase();
+  const type=document.getElementById('biz-type').value;
+  const volume=document.getElementById('biz-volume').value;
+  const err=document.getElementById('biz-error');
+  if(!name||!company||!city||!phone||!email||!type||!volume){err.textContent='Please fill in all fields.';return;}
+  if(!validateEmail(email)){err.textContent='Please enter a valid email.';return;}
+  if(!validatePhone(phone)){err.textContent='Please enter a valid phone number.';return;}
+  err.textContent='';
+  const data={name,phone,email:email,city,carrier:type,delivery_type:volume,lang,source:'landing-business',created_at:new Date().toISOString()};
+  fetch(SB_URL+'/rest/v1/waitlist',{method:'POST',headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(data)})
+  .then(()=>{document.getElementById('biz-wform').style.display='none';document.getElementById('biz-succ').style.display='block';})
+  .catch(()=>{document.getElementById('biz-wform').style.display='none';document.getElementById('biz-succ').style.display='block';});
+}
+
+function detectLang(){
+  const loc=navigator.language||'en';
+  setL(loc.startsWith('pl')?'pl':loc.startsWith('ar')?'ar':'en');
+}
+
+function showTab(i){
+  document.querySelectorAll('.app-tab').forEach((t,idx)=>t.classList.toggle('on',idx===i));
+  document.querySelectorAll('.pscreen').forEach((s,idx)=>s.classList.toggle('on',idx===i));
+  document.querySelectorAll('.app-tab-p').forEach((p,idx)=>{
+    p.style.display = idx===i ? 'block' : 'none';
+  });
+  curTab=i;
+}
+
+function startTabTimer(){
+  clearInterval(tabTimer);
+  tabTimer=setInterval(()=>{
+  const nextPhone = (curTab+1)%4;
+  // Update phone screen
+  document.querySelectorAll('.pscreen').forEach((s,idx)=>s.classList.toggle('on',idx===nextPhone));
+  // Tab highlight — only highlight if phone screen has a matching tab (0,1,2)
+  // Screen 3 (brama) has no tab — clear all highlights
+  document.querySelectorAll('.app-tab').forEach((t,idx)=>{
+    if(nextPhone < 3){
+      t.classList.toggle('on', idx===nextPhone);
+    } else {
+      t.classList.remove('on');
+    }
+  });
+  // Feature items follow same logic
+  document.querySelectorAll('.feature-item').forEach((f,idx)=>{
+    if(nextPhone < 3){
+      f.classList.toggle('active', idx===nextPhone);
+    } else {
+      f.classList.remove('active');
+    }
+  });
+  curTab=nextPhone;
+},7000);
+}
+
+function lgkScroll(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+function validateEmail(email){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function validatePhone(phone){
+  // Accept formats: +48 000 000 000, +48000000000, 000000000 (min 9 digits)
+  const digits = phone.replace(/[\s\-\(\)]/g,'');
+  return digits.length >= 9 && /^[\+\d][\d]{8,14}$/.test(digits);
+}
+
+async function checkDuplicate(email, phone){
+  // Check email
+  try {
+    const emailRes = await fetch(
+      `${SB_URL}/rest/v1/waitlist?email=eq.${encodeURIComponent(email)}&select=id`,
+      { headers:{ 'apikey':SB_KEY, 'Authorization':`Bearer ${SB_KEY}` } }
+    );
+    const emailData = await emailRes.json();
+    if(emailData && emailData.length > 0) return 'email';
+
+    // Check phone
+    const phoneRes = await fetch(
+      `${SB_URL}/rest/v1/waitlist?phone=eq.${encodeURIComponent(phone)}&select=id`,
+      { headers:{ 'apikey':SB_KEY, 'Authorization':`Bearer ${SB_KEY}` } }
+    );
+    const phoneData = await phoneRes.json();
+    if(phoneData && phoneData.length > 0) return 'phone';
+  } catch(err){
+    console.log('Duplicate check error:', err);
+  }
+  return null;
+}
+
+async function doSubmit(e){
+  e.preventDefault();
+  const btn=document.getElementById('sbtn');
+  btn.disabled=true;
+  btn.innerHTML='<span>⟳</span><span>Checking...</span>';
+
+  const name = document.getElementById('fn').value.trim();
+  const phone = document.getElementById('fp').value.trim();
+  const email = document.getElementById('fe').value.trim().toLowerCase();
+  const city = document.getElementById('fc').value;
+  const carrier = document.getElementById('fcar').value;
+  const delivery_type = document.getElementById('ft').value;
+
+  // Validation
+  if(!name||!phone||!email||!city||!carrier||!delivery_type){
+    showFormError(lang==='pl'?'Wypełnij wszystkie pola.':'Please fill in all fields.');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
+  if(!validateEmail(email)){
+    showFormError(lang==='pl'?'Podaj prawidłowy adres email.':'Please enter a valid email address.');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
+  if(!validatePhone(phone)){
+    showFormError(lang==='pl'?'Podaj prawidłowy numer telefonu (min. 9 cyfr).':'Please enter a valid phone number (min. 9 digits).');
+    btn.disabled=false;
+    btn.innerHTML='<span>⚡</span><span>'+T[lang].sbtnT+'</span>';
+    return;
+  }
+
+  // Check for duplicates before submitting
+  btn.innerHTML='<span>⟳</span><span>'+(lang==='pl'?'Sprawdzanie...':'Checking...')+'</span>';
+  const duplicate = await checkDuplicate(email, phone);
+  if(duplicate){
+    showAlreadyRegistered();
+    return;
+  }
+
+  btn.innerHTML='<span>⟳</span><span>'+(lang==='pl'?'Zapisywanie...':'Saving...')+'</span>';
+
+  const data={ name, phone, email, city, carrier, delivery_type, lang, source:'landing', created_at:new Date().toISOString() };
+
+  try{
+    const res = await fetch(`${SB_URL}/rest/v1/waitlist`,{
+      method:'POST',
+      headers:{
+        'apikey':SB_KEY,
+        'Authorization':`Bearer ${SB_KEY}`,
+        'Content-Type':'application/json',
+        'Prefer':'return=minimal',
+      },
+      body:JSON.stringify(data),
+    });
+
+    if(res.status === 201 || res.status === 200){
+      showSuccess();
+    } else if(res.status === 409){
+      // Fallback duplicate catch from DB constraint
+      showAlreadyRegistered();
+    } else {
+      // Still show success — don't block courier
+      showSuccess();
+    }
+  } catch(err){
+    console.log('Submit error:', err);
+    showSuccess();
+  }
+}
+
+function showFormError(msg){
+  let el = document.getElementById('form-error');
+  if(!el){
+    el = document.createElement('p');
+    el.id = 'form-error';
+    el.style.cssText = 'color:#FF3B30;font-size:13px;text-align:center;margin-top:8px;';
+    document.getElementById('sbtn').after(el);
+  }
+  el.textContent = msg;
+}
+
+function showSuccess(){
+  spots=Math.max(0,spots-1);
+  document.getElementById('wform').style.display='none';
+  document.getElementById('succ').style.display='block';
+  document.getElementById('already').style.display='none';
+  document.getElementById('sleft').textContent=
+    lang==='pl'?`Pozostało ${spots} miejsc`:`${spots} spots remaining`;
+}
+
+function showAlreadyRegistered(){
+  document.getElementById('wform').style.display='none';
+  document.getElementById('succ').style.display='none';
+  document.getElementById('already').style.display='block';
+}
+
+// Scroll animations
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
+},{threshold:0.08});
+document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+
+detectLang();
+startTabTimer();
+// Allow manual tab click to reset timer
+document.querySelectorAll('.app-tab').forEach((t,i)=>{
+  t.addEventListener('click',()=>{
+    showTab(i);
+    startTabTimer();
+  });
+});
+</script>
+</body>
+</html>
+</div><!-- /page-courier -->
+
+<div id="page-business" class="landing-page">
+
+<!-- BIZ HERO -->
+<section class="biz-hero">
+  <div class="biz-glow"></div>
+  <span class="hero-badge"><span class="pulse"></span>&nbsp;Launching Szczecin · Built to scale</span>
+  <h1 class="biz-h1">Your customers want delivery.<br><em>Stop paying 30% for it.</em></h1>
+  <p class="biz-sub">You built the business. You own the customers. You set the prices. Then a marketplace takes a third of every order and calls it a service.</p>
+  <p class="biz-hook">LGK is not a marketplace. We are your delivery infrastructure.<br><strong>Flat rate per delivery. You keep everything else.</strong></p>
+  <div class="biz-cta">
+    <button class="btn-y" onclick="lgkScroll('biz-form')">⚡ Get early access — first month free</button>
+    <p class="legal">No contracts. No monthly fee until you are ready.</p>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section style="padding:80px 24px;max-width:900px;margin:0 auto">
+  <p class="section-label fu" style="text-align:center;font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px">The real cost of delivery today</p>
+  <h2 style="font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:40px;text-align:center" class="fu">What you are actually paying<br><em style="color:var(--primary);font-style:normal">when you use a marketplace</em></h2>
+  <div class="proof-grid">
+    <div class="proof-card fu">
+      <div class="proof-icon">💸</div>
+      <div class="proof-title">20–30% per order — every time</div>
+      <div class="proof-body">On a 100 PLN order, Glovo or Wolt takes up to 30 PLN before you touch the food. That is not a delivery fee. That is a partnership you never agreed to.</div>
+    </div>
+    <div class="proof-card fu">
+      <div class="proof-icon">👤</div>
+      <div class="proof-title">Your customer — their platform</div>
+      <div class="proof-body">The customer who orders from you through a marketplace belongs to them. Their reviews. Their data. Their relationship. When they raise fees, you have nowhere to go.</div>
+    </div>
+    <div class="proof-card fu">
+      <div class="proof-icon">⏳</div>
+      <div class="proof-title">DHL wants 3 days and 45 PLN</div>
+      <div class="proof-body">For a local delivery. Something that should take an hour. Your competitor delivers same day. You lose the sale or lose the margin. Neither is acceptable.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding:80px 24px;max-width:900px;margin:0 auto" id="how-biz">
+  <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px;text-align:center" class="fu">How it works</p>
+  <h2 style="font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:40px;text-align:center" class="fu">Three steps.<br><em style="color:var(--primary);font-style:normal">Then breathe.</em></h2>
+  <div class="how-grid">
+    <div class="how-step fu">
+      <div class="how-num">01</div>
+      <div class="how-title">Customer orders from you</div>
+      <div class="how-body">Your website. Your phone. Your WhatsApp. The order comes through however it always has. Nothing about how customers reach you changes.</div>
+    </div>
+    <div class="how-step fu">
+      <div class="how-num">02</div>
+      <div class="how-title">You click send on LGK</div>
+      <div class="how-body">Enter the delivery address. Choose a time window. See the exact price before you confirm. A verified driver picks up within the hour. Your job is done.</div>
+    </div>
+    <div class="how-step fu">
+      <div class="how-num">03</div>
+      <div class="how-title">Your customer gets the proof</div>
+      <div class="how-body">GPS photo of delivery lands automatically. Your name on the notification — not ours. No dispute. No "it never arrived." Evidence that belongs to you forever.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="padding:80px 24px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="biz-pricing">
+  <div style="max-width:900px;margin:0 auto">
+    <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px;text-align:center" class="fu">Simple pricing</p>
+    <h2 style="font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:12px;text-align:center" class="fu">Flat rate per delivery.<br><em style="color:var(--primary);font-style:normal">Not per order value.</em></h2>
+    <p style="text-align:center;color:var(--muted);font-size:15px;margin-bottom:0" class="fu">We charge for the delivery. Not a percentage of what you sold.</p>
+    <div class="pricing-grid">
+      <div class="price-card fu">
+        <div class="price-name">Same city</div>
+        <div class="price-val">18<span style="font-size:20px">–22</span></div>
+        <div class="price-unit">PLN · up to 10km</div>
+        <div class="price-feat">Pickup within 1 hour</div>
+        <div class="price-feat">GPS proof photo</div>
+        <div class="price-feat">Live tracking link</div>
+        <div class="price-feat">Customer notification</div>
+      </div>
+      <div class="price-card hot fu">
+        <div class="price-badge">MOST POPULAR</div>
+        <div class="price-name">Regional</div>
+        <div class="price-val">35<span style="font-size:20px">–65</span></div>
+        <div class="price-unit">PLN · 10–50km</div>
+        <div class="price-feat">Same day delivery</div>
+        <div class="price-feat">GPS proof photo</div>
+        <div class="price-feat">Live tracking link</div>
+        <div class="price-feat">Proof of delivery PDF</div>
+      </div>
+      <div class="price-card fu">
+        <div class="price-name">City to city</div>
+        <div class="price-val">120<span style="font-size:20px">–250</span></div>
+        <div class="price-unit">PLN · 50–300km</div>
+        <div class="price-feat">Driver already heading that way</div>
+        <div class="price-feat">You pay for space — not the trip</div>
+        <div class="price-feat">GPS tracked end to end</div>
+      </div>
+      <div class="price-card fu">
+        <div class="price-name">Bulk / company</div>
+        <div class="price-val" style="font-size:30px">14–18</div>
+        <div class="price-unit">PLN · 20+ deliveries/day</div>
+        <div class="price-feat">Monthly invoice</div>
+        <div class="price-feat">CSV or Smart Paste upload</div>
+        <div class="price-feat">Fleet dashboard</div>
+        <div class="price-feat">Priority matching</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:13px;margin-top:24px">First month free for early businesses in Szczecin. No contracts.</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section style="padding:80px 24px;max-width:820px;margin:0 auto">
+  <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px;text-align:center" class="fu">The honest comparison</p>
+  <h2 style="font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:40px;text-align:center" class="fu">LGK vs the alternatives.<br><em style="color:var(--primary);font-style:normal">You decide.</em></h2>
+  <div class="compare-wrap">
+    <table class="compare-tbl">
+      <thead><tr>
+        <th>What matters</th><th>Glovo / Wolt</th><th>DHL / DPD</th><th style="color:var(--primary)">LGK</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Cost per delivery</td><td class="no">20–30% of order</td><td>35–85 PLN</td><td class="yes lgk">15–22 PLN flat</td></tr>
+        <tr><td>You own the customer</td><td class="no">No — they do</td><td class="yes">Yes</td><td class="yes lgk">Yes — always</td></tr>
+        <tr><td>Same day delivery</td><td class="yes">Yes</td><td class="no">Usually next day</td><td class="yes lgk">Yes — within hours</td></tr>
+        <tr><td>GPS proof of delivery</td><td>Limited</td><td>Basic</td><td class="yes lgk">Full photo + GPS</td></tr>
+        <tr><td>Monthly invoice option</td><td class="no">No</td><td class="yes">Yes</td><td class="yes lgk">Yes — bulk accounts</td></tr>
+        <tr><td>City to city same day</td><td class="no">No</td><td class="no">2–3 days</td><td class="yes lgk">Yes</td></tr>
+        <tr><td>No fixed contract</td><td class="yes">Yes</td><td class="no">Usually yes</td><td class="yes lgk">Yes — pay per delivery</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WHO IT IS FOR -->
+<section style="padding:60px 24px;background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div style="max-width:900px;margin:0 auto">
+    <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px;text-align:center" class="fu">Who uses LGK</p>
+    <h2 style="font-size:clamp(24px,4vw,44px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:40px;text-align:center" class="fu">Any business that delivers.<br><em style="color:var(--primary);font-style:normal">Any size.</em></h2>
+    <div class="ind-grid">
+      <div class="ind-card fu"><div class="ind-icon">🛒</div><div class="ind-name">Grocery & food</div><div class="ind-desc">Same day fresh delivery without losing margin to platforms</div></div>
+      <div class="ind-card fu"><div class="ind-icon">🍽️</div><div class="ind-name">Restaurants</div><div class="ind-desc">Direct delivery. Your brand. Not Glovo's.</div></div>
+      <div class="ind-card fu"><div class="ind-icon">💊</div><div class="ind-name">Pharmacies</div><div class="ind-desc">Urgent medication with GPS proof every time</div></div>
+      <div class="ind-card fu"><div class="ind-icon">👗</div><div class="ind-name">Fashion & retail</div><div class="ind-desc">Online shops scaling without a fleet</div></div>
+      <div class="ind-card fu"><div class="ind-icon">🌸</div><div class="ind-name">Florists & gifts</div><div class="ind-desc">Time-sensitive delivery with proof it arrived intact</div></div>
+      <div class="ind-card fu"><div class="ind-icon">🔧</div><div class="ind-name">Trade & supplies</div><div class="ind-desc">Parts to site same day — van already going that way</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF OF DELIVERY -->
+<section style="padding:80px 24px;max-width:900px;margin:0 auto">
+  <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:24px;text-align:center" class="fu">What you get</p>
+  <h2 style="font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:40px;text-align:center" class="fu">Every delivery comes with<br><em style="color:var(--primary);font-style:normal">proof you can show anyone.</em></h2>
+  <div class="proof-grid">
+    <div class="proof-card fu">
+      <div class="proof-icon">📍</div>
+      <div class="proof-title">GPS watermarked photo</div>
+      <div class="proof-body">Every delivery photographed with GPS coordinates, timestamp, and driver ID. Download as PDF. Attach to invoices. Admissible in any dispute. Yours forever.</div>
+    </div>
+    <div class="proof-card fu">
+      <div class="proof-icon">🗺️</div>
+      <div class="proof-title">Live tracking for your customer</div>
+      <div class="proof-body">Your customer gets a tracking link the moment the driver accepts. They watch it arrive. You stop answering "where is my order" — the system does it for you.</div>
+    </div>
+    <div class="proof-card fu">
+      <div class="proof-icon">📊</div>
+      <div class="proof-title">Monthly delivery report</div>
+      <div class="proof-body">Full delivery history, success rates, average times. Download for your accounts. See which days are busiest. Invoice included. Everything in one place.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS FORM -->
+<section style="padding:80px 24px;background:var(--surface);border-top:1px solid var(--border)" id="biz-form">
+  <div style="max-width:520px;margin:0 auto;text-align:center">
+    <p style="font-size:10px;color:var(--muted);letter-spacing:2.5px;font-weight:700;text-transform:uppercase;margin-bottom:20px">Get early access</p>
+    <h2 style="font-size:clamp(24px,4vw,44px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:12px"><em style="color:var(--primary);font-style:normal">Free first month.</em><br>No contracts.</h2>
+    <p style="font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:40px">We are launching in Szczecin first. Tell us about your operation and we will reach out personally within 24 hours.</p>
+
+    <div id="biz-wform">
+      <div class="bfg"><label>Your name</label><input id="biz-name" placeholder="Your name" type="text"></div>
+      <div class="bfr">
+        <div class="bfg"><label>Business name</label><input id="biz-company" placeholder="Business name" type="text"></div>
+        <div class="bfg"><label>City</label>
+          <select id="biz-city"><option value="">Select city</option>
+            <option>Szczecin</option><option>Warszawa</option><option>Kraków</option>
+            <option>Wrocław</option><option>Gdańsk</option><option>London</option>
+            <option>Manchester</option><option>Birmingham</option><option>Dubai</option>
+            <option>Abu Dhabi</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="bfr">
+        <div class="bfg"><label>Phone</label><input id="biz-phone" placeholder="+48 000 000 000" type="tel"></div>
+        <div class="bfg"><label>Email</label><input id="biz-email" placeholder="your@business.com" type="email"></div>
+      </div>
+      <div class="bfg"><label>Type of business</label>
+        <select id="biz-type"><option value="">What do you sell or deliver?</option>
+          <option>Grocery / food products</option><option>Restaurant / takeaway</option>
+          <option>Pharmacy / medical</option><option>Fashion / clothing</option>
+          <option>Electronics</option><option>Flowers / gifts</option>
+          <option>Trade supplies / materials</option><option>E-commerce / online shop</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="bfg"><label>Roughly how many deliveries per day?</label>
+        <select id="biz-volume"><option value="">Select volume</option>
+          <option>1–5 per day</option><option>5–20 per day</option>
+          <option>20–50 per day</option><option>50–100 per day</option>
+          <option>100+ per day</option>
+        </select>
+      </div>
+      <button class="btn-y" style="border:none;border-radius:13px;height:56px;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;width:100%;margin-top:8px" onclick="bizSubmit()">⚡ Get early access — first month free</button>
+      <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:12px">We will reach out personally within 24 hours.</p>
+      <p id="biz-error" style="color:var(--danger);font-size:13px;text-align:center;margin-top:8px;min-height:20px"></p>
+    </div>
+    <div id="biz-succ" style="display:none;padding:40px 20px;text-align:center">
+      <div style="font-size:48px;margin-bottom:16px">🎉</div>
+      <h3 style="font-size:24px;font-weight:900;color:var(--primary);margin-bottom:12px">You are on the list.</h3>
+      <p style="color:var(--muted);font-size:15px;line-height:1.7">We will reach out personally within 24 hours. First month is on us — no commitment needed.</p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /page-business -->
+
