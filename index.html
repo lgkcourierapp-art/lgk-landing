@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LGK Courier — Less guessing. More doing.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <meta name="description" content="The app built by couriers for couriers. And the platform that helps businesses deliver without the crazy fees.">
 <style>
 
@@ -222,6 +224,29 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
 }
 
 
+/* Space Grotesk + DM Sans overrides */
+body { font-family: 'DM Sans', system-ui, sans-serif; }
+h1,h2,h3,.headline { font-family: 'Space Grotesk', system-ui, sans-serif; font-weight: 700; }
+.stat-number { font-family: 'Space Grotesk', monospace; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Social proof bar */
+.proof-bar { background: #0A0A0A; padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 32px; flex-wrap: wrap; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.proof-bar-item { text-align: center; }
+.proof-bar-divider { width: 1px; height: 40px; background: #333; flex-shrink: 0; }
+@media(max-width:600px){ .proof-bar { gap: 20px; } .proof-bar-divider { display: none; } }
+
+/* Gate code feature section */
+.brama-feature { background: #111; padding: 80px 24px; text-align: center; }
+.brama-label { color: #666; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; display: block; }
+.brama-headline { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px,5vw,48px); font-weight: 700; color: #FFF; margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+.brama-sub { color: #666; font-size: 16px; max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+.brama-phone-mock { display: inline-block; background: #000; border-radius: 24px; padding: 32px; border: 1px solid #333; max-width: 280px; }
+.brama-dist { color: #666; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.brama-box { background: #000; border: 2px solid #D4FF00; border-radius: 8px; padding: 20px; text-align: center; }
+.brama-addr { color: #999; font-size: 11px; margin-bottom: 6px; }
+.brama-code { color: #D4FF00; font-size: 36px; font-weight: 900; font-family: 'Fira Code', monospace; letter-spacing: 4px; line-height: 1; }
+.brama-verify { color: #666; font-size: 10px; margin-top: 6px; }
+
 .page-tabs{display:none}
 @media(min-width:640px){
   .page-tabs{display:flex;background:var(--s2);border-radius:6px;padding:2px;border:1px solid var(--border);margin-right:8px}
@@ -340,6 +365,50 @@ footer{padding:36px 24px;border-top:1px solid var(--border);display:flex;align-i
   </div>
   <div class="scroll-hint"><div class="sa"></div></div>
 </section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-item">
+    <div class="stat-number" style="color:#D4FF00;font-size:28px;">1.5M</div>
+    <div style="color:#666;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Buildings in database</div>
+  </div>
+  <div class="proof-bar-divider"></div>
+  <div class="proof-bar-item">
+    <div class="stat-number" style="color:#D4FF00;font-size:28px;">20</div>
+    <div style="color:#666;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Polish cities</div>
+  </div>
+  <div class="proof-bar-divider"></div>
+  <div class="proof-bar-item">
+    <div class="stat-number" style="color:#D4FF00;font-size:28px;">0 PLN</div>
+    <div style="color:#666;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">Cost to join beta</div>
+  </div>
+  <div class="proof-bar-divider"></div>
+  <div class="proof-bar-item">
+    <div class="stat-number" style="color:#D4FF00;font-size:28px;">4–6 weeks</div>
+    <div style="color:#666;font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;">To launch</div>
+  </div>
+</div>
+
+<!-- THE GATE CODE MOMENT -->
+<div class="brama-feature">
+  <span class="brama-label">The moment everything changes</span>
+  <h2 class="brama-headline">
+    You are 100 metres from the gate.<br>
+    <span style="color:#D4FF00;">The code appears.</span>
+  </h2>
+  <p class="brama-sub">
+    No WhatsApp groups. No guessing. No missed deliveries.<br>
+    Community-verified gate codes. Yours when you need them.
+  </p>
+  <div class="brama-phone-mock">
+    <div class="brama-dist">85m away — HOT</div>
+    <div class="brama-box">
+      <div class="brama-addr">ul. Mickiewicza 15</div>
+      <div class="brama-code">2137C</div>
+      <div class="brama-verify">Verified by 4 couriers ✓</div>
+    </div>
+  </div>
+</div>
 
 <!-- THE MOMENT -->
 <section class="moment fu">
