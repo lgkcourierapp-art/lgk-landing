@@ -47,6 +47,8 @@ section { padding: 80px 24px; }
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
   --font-mono: 'Fira Code', monospace;
+  --section-gap: 120px;
+  --section-gap-sm: 80px;
 }
 
 @media(max-width:768px) {
@@ -54,6 +56,50 @@ section { padding: 80px 24px; }
   .grid-3 { grid-template-columns: 1fr 1fr !important; }
   .hide-mobile { display: none !important; }
 }
+
+.display-number {
+  font-family: var(--font-mono);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+.whisper {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--gray-3);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.section-break {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+.final-tagline {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--yellow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.proof-card {
+  background: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.spec-number {
+  font-family: var(--font-mono);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 700;
+  color: var(--yellow);
+  line-height: 1;
+}
+.eyebrow-dot.static { animation: none; }
+section { padding: var(--section-gap) 24px; }
+@media(max-width:768px) { section { padding: var(--section-gap-sm) 20px; } }
 </style>
 </head>
 <body>
@@ -92,7 +138,7 @@ section { padding: 80px 24px; }
     </h1>
 
     <p style="font-size:clamp(17px,2vw,21px);color:var(--gray-2);margin-bottom:12px;line-height:1.7;max-width:520px;">
-      4 minutes per gate. 8 gates per shift. That is PLN 120–200 you did not earn this month. Not because you were slow. Because nobody told you the code.
+      4 minutes per gate. 8 gates per shift. That is <span class="money" data-amount="120">PLN 120</span>–<span class="money" data-amount="200">PLN 200</span> you did not earn this month. Not because you were slow. Because nobody told you the code.
     </p>
 
     <p style="font-size:clamp(16px,1.8vw,19px);color:var(--gray-1);margin-bottom:40px;line-height:1.7;max-width:520px;">
@@ -139,9 +185,6 @@ section { padding: 80px 24px; }
           <div style="font-size:10px;color:rgba(0,0,0,0.6);margin-top:2px;">Save 8 minutes. Same building.</div>
         </div>
       </div>
-      <div style="position:absolute;bottom:-16px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--gray-4);border-radius:20px;padding:6px 14px;white-space:nowrap;">
-        <span style="font-family:var(--font-mono);font-size:10px;color:var(--gray-2);">Less guessing. More doing.</span>
-      </div>
     </div>
   </div>
 
@@ -154,19 +197,16 @@ section { padding: 80px 24px; }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="grid-2">
 
     <div>
-      <div class="eyebrow" style="background:rgba(255,149,0,0.1);border-color:rgba(255,149,0,0.3);">
-        <div class="eyebrow-dot" style="background:var(--warning);animation:none;"></div>
-        <span class="eyebrow-text" style="color:var(--warning);">Route injection · Extra earnings</span>
-      </div>
+      <div class="whisper" style="margin-bottom:16px;">Route injection · Extra earnings</div>
       <h2 style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:20px;">
         Money that did not exist<br>
         <span style="color:var(--warning);">60 seconds ago.</span>
       </h2>
       <p style="font-size:18px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
-        You are heading to your next drop-off. LGK spots a pickup 200 metres off your route. It takes 3 minutes. It pays PLN 18. You tap ACCEPT without stopping.
+        You are heading to your next drop-off. LGK spots a pickup 200 metres off your route. It takes 3 minutes. It pays <span class="money" data-amount="18">PLN 18</span>. You tap ACCEPT without stopping.
       </p>
       <p style="font-size:18px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
-        That is PLN 18 you would never have seen on any other app. Not Glovo. Not InPost. Not anyone. Because they only know your orders. LGK knows your route.
+        That is <span class="money" data-amount="18">PLN 18</span> you would never have seen on any other app. Not Glovo. Not InPost. Not anyone. Because they only know your orders. LGK knows your route.
       </p>
       <div style="background:var(--card-mid);border-radius:12px;padding:20px;border-left:4px solid var(--warning);">
         <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">BETA TESTER · SZCZECIN · MAY 2026</div>
@@ -186,7 +226,7 @@ section { padding: 80px 24px; }
           </div>
           <div style="text-align:center;padding:16px;background:rgba(255,149,0,0.1);border-radius:12px;margin-bottom:16px;">
             <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);margin-bottom:4px;">ul. Tkacka 8 · Szczecin</div>
-            <div style="font-family:var(--font-mono);font-size:48px;font-weight:600;color:var(--warning);line-height:1;">PLN 18</div>
+            <div style="font-family:var(--font-mono);font-size:48px;font-weight:600;color:var(--warning);line-height:1;"><span class="money" data-amount="18">PLN 18</span></div>
             <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-2);margin-top:4px;">1 package · 2.1kg</div>
           </div>
           <div style="font-family:var(--font-mono);font-size:12px;color:var(--danger);text-align:center;margin-bottom:12px;letter-spacing:1px;">Expires in 4:32</div>
@@ -207,10 +247,7 @@ section { padding: 80px 24px; }
 <section>
 <div class="container">
   <div style="text-align:center;margin-bottom:64px;">
-    <div class="eyebrow" style="margin:0 auto 24px;background:rgba(0,123,255,0.1);border-color:rgba(0,123,255,0.3);">
-      <div class="eyebrow-dot" style="background:var(--info);animation:none;"></div>
-      <span class="eyebrow-text" style="color:var(--info);">Zone clustering · Work smarter</span>
-    </div>
+    <div class="whisper" style="margin:0 auto 16px;text-align:center;">Zone clustering · Work smarter</div>
     <h2 style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:16px;">
       47 stops. 8 zones.<br>
       <span style="color:var(--info);">Done by 2pm.</span>
@@ -237,7 +274,7 @@ section { padding: 80px 24px; }
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);padding-left:28px;">→ 3km drive again</div>
         <div style="display:flex;gap:8px;align-items:center;"><div style="width:20px;height:20px;border-radius:50%;background:var(--danger);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">4</div><span style="font-size:14px;color:var(--gray-1);">ul. Bogusława 91</span></div>
         <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);padding-left:28px;">→ back again</div>
-        <div style="margin-top:8px;padding:12px;background:rgba(255,59,48,0.1);border-radius:8px;font-family:var(--font-mono);font-size:11px;color:var(--danger);">4 return trips · PLN 40 wasted fuel · 60 min lost · Exhausted by noon</div>
+        <div style="margin-top:8px;padding:12px;background:rgba(255,59,48,0.1);border-radius:8px;font-family:var(--font-mono);font-size:11px;color:var(--danger);">4 return trips · <span class="money" data-amount="40">PLN 40</span> wasted fuel · 60 min lost · Exhausted by noon</div>
       </div>
     </div>
 
@@ -258,7 +295,7 @@ section { padding: 80px 24px; }
           <div style="font-family:var(--font-mono);font-size:10px;color:var(--yellow);margin-bottom:6px;">ZONE 3 — Centrum (8 stops)</div>
           <div style="font-size:13px;color:var(--gray-1);">All within 400m walking radius</div>
         </div>
-        <div style="margin-top:4px;padding:12px;background:rgba(0,200,83,0.1);border-radius:8px;font-family:var(--font-mono);font-size:11px;color:var(--success);">Zero return trips · PLN 40 saved · Done by 14:00 · Energy left for more</div>
+        <div style="margin-top:4px;padding:12px;background:rgba(0,200,83,0.1);border-radius:8px;font-family:var(--font-mono);font-size:11px;color:var(--success);">Zero return trips · <span class="money" data-amount="40">PLN 40</span> saved · Done by 14:00 · Energy left for more</div>
       </div>
     </div>
 
@@ -266,9 +303,9 @@ section { padding: 80px 24px; }
 
   <div style="text-align:center;">
     <div style="display:inline-grid;grid-template-columns:repeat(3,1fr);gap:32px;background:var(--card);border:1px solid var(--gray-4);border-radius:16px;padding:32px 48px;">
-      <div><div style="font-family:var(--font-mono);font-size:32px;font-weight:600;color:var(--yellow);">PLN 40</div><div style="color:var(--gray-2);font-size:14px;margin-top:4px;">fuel saved per shift</div></div>
+      <div><div style="font-family:var(--font-mono);font-size:32px;font-weight:600;color:var(--yellow);"><span class="money" data-amount="40">PLN 40</span></div><div style="color:var(--gray-2);font-size:14px;margin-top:4px;">fuel saved per shift</div></div>
       <div><div style="font-family:var(--font-mono);font-size:32px;font-weight:600;color:var(--yellow);">60 min</div><div style="color:var(--gray-2);font-size:14px;margin-top:4px;">time reclaimed</div></div>
-      <div><div style="font-family:var(--font-mono);font-size:32px;font-weight:600;color:var(--yellow);">PLN 880</div><div style="color:var(--gray-2);font-size:14px;margin-top:4px;">per month from clustering alone</div></div>
+      <div><div style="font-family:var(--font-mono);font-size:32px;font-weight:600;color:var(--yellow);"><span class="money" data-amount="880">PLN 880</span></div><div style="color:var(--gray-2);font-size:14px;margin-top:4px;">per month from clustering alone</div></div>
     </div>
   </div>
 
@@ -319,8 +356,7 @@ section { padding: 80px 24px; }
     </div>
     <div style="background:var(--yellow);padding:32px;display:flex;align-items:center;justify-content:center;">
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--black);line-height:1.3;margin-bottom:16px;">"Every other app is watching you work.<br>This one works for you."</div>
-        <div style="font-size:13px;color:rgba(0,0,0,0.55);font-family:var(--font-body);">Less guessing. More doing.</div>
+        <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--black);line-height:1.3;">"Every other app is watching you work.<br>This one works for you."</div>
       </div>
     </div>
   </div>
@@ -333,10 +369,7 @@ section { padding: 80px 24px; }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="grid-2">
 
     <div>
-      <div class="eyebrow" style="background:rgba(255,59,48,0.1);border-color:rgba(255,59,48,0.3);">
-        <div class="eyebrow-dot" style="background:var(--danger);animation:none;"></div>
-        <span class="eyebrow-text" style="color:var(--danger);">Community intelligence · Real-time</span>
-      </div>
+      <div class="whisper" style="margin-bottom:16px;color:var(--danger);">Community intelligence · Real-time</div>
       <h2 style="font-size:clamp(26px,3.5vw,44px);color:var(--white);margin-bottom:20px;">
         Someone just looked<br>
         <span style="color:var(--danger);">out for you.</span>
@@ -348,7 +381,7 @@ section { padding: 80px 24px; }
         She taps once. Four seconds. Sends the alert.
       </p>
       <p style="font-size:17px;color:var(--gray-1);margin-bottom:20px;line-height:1.7;">
-        Two blocks away another courier gets the notification. Parks differently. Saves PLN 120.
+        Two blocks away another courier gets the notification. Parks differently. Saves <span class="money" data-amount="120">PLN 120</span>.
       </p>
       <p style="font-size:17px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
         <strong>They have never met. They never will.</strong> But they helped each other. That is the network.
@@ -413,7 +446,7 @@ section { padding: 80px 24px; }
   </p>
   <div style="background:var(--card-mid);border-radius:16px;padding:32px;border:1px solid var(--gray-4);">
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:20px;">BETA TESTER · SZCZECIN · MAY 2026</div>
-    <div style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">"A courier I have never met pinged a warden alert. I parked two streets over. Saved PLN 120. I sent a code for a building he probably delivers to. That is how this works. We look out for each other."</div>
+    <div style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">"A courier I have never met pinged a warden alert. I parked two streets over. Saved <span class="money" data-amount="120">PLN 120</span>. I sent a code for a building he probably delivers to. That is how this works. We look out for each other."</div>
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--success);">— Founding tester · Courier · Szczecin</div>
   </div>
 </div>
@@ -423,10 +456,7 @@ section { padding: 80px 24px; }
 <section>
 <div class="container" style="max-width:700px;">
   <div style="text-align:center;margin-bottom:48px;">
-    <div class="eyebrow" style="margin:0 auto 24px;">
-      <div class="eyebrow-dot"></div>
-      <span class="eyebrow-text">Real numbers · Your shift</span>
-    </div>
+    <div class="whisper" style="margin:0 auto 16px;text-align:center;">Real numbers · Your shift</div>
     <h2 style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">How much is the chaos costing you?</h2>
     <p style="font-size:18px;color:var(--gray-2);">Gates. Criss-crossing. Three apps. Your shift loses money before you deliver a single package.</p>
   </div>
@@ -461,7 +491,7 @@ section { padding: 80px 24px; }
     <div style="background:var(--yellow);border-radius:14px;padding:28px;text-align:center;" id="calc-result">
       <div style="font-family:var(--font-mono);font-size:13px;color:rgba(0,0,0,0.5);letter-spacing:1px;margin-bottom:8px;">YOU COULD RECOVER PER MONTH</div>
       <div id="total-saving" style="font-family:var(--font-display);font-size:56px;font-weight:700;color:var(--black);line-height:1;">PLN 1,265</div>
-      <div style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">LGK Pro: PLN 40/month. You make it back in 1 shift.</div>
+      <div style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">LGK Pro: <span class="money" data-amount="40">PLN 40</span>/month. You make it back in 1 shift.</div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px;">
@@ -500,7 +530,7 @@ section { padding: 80px 24px; }
         Half the commission.<br>
         <span style="color:var(--yellow);">Twice the proof.</span>
       </h1>
-      <p style="font-size:19px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Glovo charges 30%. Uber charges 30%. LGK charges 15%. On 200 orders a month you keep PLN 1,050 extra. Every month.</p>
+      <p style="font-size:19px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Glovo charges 30%. Uber charges 30%. LGK charges 15%. On 200 orders a month you keep <span class="money" data-amount="1050">PLN 1,050</span> extra. Every month.</p>
       <p style="font-size:19px;color:var(--gray-1);margin-bottom:40px;line-height:1.7;">Plus GPS proof on every delivery. Plus live tracking your customers can see. Plus QR-verified collection. No other platform offers all three.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
         <a href="https://lgk-business.vercel.app" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);">Place your first order →</a>
@@ -529,8 +559,8 @@ section { padding: 80px 24px; }
           </div>
         </div>
         <div style="margin-top:16px;padding:14px;background:var(--yellow);border-radius:10px;text-align:center;">
-          <div style="font-family:var(--font-mono);font-size:11px;color:rgba(0,0,0,0.5);margin-bottom:4px;">200 orders/month at PLN 35 avg</div>
-          <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--black);">You keep PLN 1,050 extra</div>
+          <div style="font-family:var(--font-mono);font-size:11px;color:rgba(0,0,0,0.5);margin-bottom:4px;">200 orders/month at <span class="money" data-amount="35">PLN 35</span> avg</div>
+          <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--black);">You keep <span class="money" data-amount="1050">PLN 1,050</span> extra</div>
           <div style="font-size:13px;color:rgba(0,0,0,0.6);margin-top:2px;">every month vs Glovo</div>
         </div>
       </div>
@@ -634,7 +664,7 @@ section { padding: 80px 24px; }
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center;">
               <div><div style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--yellow);">16/35</div><div style="font-size:11px;color:var(--gray-3);">delivered today</div></div>
               <div><div style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--success);">3</div><div style="font-size:11px;color:var(--gray-3);">active couriers</div></div>
-              <div><div style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--info);">PLN 385</div><div style="font-size:11px;color:var(--gray-3);">revenue so far</div></div>
+              <div><div style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--info);"><span class="money" data-amount="385">PLN 385</span></div><div style="font-size:11px;color:var(--gray-3);">revenue so far</div></div>
             </div>
           </div>
           <div style="background:var(--card-mid);border-radius:10px;padding:12px;margin-top:4px;">
@@ -653,10 +683,6 @@ section { padding: 80px 24px; }
 <!-- ═══════════════════════════════════════════════════ SHARED WAITLIST -->
 <section id="waitlist" style="background:var(--black);border-top:1px solid var(--border);">
 <div class="container" style="max-width:560px;text-align:center;">
-  <div class="eyebrow" style="margin:0 auto 24px;">
-    <div class="eyebrow-dot"></div>
-    <span class="eyebrow-text">Founding member offer · Szczecin</span>
-  </div>
   <h2 style="font-size:clamp(28px,4vw,44px);color:var(--white);margin-bottom:16px;">20 spots. Free forever.</h2>
   <p style="font-size:18px;color:var(--gray-2);margin-bottom:40px;line-height:1.6;">Founding couriers contribute gate codes, get Pro tier free for life, and help build the intelligence network that makes every courier in Poland faster.</p>
 
@@ -680,7 +706,7 @@ section { padding: 80px 24px; }
   <div style="margin-top:32px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--gray-4);text-align:left;">
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:12px;">FOUNDING MEMBER BENEFITS</div>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Pro tier free for life — saves PLN 40/month</span></div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Pro tier free for life — saves <span class="money" data-amount="40">PLN 40</span>/month</span></div>
       <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Priority onboarding and direct support</span></div>
       <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Input on product direction — your feedback shapes the app</span></div>
       <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Founding member badge in app and community</span></div>
@@ -689,14 +715,17 @@ section { padding: 80px 24px; }
 </div>
 </section>
 
-<footer style="padding:32px 24px;border-top:1px solid var(--border);text-align:center;">
-  <div style="display:flex;align-items:baseline;gap:6px;justify-content:center;margin-bottom:10px;">
-    <span style="font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--yellow);letter-spacing:3px;">LGK</span>
-    <span style="font-family:var(--font-display);font-weight:300;font-size:10px;color:var(--gray-3);letter-spacing:6px;text-transform:uppercase;">COURIER</span>
+<footer style="padding:48px 24px 40px;border-top:1px solid var(--border);text-align:center;">
+  <div style="margin-bottom:32px;">
+    <div style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--white);letter-spacing:-0.02em;margin-bottom:6px;">Less guessing.</div>
+    <div style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--yellow);letter-spacing:-0.02em;">More doing.</div>
+  </div>
+  <div style="display:flex;align-items:baseline;gap:5px;justify-content:center;margin-bottom:12px;">
+    <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--yellow);letter-spacing:3px;">LGK</span>
+    <span style="font-family:var(--font-display);font-weight:300;font-size:9px;color:var(--gray-4);letter-spacing:6px;text-transform:uppercase;">COURIER</span>
   </div>
   <div style="color:var(--gray-3);font-size:13px;margin-bottom:4px;">lgkcourierapp@gmail.com · Szczecin, Poland</div>
-  <div style="color:var(--gray-3);font-size:13px;margin-bottom:4px;"><a href="https://lgk-business.vercel.app" style="color:var(--gray-3);">lgk-business.vercel.app</a></div>
-  <div style="color:var(--yellow);font-family:var(--font-mono);font-size:12px;margin-top:12px;letter-spacing:2px;">LESS GUESSING. MORE DOING.</div>
+  <a href="https://lgk-business.vercel.app" style="color:var(--gray-3);font-size:13px;text-decoration:none;border-bottom:1px solid var(--gray-4);">lgk-business.vercel.app</a>
 </footer>
 
 <script>
@@ -726,13 +755,32 @@ const T = {
 
 function showPage(page) {
   currentPage = page;
-  document.getElementById('courier-page').style.display = page === 'courier' ? 'block' : 'none';
-  document.getElementById('business-page').style.display = page === 'business' ? 'block' : 'none';
-  document.getElementById('btn-courier').style.background = page === 'courier' ? 'var(--yellow)' : 'transparent';
-  document.getElementById('btn-courier').style.color = page === 'courier' ? 'var(--black)' : 'var(--gray-2)';
-  document.getElementById('btn-business').style.background = page === 'business' ? 'var(--yellow)' : 'transparent';
-  document.getElementById('btn-business').style.color = page === 'business' ? 'var(--black)' : 'var(--gray-2)';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const courierEl = document.getElementById('courier-page');
+  const businessEl = document.getElementById('business-page');
+  const btnCourier = document.getElementById('btn-courier');
+  const btnBusiness = document.getElementById('btn-business');
+
+  courierEl.style.display = 'none';
+  businessEl.style.display = 'none';
+
+  btnCourier.style.background = page === 'courier' ? 'var(--yellow)' : 'transparent';
+  btnCourier.style.color = page === 'courier' ? 'var(--black)' : 'var(--gray-2)';
+  btnBusiness.style.background = page === 'business' ? 'var(--yellow)' : 'transparent';
+  btnBusiness.style.color = page === 'business' ? 'var(--black)' : 'var(--gray-2)';
+
+  window.scrollTo(0, 0);
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (page === 'courier') {
+        courierEl.style.display = 'block';
+      } else {
+        businessEl.style.display = 'block';
+      }
+    });
+  });
 }
 
 function cycleLang() {
@@ -743,6 +791,7 @@ function cycleLang() {
   document.documentElement.lang = next;
   document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
   applyTranslations(next);
+  updateAllMoney();
 }
 
 function applyTranslations(lang) {
@@ -795,6 +844,42 @@ async function submitWaitlist(e) {
   }
 }
 
+const CURRENCY = {
+  pl: { symbol: 'PLN', position: 'after', separator: ' ', locale: 'pl-PL' },
+  en: { symbol: 'PLN', position: 'before', separator: ' ', locale: 'en-GB' },
+  ar: { symbol: 'د.إ', position: 'after', separator: ' ', locale: 'ar-AE' },
+};
+
+const MARKET_CURRENCY = {
+  PL: { symbol: 'PLN', position: 'after' },
+  UK: { symbol: '£', position: 'before' },
+  UAE: { symbol: 'AED', position: 'before' },
+};
+
+let activeMarket = 'PL';
+
+function formatMoney(amount, lang, market) {
+  const l = lang || currentLang || 'en';
+  const m = market || activeMarket || 'PL';
+  const cur = MARKET_CURRENCY[m] || MARKET_CURRENCY.PL;
+  const rounded = Math.round(amount);
+  if (cur.position === 'before') return cur.symbol + rounded;
+  return rounded + ' ' + cur.symbol;
+}
+
+function updateAllMoney() {
+  document.querySelectorAll('.money').forEach(el => {
+    const amount = parseInt(el.getAttribute('data-amount'));
+    if (!isNaN(amount)) {
+      if (amount >= 1000) {
+        el.textContent = formatMoney(amount, currentLang, activeMarket).replace(/\d+/, n => parseInt(n).toLocaleString());
+      } else {
+        el.textContent = formatMoney(amount, currentLang, activeMarket);
+      }
+    }
+  });
+}
+
 function calcSavings() {
   const gates = parseInt(document.getElementById('gates-slider').value);
   const stops = parseInt(document.getElementById('stops-slider').value);
@@ -806,10 +891,10 @@ function calcSavings() {
   const clusterSaving = Math.round(stops * 0.12 * 35 * shifts);
   const injectionSaving = Math.round(shifts * 0.5 * 19);
   const total = gateSaving + clusterSaving + injectionSaving;
-  document.getElementById('gate-saving').textContent = 'PLN ' + gateSaving;
-  document.getElementById('cluster-saving').textContent = 'PLN ' + clusterSaving;
-  document.getElementById('injection-saving').textContent = 'PLN ' + injectionSaving;
-  document.getElementById('total-saving').textContent = 'PLN ' + total.toLocaleString();
+  document.getElementById('gate-saving').textContent = formatMoney(gateSaving, currentLang);
+  document.getElementById('cluster-saving').textContent = formatMoney(clusterSaving, currentLang);
+  document.getElementById('injection-saving').textContent = formatMoney(injectionSaving, currentLang);
+  document.getElementById('total-saving').textContent = formatMoney(total, currentLang);
 }
 
 window.addEventListener('scroll', () => {
@@ -818,6 +903,7 @@ window.addEventListener('scroll', () => {
 });
 
 calcSavings();
+updateAllMoney();
 </script>
 </body>
 </html>
