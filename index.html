@@ -110,12 +110,12 @@ section { padding: var(--section-gap) 24px; }
     <span style="font-family:var(--font-display);font-weight:300;font-size:10px;color:var(--gray-3);letter-spacing:6px;text-transform:uppercase;">COURIER</span>
   </a>
   <div style="display:flex;background:var(--card);border:1px solid var(--gray-4);border-radius:24px;padding:3px;gap:2px;">
-    <button id="btn-courier" onclick="showPage('courier')" style="padding:7px 18px;border-radius:20px;border:none;background:var(--yellow);color:var(--black);font-family:var(--font-body);font-weight:700;font-size:13px;cursor:pointer;transition:all 150ms;">For Couriers</button>
-    <button id="btn-business" onclick="showPage('business')" style="padding:7px 18px;border-radius:20px;border:none;background:transparent;color:var(--gray-2);font-family:var(--font-body);font-weight:600;font-size:13px;cursor:pointer;transition:all 150ms;">For Business</button>
+    <button id="btn-courier" onclick="showPage('courier')" style="padding:7px 18px;border-radius:20px;border:none;background:var(--yellow);color:var(--black);font-family:var(--font-body);font-weight:700;font-size:13px;cursor:pointer;transition:all 150ms;"><span id="t-nav_couriers">For Couriers</span></button>
+    <button id="btn-business" onclick="showPage('business')" style="padding:7px 18px;border-radius:20px;border:none;background:transparent;color:var(--gray-2);font-family:var(--font-body);font-weight:600;font-size:13px;cursor:pointer;transition:all 150ms;"><span id="t-nav_business">For Business</span></button>
   </div>
   <div style="display:flex;gap:8px;align-items:center;">
     <button onclick="cycleLang()" id="lang-btn" style="background:transparent;border:1px solid var(--gray-4);color:var(--gray-2);padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--font-mono);">PL</button>
-    <a href="https://lgk-business.vercel.app" style="background:var(--yellow);color:var(--black);padding:8px 18px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;font-family:var(--font-body);white-space:nowrap;">Business Login</a>
+    <a onclick="showBusinessSplash(event)" href="https://lgk-business.vercel.app" style="background:var(--yellow);color:var(--black);padding:8px 18px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;font-family:var(--font-body);white-space:nowrap;cursor:pointer;"><span id="t-nav_login">Business Login</span></a>
   </div>
 </nav>
 
@@ -129,34 +129,34 @@ section { padding: var(--section-gap) 24px; }
   <div>
     <div class="eyebrow">
       <div class="eyebrow-dot"></div>
-      <span class="eyebrow-text">Szczecin · Beta · 20 founding spots</span>
+      <span class="eyebrow-text" id="t-courier_eyebrow">Szczecin · Beta · 20 founding spots</span>
     </div>
 
-    <h1 style="font-size:clamp(38px,5.5vw,68px);font-weight:700;margin-bottom:20px;color:var(--white);">
+    <h1 id="t-courier_hero_headline" style="font-size:clamp(38px,5.5vw,68px);font-weight:700;margin-bottom:20px;color:var(--white);">
       You lost 32 minutes today<br>
       <span style="color:var(--yellow);">standing outside locked gates.</span>
     </h1>
 
-    <p style="font-size:clamp(17px,2vw,21px);color:var(--gray-2);margin-bottom:12px;line-height:1.7;max-width:520px;">
+    <p id="t-courier_hero_sub1" style="font-size:clamp(17px,2vw,21px);color:var(--gray-2);margin-bottom:12px;line-height:1.7;max-width:520px;">
       4 minutes per gate. 8 gates per shift. That is <span class="money" data-amount="120">PLN 120</span>–<span class="money" data-amount="200">PLN 200</span> you did not earn this month. Not because you were slow. Because nobody told you the code.
     </p>
 
-    <p style="font-size:clamp(16px,1.8vw,19px);color:var(--gray-1);margin-bottom:40px;line-height:1.7;max-width:520px;">
+    <p id="t-courier_hero_sub2" style="font-size:clamp(16px,1.8vw,19px);color:var(--gray-1);margin-bottom:40px;line-height:1.7;max-width:520px;">
       LGK knows the code. Every building. Community-verified. Appears at 100 metres. Nowhere else.
     </p>
 
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-      <a href="#waitlist" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);letter-spacing:-0.01em;transition:transform 150ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
+      <a href="#waitlist" id="t-courier_cta" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);letter-spacing:-0.01em;transition:transform 150ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
         Claim founding spot →
       </a>
-      <span style="color:var(--gray-3);font-size:14px;">Free forever · No card · No catch</span>
+      <span id="t-courier_cta_sub" style="color:var(--gray-3);font-size:14px;">Free forever · No card · No catch</span>
     </div>
 
     <div style="display:flex;gap:24px;margin-top:32px;flex-wrap:wrap;">
-      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">1.5M</span><br><span style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Buildings</span></div>
-      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">20</span><br><span style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Polish cities</span></div>
-      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">100m</span><br><span style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">GPS reveal</span></div>
-      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">3</span><br><span style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Couriers verify</span></div>
+      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">1.5M</span><br><span id="t-stats_buildings" style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Buildings</span></div>
+      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">20</span><br><span id="t-stats_cities" style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Polish cities</span></div>
+      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">100m</span><br><span id="t-stats_gps" style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">GPS reveal</span></div>
+      <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">3</span><br><span id="t-stats_couriers" style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Couriers verify</span></div>
     </div>
   </div>
 
@@ -168,7 +168,7 @@ section { padding: var(--section-gap) 24px; }
           <div style="font-family:var(--font-mono);font-size:10px;color:var(--warning);margin-bottom:12px;animation:pulse 1.5s infinite;">🔥 85m away — HOT</div>
         </div>
         <div style="background:linear-gradient(180deg,#0D0D00 0%,#000 100%);border:2px solid var(--yellow);border-radius:14px;padding:24px 16px;text-align:center;margin-bottom:16px;box-shadow:0 0 30px rgba(212,255,0,0.2);">
-          <div style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);margin-bottom:10px;">GATE CODE — VERIFIED</div>
+          <div id="t-brama_label" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);margin-bottom:10px;">ACCESS CODE — VERIFIED</div>
           <div style="font-family:var(--font-mono);font-size:46px;font-weight:600;color:var(--yellow);letter-spacing:8px;line-height:1;">2137C</div>
           <div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;">
             <div style="width:6px;height:6px;border-radius:50%;background:var(--success);"></div>
@@ -197,20 +197,20 @@ section { padding: var(--section-gap) 24px; }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="grid-2">
 
     <div>
-      <div class="whisper" style="margin-bottom:16px;">Route injection · Extra earnings</div>
-      <h2 style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:20px;">
+      <div id="t-injection_eyebrow" class="whisper" style="margin-bottom:16px;">Route injection · Extra earnings</div>
+      <h2 id="t-injection_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:20px;">
         Money that did not exist<br>
         <span style="color:var(--warning);">60 seconds ago.</span>
       </h2>
-      <p style="font-size:18px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
+      <p id="t-injection_sub1" style="font-size:18px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
         You are heading to your next drop-off. LGK spots a pickup 200 metres off your route. It takes 3 minutes. It pays <span class="money" data-amount="18">PLN 18</span>. You tap ACCEPT without stopping.
       </p>
-      <p style="font-size:18px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
+      <p id="t-injection_sub2" style="font-size:18px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
         That is <span class="money" data-amount="18">PLN 18</span> you would never have seen on any other app. Not Glovo. Not InPost. Not anyone. Because they only know your orders. LGK knows your route.
       </p>
       <div style="background:var(--card-mid);border-radius:12px;padding:20px;border-left:4px solid var(--warning);">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">BETA TESTER · SZCZECIN · MAY 2026</div>
-        <div style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">"I got a route injection heading to my drop-off. PLN 18 I would never have seen. The pickup was literally on the same street I was already on."</div>
+        <div id="t-injection_attribution" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">Beta tester · Szczecin · May 2026</div>
+        <div id="t-injection_quote" style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">"I got a route injection heading to my drop-off. PLN 18 I would never have seen. The pickup was literally on the same street I was already on."</div>
       </div>
     </div>
 
@@ -247,12 +247,12 @@ section { padding: var(--section-gap) 24px; }
 <section>
 <div class="container">
   <div style="text-align:center;margin-bottom:64px;">
-    <div class="whisper" style="margin:0 auto 16px;text-align:center;">Zone clustering · Work smarter</div>
-    <h2 style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:16px;">
+    <div id="t-cluster_eyebrow" class="whisper" style="margin:0 auto 16px;text-align:center;">Zone clustering · Work smarter</div>
+    <h2 id="t-cluster_headline" style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:16px;">
       47 stops. 8 zones.<br>
       <span style="color:var(--info);">Done by 2pm.</span>
     </h2>
-    <p style="font-size:18px;color:var(--gray-2);max-width:560px;margin:0 auto;line-height:1.7;">
+    <p id="t-cluster_sub" style="font-size:18px;color:var(--gray-2);max-width:560px;margin:0 auto;line-height:1.7;">
       Your stops are loaded in random order. You criss-cross the city all day. Return to the same streets three times. Burn fuel. Lose time. Lose money.
       <br><br>
       LGK groups your stops by building and street automatically. Do all six on Mickiewicza now. Then all three on Bogusława. Then Centrum. Logic, not chaos.
@@ -263,7 +263,7 @@ section { padding: var(--section-gap) 24px; }
 
     <div style="background:var(--card);border:1px solid var(--danger);border-radius:16px;overflow:hidden;">
       <div style="background:rgba(255,59,48,0.12);padding:16px 20px;border-bottom:1px solid rgba(255,59,48,0.2);">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--danger);letter-spacing:2px;">WITHOUT LGK — RANDOM ORDER</div>
+        <div id="t-cluster_without" style="font-family:var(--font-mono);font-size:11px;color:var(--danger);letter-spacing:2px;">WITHOUT LGK — RANDOM ORDER</div>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;gap:8px;">
         <div style="display:flex;gap:8px;align-items:center;"><div style="width:20px;height:20px;border-radius:50%;background:var(--danger);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;">1</div><span style="font-size:14px;color:var(--gray-1);">ul. Mickiewicza 15</span></div>
@@ -280,7 +280,7 @@ section { padding: var(--section-gap) 24px; }
 
     <div style="background:var(--card);border:1px solid var(--success);border-radius:16px;overflow:hidden;">
       <div style="background:rgba(0,200,83,0.12);padding:16px 20px;border-bottom:1px solid rgba(0,200,83,0.2);">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--success);letter-spacing:2px;">WITH LGK — ZONE CLUSTERS</div>
+        <div id="t-cluster_with" style="font-family:var(--font-mono);font-size:11px;color:var(--success);letter-spacing:2px;">WITH LGK — ZONE CLUSTERS</div>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;gap:10px;">
         <div style="background:rgba(0,200,83,0.1);border-radius:8px;padding:12px;border-left:3px solid var(--success);">
@@ -311,7 +311,7 @@ section { padding: var(--section-gap) 24px; }
 
   <div style="margin-top:32px;background:var(--card-mid);border-radius:12px;padding:20px;border-left:4px solid var(--info);max-width:600px;margin-left:auto;margin-right:auto;">
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">BETA TESTER · SZCZECIN · MAY 2026</div>
-    <div style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">"I spent 5 minutes updating all my deliveries at once. Before this I was doing it across three apps. My shift actually ends when it ends now."</div>
+    <div id="t-cluster_quote" style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">"I spent 5 minutes updating all my deliveries at once. Before this I was doing it across three apps. My shift actually ends when it ends now."</div>
   </div>
 </div>
 </section>
@@ -320,43 +320,43 @@ section { padding: var(--section-gap) 24px; }
 <section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
 <div class="container">
   <div style="text-align:center;margin-bottom:64px;">
-    <h2 style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">The system was never built for you.</h2>
-    <p style="font-size:18px;color:var(--gray-2);max-width:500px;margin:0 auto;">It was built to monitor you. LGK is the first tool built to actually help you work.</p>
+    <h2 id="t-problems_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">The system was never built for you.</h2>
+    <p id="t-problems_sub" style="font-size:18px;color:var(--gray-2);max-width:500px;margin:0 auto;">It was built to monitor you. LGK is the first tool built to actually help you work.</p>
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2px;background:var(--gray-4);border-radius:16px;overflow:hidden;">
     <div style="background:var(--card);padding:32px;">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 01</div>
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Locked gate. No code.</div>
+      <div id="t-problem1_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Locked gate. No code.</div>
       <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">4 minutes standing outside. Missed delivery card. Scan rate drops. Manager notices. Repeat tomorrow.</p>
       <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: Code at 100m. GPS-verified. 4 couriers confirmed it.</div>
     </div>
     <div style="background:var(--card);padding:32px;">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 02</div>
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Three apps. One building.</div>
+      <div id="t-problem2_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Three apps. One building.</div>
       <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">InPost, DPD, Amazon all in the same block. Three separate apps. You visit twice because nobody told you all three were there.</p>
       <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: All carriers in one view. Cluster shows everything in the building.</div>
     </div>
     <div style="background:var(--card);padding:32px;">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 03</div>
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">PLN 120 ticket. Zero warning.</div>
+      <div id="t-problem3_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">PLN 120 ticket. Zero warning.</div>
       <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">The warden operates 9am–1pm. You find out with a fine on your windscreen. Other couriers knew. Nobody said anything.</p>
       <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: Community fine zone alert before you park. Real. GPS-accurate.</div>
     </div>
     <div style="background:var(--card);padding:32px;">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 04</div>
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">No proof. No case.</div>
+      <div id="t-problem4_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">No proof. No case.</div>
       <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">Customer says it never arrived. Your word against theirs. Dispute goes against you. Rating drops. You know you delivered it.</p>
       <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: GPS-stamped proof photo. Your coordinates. Your timestamp. Case closed.</div>
     </div>
     <div style="background:var(--card);padding:32px;">
       <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 05</div>
-      <div style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Mental load. All shift.</div>
+      <div id="t-problem5_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Mental load. All shift.</div>
       <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">Navigator. Dispatcher. Customer service. Accountant. Simultaneously. By end of shift you are exhausted from thinking, not delivering.</p>
       <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: Right information. Right moment. Nothing more. Your co-pilot.</div>
     </div>
     <div style="background:var(--yellow);padding:32px;display:flex;align-items:center;justify-content:center;">
       <div style="text-align:center;">
-        <div style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--black);line-height:1.3;">"Every other app is watching you work.<br>This one works for you."</div>
+        <div id="t-positioning" style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--black);line-height:1.3;">"Every other app is watching you work.<br>This one works for you."</div>
       </div>
     </div>
   </div>
@@ -369,26 +369,23 @@ section { padding: var(--section-gap) 24px; }
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="grid-2">
 
     <div>
-      <div class="whisper" style="margin-bottom:16px;color:var(--danger);">Community intelligence · Real-time</div>
-      <h2 style="font-size:clamp(26px,3.5vw,44px);color:var(--white);margin-bottom:20px;">
+      <div id="t-warden_eyebrow" class="whisper" style="margin-bottom:16px;color:var(--danger);">Community intelligence · Real-time</div>
+      <h2 id="t-warden_headline" style="font-size:clamp(26px,3.5vw,44px);color:var(--white);margin-bottom:20px;">
         Someone just looked<br>
         <span style="color:var(--danger);">out for you.</span>
       </h2>
-      <p style="font-size:17px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
-        A courier on ul. Bogusława spots the traffic warden at Park Rodła. 9:15am. He is already writing tickets.
+      <p id="t-warden_sub1" style="font-size:17px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
+        A courier on ul. Bogusława spots the traffic warden at Park Rodła. 9:15am. She taps once. Four seconds.
       </p>
-      <p style="font-size:17px;color:var(--gray-2);margin-bottom:20px;line-height:1.7;">
-        She taps once. Four seconds. Sends the alert.
-      </p>
-      <p style="font-size:17px;color:var(--gray-1);margin-bottom:20px;line-height:1.7;">
+      <p id="t-warden_sub2" style="font-size:17px;color:var(--gray-1);margin-bottom:20px;line-height:1.7;">
         Two blocks away another courier gets the notification. Parks differently. Saves <span class="money" data-amount="120">PLN 120</span>.
       </p>
-      <p style="font-size:17px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
+      <p id="t-warden_sub3" style="font-size:17px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">
         <strong>They have never met. They never will.</strong> But they helped each other. That is the network.
       </p>
       <div style="padding:20px;background:var(--card);border-radius:12px;border-left:4px solid var(--danger);">
-        <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);margin-bottom:8px;">THE BACKGROUND EFFECT</div>
-        <div style="font-size:15px;color:var(--gray-1);line-height:1.6;">Even if you use Glovo primarily — run LGK in the background. You still get the warden alerts. You still get the gate codes. The network still protects you. You do not have to go all in. The intelligence finds you.</div>
+        <div id="t-background_title" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);margin-bottom:8px;">THE BACKGROUND EFFECT</div>
+        <div id="t-background_text" style="font-size:15px;color:var(--gray-1);line-height:1.6;">Even if you use Glovo primarily — run LGK in the background. You still get the warden alerts. You still get the gate codes. The intelligence finds you.</div>
       </div>
     </div>
 
@@ -406,7 +403,7 @@ section { padding: var(--section-gap) 24px; }
       <div style="background:#001A00;border:1px solid rgba(0,200,83,0.4);border-radius:14px;padding:16px;display:flex;gap:12px;align-items:flex-start;">
         <div style="width:36px;height:36px;border-radius:10px;background:var(--success);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">🔑</div>
         <div>
-          <div style="font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--success);margin-bottom:4px;">GATE CODE VERIFIED</div>
+          <div id="t-brama_badge" style="font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--success);margin-bottom:4px;">ACCESS CODE</div>
           <div style="font-size:14px;color:var(--white);margin-bottom:4px;">ul. Tkacka 15 · <span style="font-family:var(--font-mono);color:var(--yellow);">4891B</span></div>
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);">Confirmed by 3 couriers · 1 day ago</div>
         </div>
@@ -431,22 +428,19 @@ section { padding: var(--section-gap) 24px; }
 <!-- SECTION 6: YOU ARE NOT ALONE -->
 <section style="background:var(--card);border-top:1px solid var(--border);">
 <div class="container" style="max-width:800px;text-align:center;">
-  <h2 style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:24px;">
+  <h2 id="t-alone_headline" style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:24px;">
     The city at 6am belongs to couriers.<br>
     <span style="color:var(--yellow);">You are not the only one who knows it.</span>
   </h2>
-  <p style="font-size:19px;color:var(--gray-2);margin-bottom:20px;line-height:1.8;">
-    Couriers know every street. Every building. Every shortcut. Which café opens at 5:45. Which parking warden starts at 9. Which building manager leaves the side door open on Wednesdays.
+  <p id="t-alone_sub1" style="font-size:19px;color:var(--gray-2);margin-bottom:20px;line-height:1.8;">
+    Couriers know every street. Every building. Every shortcut. All of that knowledge lives in WhatsApp groups. Informal. Unverified. Lost when the group goes quiet.
   </p>
-  <p style="font-size:19px;color:var(--gray-2);margin-bottom:20px;line-height:1.8;">
-    All of that knowledge lives in WhatsApp groups. Informal. Unverified. Lost when the group goes quiet.
-  </p>
-  <p style="font-size:19px;color:var(--gray-1);margin-bottom:40px;line-height:1.8;">
+  <p id="t-alone_sub2" style="font-size:19px;color:var(--gray-1);margin-bottom:40px;line-height:1.8;">
     LGK is what happens when that knowledge gets organised, verified, and given back to every courier who needs it. <strong>You are not alone on your shift. You have every courier who came before you.</strong>
   </p>
   <div style="background:var(--card-mid);border-radius:16px;padding:32px;border:1px solid var(--gray-4);">
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:20px;">BETA TESTER · SZCZECIN · MAY 2026</div>
-    <div style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">"A courier I have never met pinged a warden alert. I parked two streets over. Saved <span class="money" data-amount="120">PLN 120</span>. I sent a code for a building he probably delivers to. That is how this works. We look out for each other."</div>
+    <div id="t-alone_quote" style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">"A courier I have never met pinged a warden alert. I parked two streets over. Saved <span class="money" data-amount="120">PLN 120</span>. I sent a code for a building he probably delivers to. That is how this works. We look out for each other."</div>
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--success);">— Founding tester · Courier · Szczecin</div>
   </div>
 </div>
@@ -457,14 +451,14 @@ section { padding: var(--section-gap) 24px; }
 <div class="container" style="max-width:700px;">
   <div style="text-align:center;margin-bottom:48px;">
     <div class="whisper" style="margin:0 auto 16px;text-align:center;">Real numbers · Your shift</div>
-    <h2 style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">How much is the chaos costing you?</h2>
-    <p style="font-size:18px;color:var(--gray-2);">Gates. Criss-crossing. Three apps. Your shift loses money before you deliver a single package.</p>
+    <h2 id="t-calc_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">How much is the chaos costing you?</h2>
+    <p id="t-calc_sub" style="font-size:18px;color:var(--gray-2);">Gates. Criss-crossing. Three apps. Your shift loses money before you deliver a single package.</p>
   </div>
 
   <div style="background:var(--card);border:1px solid var(--gray-4);border-radius:20px;padding:40px;" id="calculator">
     <div style="margin-bottom:28px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <label style="color:var(--white);font-weight:600;font-size:15px;">Locked gates per shift</label>
+        <label id="t-calc_gates" style="color:var(--white);font-weight:600;font-size:15px;">Locked gates per shift</label>
         <span id="gates-val" style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--yellow);">6</span>
       </div>
       <input type="range" min="0" max="15" value="6" id="gates-slider" oninput="calcSavings()" style="width:100%;accent-color:var(--yellow);height:6px;cursor:pointer;">
@@ -473,7 +467,7 @@ section { padding: var(--section-gap) 24px; }
 
     <div style="margin-bottom:28px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <label style="color:var(--white);font-weight:600;font-size:15px;">Stops criss-crossing per shift</label>
+        <label id="t-calc_stops" style="color:var(--white);font-weight:600;font-size:15px;">Stops criss-crossing per shift</label>
         <span id="stops-val" style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--yellow);">20</span>
       </div>
       <input type="range" min="0" max="50" value="20" id="stops-slider" oninput="calcSavings()" style="width:100%;accent-color:var(--yellow);height:6px;cursor:pointer;">
@@ -482,30 +476,30 @@ section { padding: var(--section-gap) 24px; }
 
     <div style="margin-bottom:28px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-        <label style="color:var(--white);font-weight:600;font-size:15px;">Shifts per month</label>
+        <label id="t-calc_shifts" style="color:var(--white);font-weight:600;font-size:15px;">Shifts per month</label>
         <span id="shifts-val" style="font-family:var(--font-mono);font-size:20px;font-weight:600;color:var(--yellow);">22</span>
       </div>
       <input type="range" min="10" max="26" value="22" id="shifts-slider" oninput="calcSavings()" style="width:100%;accent-color:var(--yellow);height:6px;cursor:pointer;">
     </div>
 
     <div style="background:var(--yellow);border-radius:14px;padding:28px;text-align:center;" id="calc-result">
-      <div style="font-family:var(--font-mono);font-size:13px;color:rgba(0,0,0,0.5);letter-spacing:1px;margin-bottom:8px;">YOU COULD RECOVER PER MONTH</div>
+      <div id="t-calc_result_label" style="font-family:var(--font-mono);font-size:13px;color:rgba(0,0,0,0.5);letter-spacing:1px;margin-bottom:8px;">YOU COULD RECOVER PER MONTH</div>
       <div id="total-saving" style="font-family:var(--font-display);font-size:56px;font-weight:700;color:var(--black);line-height:1;">PLN 1,265</div>
-      <div style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">LGK Pro: <span class="money" data-amount="40">PLN 40</span>/month. You make it back in 1 shift.</div>
+      <div id="t-calc_pro_note" style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">LGK Pro: <span class="money" data-amount="40">PLN 40</span>/month. You make it back in 1 shift.</div>
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px;">
       <div style="text-align:center;padding:14px;background:rgba(212,255,0,0.06);border-radius:10px;border:1px solid rgba(212,255,0,0.15);">
         <div id="gate-saving" style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--yellow);">PLN 528</div>
-        <div style="color:var(--gray-3);font-size:12px;margin-top:4px;">from gate codes</div>
+        <div id="t-calc_from_gates" style="color:var(--gray-3);font-size:12px;margin-top:4px;">from gate codes</div>
       </div>
       <div style="text-align:center;padding:14px;background:rgba(0,123,255,0.06);border-radius:10px;border:1px solid rgba(0,123,255,0.15);">
         <div id="cluster-saving" style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--info);">PLN 528</div>
-        <div style="color:var(--gray-3);font-size:12px;margin-top:4px;">from clustering</div>
+        <div id="t-calc_from_clusters" style="color:var(--gray-3);font-size:12px;margin-top:4px;">from clustering</div>
       </div>
       <div style="text-align:center;padding:14px;background:rgba(255,149,0,0.06);border-radius:10px;border:1px solid rgba(255,149,0,0.15);">
         <div id="injection-saving" style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--warning);">PLN 209</div>
-        <div style="color:var(--gray-3);font-size:12px;margin-top:4px;">route injections</div>
+        <div id="t-calc_from_injections" style="color:var(--gray-3);font-size:12px;margin-top:4px;">route injections</div>
       </div>
     </div>
   </div>
@@ -524,17 +518,17 @@ section { padding: var(--section-gap) 24px; }
     <div>
       <div class="eyebrow" style="background:rgba(0,123,255,0.1);border-color:rgba(0,123,255,0.3);">
         <div class="eyebrow-dot" style="background:var(--info);animation:none;"></div>
-        <span class="eyebrow-text" style="color:var(--info);">Same-day delivery · Poland · From PLN 25</span>
+        <span id="t-business_eyebrow" class="eyebrow-text" style="color:var(--info);">Same-day delivery · Poland · From PLN 25</span>
       </div>
-      <h1 style="font-size:clamp(36px,5vw,62px);font-weight:700;margin-bottom:20px;">
+      <h1 id="t-business_headline" style="font-size:clamp(36px,5vw,62px);font-weight:700;margin-bottom:20px;">
         Half the commission.<br>
         <span style="color:var(--yellow);">Twice the proof.</span>
       </h1>
-      <p style="font-size:19px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Glovo charges 30%. Uber charges 30%. LGK charges 15%. On 200 orders a month you keep <span class="money" data-amount="1050">PLN 1,050</span> extra. Every month.</p>
+      <p id="t-business_sub1" style="font-size:19px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Glovo charges 30%. Uber charges 30%. LGK charges 15%. On 200 orders a month you keep <span class="money" data-amount="1050">PLN 1,050</span> extra. Every month.</p>
       <p style="font-size:19px;color:var(--gray-1);margin-bottom:40px;line-height:1.7;">Plus GPS proof on every delivery. Plus live tracking your customers can see. Plus QR-verified collection. No other platform offers all three.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-        <a href="https://lgk-business.vercel.app" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);">Place your first order →</a>
-        <span style="color:var(--gray-3);font-size:14px;">No setup fee · Pay per delivery</span>
+        <a href="https://lgk-business.vercel.app" id="t-business_cta" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);">Place your first order →</a>
+        <span id="t-business_cta_sub" style="color:var(--gray-3);font-size:14px;">No setup fee · Pay per delivery</span>
       </div>
     </div>
 
@@ -611,13 +605,13 @@ section { padding: var(--section-gap) 24px; }
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;" class="grid-2">
 
       <div>
-        <div style="display:inline-block;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:6px 16px;margin-bottom:24px;font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:1px;">FOR: COURIER COMPANIES · FLEET OWNERS · DISPATCH TEAMS</div>
-        <h2 style="font-size:clamp(26px,3.5vw,44px);color:var(--white);margin-bottom:20px;">
+        <div id="t-team_label" style="display:inline-block;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:8px;padding:6px 16px;margin-bottom:24px;font-family:var(--font-mono);font-size:11px;color:var(--purple);letter-spacing:1px;">FOR: COURIER COMPANIES · FLEET OWNERS · DISPATCH TEAMS</div>
+        <h2 id="t-team_headline" style="font-size:clamp(26px,3.5vw,44px);color:var(--white);margin-bottom:20px;">
           Still managing your team<br>
           <span style="color:var(--purple);">on WhatsApp at 6am?</span>
         </h2>
-        <p style="font-size:17px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Four WhatsApp groups. 47 messages since midnight. Three couriers asking which area they cover. Two clients asking if their package arrived. One courier saying the gate code does not work.</p>
-        <p style="font-size:17px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">This is how courier companies run. WhatsApp and spreadsheets and prayer. LGK Company tier was built for you. Not to monitor your team. To stop drowning in messages before your shift even starts.</p>
+        <p id="t-team_sub1" style="font-size:17px;color:var(--gray-2);margin-bottom:16px;line-height:1.7;">Four WhatsApp groups. 47 messages since midnight. Three couriers asking which area they cover. Two clients asking if their package arrived. One courier saying the gate code does not work.</p>
+        <p id="t-team_sub2" style="font-size:17px;color:var(--gray-1);margin-bottom:32px;line-height:1.7;">This is how courier companies run. WhatsApp and spreadsheets and prayer. LGK Company tier was built for you. Not to monitor your team. To stop drowning in messages before your shift even starts.</p>
         <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
           <div style="display:flex;gap:12px;align-items:flex-start;">
             <div style="width:28px;height:28px;border-radius:50%;background:rgba(139,92,246,0.2);border:1px solid var(--purple);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:12px;color:var(--purple);font-weight:700;">1</div>
@@ -640,7 +634,7 @@ section { padding: var(--section-gap) 24px; }
           <div style="font-family:var(--font-mono);font-size:11px;color:var(--purple);margin-bottom:8px;">COMPANY TIER — PLN 200/MONTH</div>
           <div style="font-size:15px;color:var(--gray-1);line-height:1.6;">Up to 15 couriers. Full admin dashboard. Zone assignment. Auto-reconciliation. GPS proof archive. Client portal. Includes all Pro features for every courier on your team.</div>
         </div>
-        <a href="#waitlist" style="display:inline-block;background:var(--purple);color:var(--white);padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;font-family:var(--font-display);">Get early access →</a>
+        <a href="#waitlist" id="t-team_cta" style="display:inline-block;background:var(--purple);color:var(--white);padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;text-decoration:none;font-family:var(--font-display);">Get early access →</a>
       </div>
 
       <div style="background:var(--card);border:1px solid var(--gray-4);border-radius:20px;overflow:hidden;">
@@ -683,22 +677,22 @@ section { padding: var(--section-gap) 24px; }
 <!-- ═══════════════════════════════════════════════════ SHARED WAITLIST -->
 <section id="waitlist" style="background:var(--black);border-top:1px solid var(--border);">
 <div class="container" style="max-width:560px;text-align:center;">
-  <h2 style="font-size:clamp(28px,4vw,44px);color:var(--white);margin-bottom:16px;">20 spots. Free forever.</h2>
-  <p style="font-size:18px;color:var(--gray-2);margin-bottom:40px;line-height:1.6;">Founding couriers contribute gate codes, get Pro tier free for life, and help build the intelligence network that makes every courier in Poland faster.</p>
+  <h2 id="t-waitlist_headline" style="font-size:clamp(28px,4vw,44px);color:var(--white);margin-bottom:16px;">20 spots. Free forever.</h2>
+  <p id="t-waitlist_sub" style="font-size:18px;color:var(--gray-2);margin-bottom:40px;line-height:1.6;">Founding couriers contribute gate codes, get Pro tier free for life, and help build the intelligence network that makes every courier in Poland faster.</p>
 
   <form id="waitlist-form" style="display:flex;flex-direction:column;gap:12px;" onsubmit="submitWaitlist(event)">
-    <input type="text" id="wl-name" placeholder="Your name" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
-    <input type="email" id="wl-email" placeholder="Email address" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
-    <input type="tel" id="wl-phone" placeholder="+48 XXX XXX XXX" style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
+    <input type="text" id="t-waitlist_name" placeholder="Your name" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
+    <input type="email" id="t-waitlist_email" placeholder="Email address" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
+    <input type="tel" id="t-waitlist_phone" placeholder="+48 XXX XXX XXX" style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
     <select id="wl-type" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;appearance:none;cursor:pointer;">
-      <option value="">I am a...</option>
-      <option value="courier">Courier (Glovo, InPost, DPD, own operation)</option>
-      <option value="business">Business (restaurant, shop, e-commerce)</option>
-      <option value="fleet">Courier company owner (fleet / team)</option>
-      <option value="both">Both courier and business</option>
+      <option id="t-waitlist_type" value="">I am a...</option>
+      <option id="t-waitlist_courier" value="courier">Courier (Glovo, InPost, DPD, own operation)</option>
+      <option id="t-waitlist_business" value="business">Business (restaurant, shop, e-commerce)</option>
+      <option id="t-waitlist_fleet" value="fleet">Courier company owner (fleet / team)</option>
+      <option id="t-waitlist_both" value="both">Both courier and business</option>
     </select>
     <button type="submit" style="padding:18px;background:var(--yellow);color:#000;border:none;border-radius:10px;font-weight:700;font-size:17px;cursor:pointer;font-family:var(--font-display);transition:transform 150ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-      Claim my founding spot →
+      <span id="t-waitlist_cta">Claim my founding spot →</span>
     </button>
     <div id="wl-message" style="font-size:14px;min-height:20px;"></div>
   </form>
@@ -706,10 +700,10 @@ section { padding: var(--section-gap) 24px; }
   <div style="margin-top:32px;padding:20px;background:var(--card);border-radius:12px;border:1px solid var(--gray-4);text-align:left;">
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:12px;">FOUNDING MEMBER BENEFITS</div>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Pro tier free for life — saves <span class="money" data-amount="40">PLN 40</span>/month</span></div>
-      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Priority onboarding and direct support</span></div>
-      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Input on product direction — your feedback shapes the app</span></div>
-      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span>Founding member badge in app and community</span></div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span id="t-waitlist_benefit1">Pro tier free for life — saves <span class="money" data-amount="40">PLN 40</span>/month</span></div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span id="t-waitlist_benefit2">Priority onboarding and direct support</span></div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span id="t-waitlist_benefit3">Input on product direction — your feedback shapes the app</span></div>
+      <div style="display:flex;align-items:center;gap:10px;color:var(--success);font-size:14px;"><span>✓</span><span id="t-waitlist_benefit4">Founding member badge in app and community</span></div>
     </div>
   </div>
 </div>
@@ -717,8 +711,8 @@ section { padding: var(--section-gap) 24px; }
 
 <footer style="padding:48px 24px 40px;border-top:1px solid var(--border);text-align:center;">
   <div style="margin-bottom:32px;">
-    <div style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--white);letter-spacing:-0.02em;margin-bottom:6px;">Less guessing.</div>
-    <div style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--yellow);letter-spacing:-0.02em;">More doing.</div>
+    <div id="t-footer_tagline1" style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--white);letter-spacing:-0.02em;margin-bottom:6px;">Less guessing.</div>
+    <div id="t-footer_tagline2" style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--yellow);letter-spacing:-0.02em;">More doing.</div>
   </div>
   <div style="display:flex;align-items:baseline;gap:5px;justify-content:center;margin-bottom:12px;">
     <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--yellow);letter-spacing:3px;">LGK</span>
@@ -728,30 +722,258 @@ section { padding: var(--section-gap) 24px; }
   <a href="https://lgk-business.vercel.app" style="color:var(--gray-3);font-size:13px;text-decoration:none;border-bottom:1px solid var(--gray-4);">lgk-business.vercel.app</a>
 </footer>
 
+<div id="business-splash" style="display:none;position:fixed;inset:0;z-index:9999;background:#0A0A0A;flex-direction:column;align-items:center;justify-content:center;gap:20px;">
+  <div style="display:flex;align-items:baseline;gap:6px;">
+    <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:700;font-size:32px;color:#D4FF00;letter-spacing:4px;">LGK</span>
+    <span style="font-family:'Space Grotesk',system-ui,sans-serif;font-weight:300;font-size:13px;color:#555;letter-spacing:6px;text-transform:uppercase;">BUSINESS</span>
+  </div>
+  <div style="font-family:'Fira Code',monospace;font-size:12px;color:#555;letter-spacing:2px;">LOADING PORTAL...</div>
+</div>
+
 <script>
 let currentPage = 'courier';
-let currentLang = navigator.language.startsWith('pl') ? 'pl' : navigator.language.startsWith('ar') ? 'ar' : 'en';
+let currentLang = 'en';
 
-const T = {
+const TRANSLATIONS = {
   en: {
-    'hero-cta': 'Claim founding spot →',
-    'waitlist-h': '20 spots. Free forever.',
-    'btn-courier': 'For Couriers',
-    'btn-business': 'For Business',
+    nav_couriers: 'For Couriers',
+    nav_business: 'For Business',
+    nav_login: 'Business Login',
+
+    courier_eyebrow: 'SZCZECIN · BETA · 20 FOUNDING SPOTS',
+    courier_hero_headline: 'You lost 32 minutes today standing outside locked gates.',
+    courier_hero_sub1: '4 minutes per gate. 8 gates per shift. That is PLN 120–200 you did not earn this month. Not because you were slow. Because nobody told you the code.',
+    courier_hero_sub2: 'LGK knows the code. Every building. Community-verified. Appears at 100 metres. Nowhere else.',
+    courier_cta: 'Claim founding spot →',
+    courier_cta_sub: 'Free forever · No card · No catch',
+
+    stats_buildings: 'Buildings',
+    stats_cities: 'Polish cities',
+    stats_gps: 'GPS reveal',
+    stats_couriers: 'Couriers verify',
+
+    injection_eyebrow: 'ROUTE INJECTION · EXTRA EARNINGS',
+    injection_headline: 'Money that did not exist 60 seconds ago.',
+    injection_sub1: 'You are heading to your next drop-off. LGK spots a pickup 200 metres off your route. It takes 3 minutes. It pays PLN 18. You tap ACCEPT without stopping.',
+    injection_sub2: 'That is PLN 18 you would never have seen on any other app. Not Glovo. Not InPost. Not anyone.',
+    injection_quote: '"I got a route injection heading to my drop-off. PLN 18 I would never have seen. The pickup was literally on the same street I was already on."',
+    injection_attribution: 'Beta tester · Szczecin · May 2026',
+
+    cluster_eyebrow: 'ZONE CLUSTERING · WORK SMARTER',
+    cluster_headline: '47 stops. 8 zones. Done by 2pm.',
+    cluster_sub: 'Your stops are loaded in random order. You criss-cross the city all day. LGK groups your stops by building and street automatically.',
+    cluster_without: 'WITHOUT LGK — RANDOM ORDER',
+    cluster_with: 'WITH LGK CLUSTERS',
+    cluster_quote: '"I spent 5 minutes updating all my deliveries at once. Before this I was doing it across three apps. My shift actually ends when it ends now."',
+
+    problems_headline: 'The system was never built for you.',
+    problems_sub: 'It was built to monitor you. LGK is the first tool built to actually help you work.',
+    problem1_title: 'Locked gate. No code.',
+    problem2_title: 'Three apps. One building.',
+    problem3_title: 'PLN 120 ticket. Zero warning.',
+    problem4_title: 'No proof. No case.',
+    problem5_title: 'Mental load. All shift.',
+    positioning: '"Every other app is watching you work. This one works for you."',
+
+    warden_eyebrow: 'COMMUNITY INTELLIGENCE · REAL-TIME',
+    warden_headline: 'Someone just looked out for you.',
+    warden_sub1: 'A courier on ul. Bogusława spots the traffic warden at Park Rodła. 9:15am. She taps once. Four seconds.',
+    warden_sub2: 'Two blocks away another courier gets the notification. Parks differently. Saves PLN 120.',
+    warden_sub3: 'They have never met. They never will. But they helped each other. That is the network.',
+    background_title: 'THE BACKGROUND EFFECT',
+    background_text: 'Even if you use Glovo primarily — run LGK in the background. You still get the warden alerts. You still get the gate codes. The intelligence finds you.',
+
+    alone_headline: 'The city at 6am belongs to couriers. You are not the only one who knows it.',
+    alone_sub1: 'Couriers know every street. Every building. Every shortcut. All of that knowledge lives in WhatsApp groups. Informal. Unverified. Lost when the group goes quiet.',
+    alone_sub2: 'LGK is what happens when that knowledge gets organised, verified, and given back to every courier who needs it. You are not alone on your shift. You have every courier who came before you.',
+    alone_quote: '"A courier I have never met pinged a warden alert. I parked two streets over. Saved PLN 120. He has never met me. That is how this works."',
+
+    calc_headline: 'How much is the chaos costing you?',
+    calc_sub: 'Gates. Criss-crossing. Three apps. Your shift loses money before you deliver a single package.',
+    calc_gates: 'Locked gates per shift',
+    calc_stops: 'Stops criss-crossing per shift',
+    calc_shifts: 'Shifts per month',
+    calc_result_label: 'YOU COULD RECOVER PER MONTH',
+    calc_pro_note: 'LGK Pro: PLN 40/month. You make it back in 1 shift.',
+    calc_from_gates: 'from gate codes',
+    calc_from_clusters: 'from clustering',
+    calc_from_injections: 'route injections',
+
+    waitlist_headline: '20 spots. Free forever.',
+    waitlist_sub: 'Founding couriers contribute gate codes, get Pro tier free for life, and help build the intelligence network that makes every courier in Poland faster.',
+    waitlist_name: 'Your name',
+    waitlist_email: 'Email address',
+    waitlist_phone: '+48 XXX XXX XXX',
+    waitlist_type: 'I am a...',
+    waitlist_courier: 'Courier (Glovo, InPost, DPD, own operation)',
+    waitlist_business: 'Business (restaurant, shop, e-commerce)',
+    waitlist_fleet: 'Courier company owner (fleet / team)',
+    waitlist_both: 'Both courier and business',
+    waitlist_cta: 'Claim my founding spot →',
+    waitlist_success: '✅ Spot claimed. You will hear from us within 48 hours.',
+    waitlist_duplicate: 'You are already on the list. We will be in touch.',
+    waitlist_error: 'Something went wrong. Email lgkcourierapp@gmail.com directly.',
+    waitlist_benefit1: 'Pro tier free for life — saves PLN 40/month',
+    waitlist_benefit2: 'Priority onboarding and direct support',
+    waitlist_benefit3: 'Input on product direction — your feedback shapes the app',
+    waitlist_benefit4: 'Founding member badge in app and community',
+
+    business_eyebrow: 'SAME-DAY DELIVERY · POLAND · FROM PLN 25',
+    business_headline: 'Half the commission. Twice the proof.',
+    business_sub1: 'Glovo charges 30%. Uber charges 30%. LGK charges 15%. On 200 orders a month you keep PLN 1,050 extra. Every month.',
+    business_cta: 'Place your first order →',
+    business_cta_sub: 'No setup fee · Pay per delivery',
+
+    team_label: 'FOR: COURIER COMPANIES · FLEET OWNERS · DISPATCH TEAMS',
+    team_headline: 'Still managing your team on WhatsApp at 6am?',
+    team_sub1: 'Four WhatsApp groups. 47 messages since midnight. Three couriers asking which area they cover. Two clients asking if their package arrived.',
+    team_sub2: 'LGK Company tier was built for you. Not to monitor your team. To stop drowning in messages before your shift even starts.',
+    team_cta: 'Get early access →',
+
+    footer_tagline1: 'Less guessing.',
+    footer_tagline2: 'More doing.',
+
+    brama_label: 'ACCESS CODE — VERIFIED',
+    brama_badge: 'ACCESS CODE',
   },
   pl: {
-    'hero-cta': 'Zarezerwuj miejsce →',
-    'waitlist-h': '20 miejsc. Bezpłatnie na zawsze.',
-    'btn-courier': 'Dla Kurierów',
-    'btn-business': 'Dla Firm',
-  },
-  ar: {
-    'hero-cta': 'احجز مكانك ←',
-    'waitlist-h': '٢٠ مقعدًا. مجاني للأبد.',
-    'btn-courier': 'للسائقين',
-    'btn-business': 'للأعمال',
+    nav_couriers: 'Dla kurierów',
+    nav_business: 'Dla firm',
+    nav_login: 'Logowanie dla firm',
+
+    courier_eyebrow: 'SZCZECIN · BETA · 20 MIEJSC ZAŁOŻYCIELSKICH',
+    courier_hero_headline: 'Straciłeś dziś 32 minuty stojąc przed zamkniętą bramą.',
+    courier_hero_sub1: '4 minuty na bramę. 8 bram na zmianę. To PLN 120–200, których nie zarobiłeś w tym miesiącu. Nie dlatego, że byłeś wolny. Bo nikt ci nie powiedział kodu.',
+    courier_hero_sub2: 'LGK zna kod. Każdy budynek. Zweryfikowany przez kurierów. Pojawia się w odległości 100 metrów. Nigdzie indziej.',
+    courier_cta: 'Zarezerwuj miejsce założyciela →',
+    courier_cta_sub: 'Bezpłatnie · Bez karty · Bez zobowiązań',
+
+    stats_buildings: 'Budynków',
+    stats_cities: 'Polskich miast',
+    stats_gps: 'Zasięg GPS',
+    stats_couriers: 'Kurierzy weryfikują',
+
+    injection_eyebrow: 'WSTRZYKNIĘCIE TRASY · DODATKOWE ZAROBKI',
+    injection_headline: 'Pieniądze, które nie istniały 60 sekund temu.',
+    injection_sub1: 'Jedziesz do kolejnego punktu. LGK widzi odbiór 200 metrów od twojej trasy. Zajmuje 3 minuty. Płaci PLN 18. Klikasz AKCEPTUJ bez zatrzymywania się.',
+    injection_sub2: 'To PLN 18, których byś nigdy nie zobaczył w żadnej innej aplikacji. Nie w Glovo. Nie w InPost. W żadnej.',
+    injection_quote: '"Dostałem wstrzyknięcie trasy jadąc do doręczenia. PLN 18, których bym nigdy nie zobaczył. Odbiór był dosłownie na tej samej ulicy, którą już jechałem."',
+    injection_attribution: 'Tester beta · Szczecin · Maj 2026',
+
+    cluster_eyebrow: 'GRUPOWANIE STREF · PRACUJ MĄDRZEJ',
+    cluster_headline: '47 przystanków. 8 stref. Gotowy o 14:00.',
+    cluster_sub: 'Twoje przystanki są załadowane w losowej kolejności. Krążysz po mieście cały dzień. LGK automatycznie grupuje przystanki według budynku i ulicy.',
+    cluster_without: 'BEZ LGK — LOSOWA KOLEJNOŚĆ',
+    cluster_with: 'Z KLASTRAMI LGK',
+    cluster_quote: '"Spędziłem 5 minut aktualizując wszystkie dostawy naraz. Wcześniej robiłem to w trzech aplikacjach. Teraz zmiana naprawdę się kończy, kiedy się kończy."',
+
+    problems_headline: 'System nigdy nie był zbudowany dla ciebie.',
+    problems_sub: 'Był zbudowany, żeby cię monitorować. LGK to pierwsze narzędzie stworzone, by naprawdę ci pomagać.',
+    problem1_title: 'Zamknięta brama. Brak kodu.',
+    problem2_title: 'Trzy aplikacje. Jeden budynek.',
+    problem3_title: 'Mandat PLN 120. Zero ostrzeżenia.',
+    problem4_title: 'Brak dowodu. Brak sprawy.',
+    problem5_title: 'Obciążenie psychiczne. Przez całą zmianę.',
+    positioning: '"Każda inna aplikacja obserwuje, jak pracujesz. Ta pracuje dla ciebie."',
+
+    warden_eyebrow: 'INTELIGENCJA SPOŁECZNOŚCI · W CZASIE RZECZYWISTYM',
+    warden_headline: 'Ktoś właśnie zadbał o ciebie.',
+    warden_sub1: 'Kurier na ul. Bogusława zauważa kontrolera przy Parku Rodła. 9:15. Stuka raz. Cztery sekundy.',
+    warden_sub2: 'Dwa przecznice dalej inny kurier dostaje powiadomienie. Parkuje inaczej. Oszczędza PLN 120.',
+    warden_sub3: 'Nigdy się nie spotkali. Nigdy nie spotkają. Ale sobie pomogli. To jest sieć.',
+    background_title: 'EFEKT TŁA',
+    background_text: 'Nawet jeśli głównie używasz Glovo — uruchom LGK w tle. Nadal otrzymujesz alerty o kontrolerach. Nadal dostajesz kody do bram. Inteligencja cię znajdzie.',
+
+    alone_headline: 'Miasto o 6 rano należy do kurierów. Nie jesteś jedynym, który je zna.',
+    alone_sub1: 'Kurierzy znają każdą ulicę. Każdy budynek. Każdy skrót. Cała ta wiedza żyje w grupach WhatsApp. Nieformalna. Niezweryfikowana.',
+    alone_sub2: 'LGK to to, co się dzieje, gdy ta wiedza zostaje zorganizowana, zweryfikowana i oddana każdemu kurierowi, który jej potrzebuje. Nie jesteś sam na swojej zmianie.',
+    alone_quote: '"Kurier, którego nigdy nie spotkałem, wysłał alert o kontrolerze. Zaparkowałem dwie ulice dalej. Oszczędziłem PLN 120. Tak to działa."',
+
+    calc_headline: 'Ile kosztuje cię ten chaos?',
+    calc_sub: 'Bramy. Krążenie. Trzy aplikacje. Twoja zmiana traci pieniądze zanim dostarczysz pierwszą paczkę.',
+    calc_gates: 'Zamknięte bramy na zmianę',
+    calc_stops: 'Przystanki krzyżujące się na zmianę',
+    calc_shifts: 'Zmiany w miesiącu',
+    calc_result_label: 'MOŻESZ ODZYSKAĆ MIESIĘCZNIE',
+    calc_pro_note: 'LGK Pro: PLN 40/miesiąc. Zwrot w 1 zmianie.',
+    calc_from_gates: 'z kodów do bram',
+    calc_from_clusters: 'z grupowania',
+    calc_from_injections: 'wstrzyknięcia tras',
+
+    waitlist_headline: '20 miejsc. Bezpłatnie na zawsze.',
+    waitlist_sub: 'Kurierzy założyciele dodają kody, otrzymują Pro bezpłatnie dożywotnio i pomagają budować sieć, która przyspiesza każdego kuriera w Polsce.',
+    waitlist_name: 'Twoje imię i nazwisko',
+    waitlist_email: 'Adres e-mail',
+    waitlist_phone: '+48 XXX XXX XXX',
+    waitlist_type: 'Jestem...',
+    waitlist_courier: 'Kurierem (Glovo, InPost, DPD, własna działalność)',
+    waitlist_business: 'Firmą (restauracja, sklep, e-commerce)',
+    waitlist_fleet: 'Właścicielem firmy kurierskiej (flota / zespół)',
+    waitlist_both: 'I kurierem, i firmą',
+    waitlist_cta: 'Zarezerwuj miejsce założyciela →',
+    waitlist_success: '✅ Miejsce zarezerwowane. Odezwiemy się w ciągu 48 godzin.',
+    waitlist_duplicate: 'Jesteś już na liście. Skontaktujemy się z tobą.',
+    waitlist_error: 'Coś poszło nie tak. Napisz bezpośrednio na lgkcourierapp@gmail.com',
+    waitlist_benefit1: 'Pro bezpłatnie dożywotnio — oszczędzasz PLN 40/miesiąc',
+    waitlist_benefit2: 'Priorytetowe wdrożenie i wsparcie bezpośrednie',
+    waitlist_benefit3: 'Wpływ na kierunek produktu — twoje opinie kształtują aplikację',
+    waitlist_benefit4: 'Odznaka założyciela w aplikacji i społeczności',
+
+    business_eyebrow: 'DOSTAWA TEGO SAMEGO DNIA · POLSKA · OD PLN 25',
+    business_headline: 'Połowa prowizji. Dwa razy więcej dowodów.',
+    business_sub1: 'Glovo bierze 30%. Uber bierze 30%. LGK bierze 15%. Przy 200 zamówieniach miesięcznie zatrzymujesz PLN 1 050 więcej. Każdego miesiąca.',
+    business_cta: 'Złóż pierwsze zamówienie →',
+    business_cta_sub: 'Bez opłaty konfiguracyjnej · Płać za dostawę',
+
+    team_label: 'DLA: FIRM KURIERSKICH · WŁAŚCICIELI FLOT · DYSPOZYTORÓW',
+    team_headline: 'Nadal zarządzasz zespołem przez WhatsApp o 6 rano?',
+    team_sub1: 'Cztery grupy WhatsApp. 47 wiadomości od północy. Trzech kurierów pyta, który rejon obsługują. Dwóch klientów pyta, czy paczka dotarła.',
+    team_sub2: 'Pakiet Firma LGK został stworzony dla ciebie. Nie do monitorowania zespołu. By przestać tonąć w wiadomościach zanim zmiana się zacznie.',
+    team_cta: 'Uzyskaj wczesny dostęp →',
+
+    footer_tagline1: 'Mniej zgadywania.',
+    footer_tagline2: 'Więcej dostarczania.',
+
+    brama_label: 'KOD BRAMY — ZWERYFIKOWANY',
+    brama_badge: 'BRAMA',
   },
 };
+
+function applyLang(lang) {
+  const T = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  Object.keys(T).forEach(key => {
+    const el = document.getElementById('t-' + key);
+    if (el) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = T[key];
+      } else if (el.tagName === 'OPTION') {
+        el.textContent = T[key];
+      } else {
+        el.innerHTML = T[key];
+      }
+    }
+  });
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  const langLabels = { en: 'PL', pl: 'EN' };
+  const langBtn = document.getElementById('lang-btn');
+  if (langBtn) langBtn.textContent = langLabels[lang] || 'PL';
+  updateAllMoney();
+}
+
+function cycleLang() {
+  const langs = ['en', 'pl'];
+  currentLang = langs[(langs.indexOf(currentLang) + 1) % langs.length];
+  localStorage.setItem('lgk_lang', currentLang);
+  applyLang(currentLang);
+}
+
+function showBusinessSplash(e) {
+  e.preventDefault();
+  const splash = document.getElementById('business-splash');
+  splash.style.display = 'flex';
+  setTimeout(() => { window.location.href = 'https://lgk-business.vercel.app'; }, 1800);
+}
 
 function showPage(page) {
   currentPage = page;
@@ -783,23 +1005,6 @@ function showPage(page) {
   });
 }
 
-function cycleLang() {
-  const langs = ['en', 'pl', 'ar'];
-  const next = langs[(langs.indexOf(currentLang) + 1) % langs.length];
-  currentLang = next;
-  document.getElementById('lang-btn').textContent = next.toUpperCase();
-  document.documentElement.lang = next;
-  document.documentElement.dir = next === 'ar' ? 'rtl' : 'ltr';
-  applyTranslations(next);
-  updateAllMoney();
-}
-
-function applyTranslations(lang) {
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (T[lang] && T[lang][key]) el.innerHTML = T[lang][key];
-  });
-}
 
 async function submitWaitlist(e) {
   e.preventDefault();
@@ -808,9 +1013,9 @@ async function submitWaitlist(e) {
   btn.textContent = 'Sending...';
   btn.disabled = true;
   const data = {
-    name: document.getElementById('wl-name').value,
-    email: document.getElementById('wl-email').value,
-    phone: document.getElementById('wl-phone').value,
+    name: document.getElementById('t-waitlist_name').value,
+    email: document.getElementById('t-waitlist_email').value,
+    phone: document.getElementById('t-waitlist_phone').value,
     user_type: document.getElementById('wl-type').value,
   };
   try {
@@ -824,21 +1029,23 @@ async function submitWaitlist(e) {
       },
       body: JSON.stringify(data)
     });
+    const TL = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     if (res.ok || res.status === 201) {
       msg.style.color = '#00C853';
-      msg.textContent = '✅ Spot claimed. You will hear from us within 48 hours.';
+      msg.textContent = TL.waitlist_success;
       e.target.style.opacity = '0.5';
       btn.textContent = 'Submitted ✓';
     } else if (res.status === 409) {
       msg.style.color = '#FF9500';
-      msg.textContent = 'You are already on the list. We will be in touch.';
+      msg.textContent = TL.waitlist_duplicate;
       btn.textContent = 'Already registered';
     } else {
       throw new Error('Server error');
     }
   } catch {
+    const TL = TRANSLATIONS[currentLang] || TRANSLATIONS.en;
     msg.style.color = '#FF3B30';
-    msg.textContent = 'Something went wrong. Email lgkcourierapp@gmail.com directly.';
+    msg.textContent = TL.waitlist_error;
     btn.textContent = 'Try again';
     btn.disabled = false;
   }
@@ -902,8 +1109,14 @@ window.addEventListener('scroll', () => {
   nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
 });
 
-calcSavings();
-updateAllMoney();
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('lgk_lang');
+  const browser = navigator.language?.slice(0, 2);
+  currentLang = saved || (browser === 'pl' ? 'pl' : 'en');
+  applyLang(currentLang);
+  calcSavings();
+  updateAllMoney();
+});
 </script>
 </body>
 </html>
