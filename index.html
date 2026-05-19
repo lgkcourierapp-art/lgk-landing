@@ -155,6 +155,9 @@ nav { padding: 0 16px; height: 56px; }
   line-height: 1;
 }
 .eyebrow-dot.static { animation: none; }
+@media (max-width: 480px) {
+  #calculator { padding: 20px !important; }
+}
 </style>
 </head>
 <body>
@@ -543,7 +546,7 @@ nav { padding: 0 16px; height: 56px; }
       <div id="t-calc_pro_note" style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">LGK Pro: <span class="money" data-amount="40">PLN 40</span>/month. You make it back in 1 shift.</div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:20px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin-top:20px;">
       <div style="text-align:center;padding:14px;background:rgba(212,255,0,0.06);border-radius:10px;border:1px solid rgba(212,255,0,0.15);">
         <div id="gate-saving" style="font-family:var(--font-mono);font-size:18px;font-weight:600;color:var(--yellow);">PLN 528</div>
         <div id="t-calc_from_gates" style="color:var(--gray-3);font-size:12px;margin-top:4px;">from gate codes</div>
