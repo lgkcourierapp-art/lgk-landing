@@ -380,7 +380,7 @@ nav { padding: 0 16px; height: 56px; }
 <div class="container">
   <div style="text-align:center;margin-bottom:64px;">
     <h2 id="t-problems_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">You know this feeling.</h2>
-    <p id="t-problems_sub" style="font-size:18px;color:var(--gray-2);max-width:500px;margin:0 auto;">Locked gate. Three apps. No proof. Word against word. End of shift — tired not from delivering, but from thinking.</p>
+    <p id="t-problems_sub" style="font-size:18px;color:var(--gray-2);max-width:500px;margin:0 auto;">You're standing outside a locked gate. You've tried three apps. Nothing. So you leave a card and move on — and somewhere a manager marks your scan rate down.<br><br>You have three carriers in the same building but nobody told you. You'll be back tomorrow.<br><br>A customer says it never arrived. You have nothing. Word against word. The dispute goes against you.<br><br>End of shift — tired not from delivering, but from thinking.</p>
   </div>
   <div class="problems-grid" style="background:var(--gray-4);border-radius:16px;overflow:hidden;">
     <div style="background:var(--card);padding:32px;">
@@ -561,6 +561,20 @@ nav { padding: 0 16px; height: 56px; }
         <div id="t-calc_from_injections" style="color:var(--gray-3);font-size:12px;margin-top:4px;">route injections</div>
       </div>
     </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 8: INTEL EXCHANGE -->
+<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<div class="container" style="max-width:800px;text-align:center;">
+  <div class="whisper" style="margin:0 auto 16px;text-align:center;">Intel Exchange · Community model</div>
+  <h2 id="t-intel_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:24px;">Intel Exchange — free for active couriers.</h2>
+  <p id="t-intel_body" style="font-size:19px;color:var(--gray-2);margin-bottom:40px;line-height:1.8;max-width:660px;margin-left:auto;margin-right:auto;">First month completely free. From month two: add 3 intel items per month — gate code, parking tip, fine zone time — and the app is free forever. Pro subscription: €8.99/month if you prefer not to contribute. Cancel any time.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+    <div class="eyebrow" style="margin-bottom:0;"><div class="eyebrow-dot static"></div><span class="eyebrow-text">10 kodów = Local Expert</span></div>
+    <div class="eyebrow" style="margin-bottom:0;"><div class="eyebrow-dot static"></div><span class="eyebrow-text">50 kodów = Pro na zawsze</span></div>
+    <div class="eyebrow" style="margin-bottom:0;"><div class="eyebrow-dot static"></div><span class="eyebrow-text">100 kodów = Founding Contributor</span></div>
   </div>
 </div>
 </section>
@@ -829,7 +843,7 @@ const TRANSLATIONS = {
     cluster_quote: '"I spent 5 minutes updating all my deliveries at once. Before this I was doing it across three apps. My shift actually ends when it ends now."',
 
     problems_headline: 'You know this feeling.',
-    problems_sub: 'Locked gate. Three apps. No proof. Word against word. End of shift — tired not from delivering, but from thinking.',
+    problems_sub: 'You\'re standing outside a locked gate. You\'ve tried three apps. Nothing. So you leave a card and move on — and somewhere a manager marks your scan rate down.<br><br>You have three carriers in the same building but nobody told you. You\'ll be back tomorrow.<br><br>A customer says it never arrived. You have nothing. Word against word. The dispute goes against you.<br><br>End of shift — tired not from delivering, but from thinking.',
     problem1_title: 'Locked gate. No code.',
     problem2_title: 'Three apps. One building.',
     problem3_title: 'PLN 120 ticket. Zero warning.',
@@ -899,6 +913,9 @@ const TRANSLATIONS = {
     brama_badge: 'BRAMA INTEL',
     brama_description: 'BRAMA INTEL — community-verified building intelligence',
     brama_appears: 'Your BRAMA INTEL appears at 100 metres',
+
+    intel_headline: 'Intel Exchange — free for active couriers.',
+    intel_body: 'First month completely free. From month two: add 3 intel items per month — gate code, parking tip, fine zone time — and the app is free forever. Pro subscription: €8.99/month if you prefer not to contribute. Cancel any time.',
   },
   pl: {
     nav_couriers: 'Dla kurierów',
@@ -932,7 +949,7 @@ const TRANSLATIONS = {
     cluster_quote: '"Spędziłem 5 minut aktualizując wszystkie dostawy naraz. Wcześniej robiłem to w trzech aplikacjach. Teraz zmiana naprawdę się kończy, kiedy się kończy."',
 
     problems_headline: 'Znasz to uczucie.',
-    problems_sub: 'Zamknięta brama. Trzy aplikacje. Brak dowodu. Słowo przeciwko słowu. Koniec zmiany — zmęczony nie dostawaniem, lecz myśleniem.',
+    problems_sub: 'Stoisz przed zamkniętą bramą. Sprawdziłeś trzy aplikacje. Nic. Zostawiasz awizo i jedziesz dalej — a gdzieś menedżer odnotowuje Twój wynik skanowania.<br><br>Masz trzy firmy kurierskie w tym samym budynku, ale nikt Cię nie uprzedził. Jutro wrócisz.<br><br>Klient twierdzi, że nie dostał paczki. Nie masz dowodu. Słowo przeciwko słowu. Spór kończy się przeciwko Tobie.<br><br>Koniec zmiany — zmęczony nie dostawaniem, lecz myśleniem.',
     problem1_title: 'Zamknięta brama. Brak kodu.',
     problem2_title: 'Trzy aplikacje. Jeden budynek.',
     problem3_title: 'Mandat PLN 120. Zero ostrzeżenia.',
@@ -1002,6 +1019,9 @@ const TRANSLATIONS = {
     brama_badge: 'BRAMA',
     brama_description: 'Kody dostępu do budynków zweryfikowane przez kurierów',
     brama_appears: 'Twoja Brama pojawia się w odległości 100 metrów',
+
+    intel_headline: 'Intel Exchange — darmowy dla aktywnych.',
+    intel_body: 'Pierwszy miesiąc całkowicie darmowy. Od drugiego miesiąca: dodaj 3 wskazówki miesięcznie — kod do bramy, wskazówka parkingowa, strefa mandatów — i aplikacja jest darmowa na zawsze. Subskrypcja Pro: €8,99/miesiąc jeśli wolisz nie dodawać. Anuluj w każdej chwili.',
   },
 };
 
