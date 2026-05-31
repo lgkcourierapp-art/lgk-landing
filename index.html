@@ -614,8 +614,15 @@ nav { padding: 0 16px; height: 56px; }
 <section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
 <div class="container" style="max-width:800px;text-align:center;">
   <div class="whisper" style="margin:0 auto 16px;text-align:center;">Multi-carrier clustering · One building, three delivered</div>
-  <h2 id="t-carrier_cluster_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:24px;">47 stops. 8 zones. Done by 2pm.</h2>
-  <p id="t-carrier_cluster_body" style="font-size:19px;color:var(--gray-2);margin-bottom:40px;line-height:1.8;max-width:660px;margin-left:auto;margin-right:auto;">InPost gave you 18 stops in random order. DPD gave you 12. Amazon gave you 17. Three apps. Three lists. None knows about the others. The building on ul. Wojska Polskiego has InPost, DPD, and Amazon parcels. But no app told you. So you visit it three times. LGK sees all 47 stops at once — regardless of carrier. Groups them by building. One stop. Three delivered. This isn't route planning. It's eliminating journeys that should never have happened.</p>
+  <h2 id="t-carrier_cluster_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">47 stops. 8 zones. Done by 2pm.</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;">
+    <span style="background:#FFE000;color:#0A0A0A;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;">InPost</span>
+    <span style="background:#DC0032;color:#FFFFFF;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;">DPD</span>
+    <span style="background:#FF9900;color:#0A0A0A;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;">Amazon</span>
+    <span style="background:#004F9F;color:#FFFFFF;font-family:var(--font-mono);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:0.5px;">GLS</span>
+  </div>
+  <p id="t-carrier_cluster_body" style="font-size:19px;color:var(--gray-2);margin-bottom:24px;line-height:1.8;max-width:660px;margin-left:auto;margin-right:auto;">InPost gave you 18 stops in random order. DPD gave you 12. Amazon gave you 17. Three apps. Three lists. None knows about the others. The building on ul. Wojska Polskiego has InPost, DPD, and Amazon parcels. But no app told you. So you visit it three times. LGK sees all 47 stops at once — regardless of carrier. Groups them by building. One stop. Three delivered. This isn't route planning. It's eliminating journeys that should never have happened.</p>
+  <div id="t-carrier_cluster_stat" style="font-family:var(--font-mono);font-size:14px;color:var(--yellow);letter-spacing:0.5px;margin-bottom:40px;">47 stops → 8 zones → done by 2pm</div>
 </div>
 </section>
 
@@ -976,6 +983,7 @@ const TRANSLATIONS = {
 
     carrier_cluster_headline: '47 stops. 8 zones. Done by 2pm.',
     carrier_cluster_body: 'InPost gave you 18 stops in random order. DPD gave you 12. Amazon gave you 17. Three apps. Three lists. None knows about the others. The building on ul. Wojska Polskiego has InPost, DPD, and Amazon parcels. But no app told you. So you visit it three times. LGK sees all 47 stops at once — regardless of carrier. Groups them by building. One stop. Three delivered. This isn\'t route planning. It\'s eliminating journeys that should never have happened.',
+    carrier_cluster_stat: '47 stops → 8 zones → done by 2pm',
 
     footer_business_link: 'Are you a business or restaurant? →',
   },
@@ -1087,6 +1095,7 @@ const TRANSLATIONS = {
 
     carrier_cluster_headline: '47 przystanków. 8 stref. Koniec o 14:00.',
     carrier_cluster_body: 'InPost dał Ci 18 przystanków w losowej kolejności. DPD dało 12. Amazon dało 17. Trzy aplikacje. Trzy listy. Żadna nie wie o pozostałych. W budynku przy ul. Wojska Polskiego masz paczkę InPost, DPD i Amazon. Ale żadna aplikacja Ci o tym nie powiedziała. Więc odwiedzasz go trzy razy. LGK widzi wszystkie 47 przystanków naraz — bez względu na firmę. Grupuje je według budynku. Jeden przystanek. Trzy dostarczone. To nie jest planowanie trasy. To eliminacja przejazdów które nigdy nie powinny się zdarzyć.',
+    carrier_cluster_stat: '47 przystanków → 8 stref → koniec o 14:00',
 
     footer_business_link: 'Jesteś firmą lub restauracją? →',
   },
