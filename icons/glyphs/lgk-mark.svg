@@ -1,0 +1,6 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- L: two rectangles, squared terminals, geometric -->
+  <path d="M28 16 H42 V66 H74 V80 H28 Z" fill="currentColor"/>
+  <!-- degree ring: precision/calibration symbol -->
+  <circle cx="66" cy="26" r="9" stroke="#D4FF00" stroke-width="6" fill="none"/>
+</svg>
