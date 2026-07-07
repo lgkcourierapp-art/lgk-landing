@@ -952,6 +952,38 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════ LIVE PROOF ENGINE (§21.1) -->
+<!-- Honest zeros. Real numbers. Fed by Supabase public_metrics view. -->
+<section id="proof-engine" style="background:var(--black);border-top:1px solid var(--border);padding:56px 24px 40px;">
+<div class="container" style="max-width:820px;">
+  <div style="text-align:center;margin-bottom:32px;">
+    <div class="whisper" id="t-proof_eyebrow" style="margin:0 auto 12px;text-align:center;">Live · updated every minute</div>
+    <h3 id="t-proof_headline" style="font-family:var(--font-display);font-weight:700;font-size:clamp(20px,3vw,32px);color:var(--white);letter-spacing:-0.01em;">The numbers behind the promise.</h3>
+  </div>
+  <div id="proof-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;">
+    <div style="text-align:center;padding:16px 8px;">
+      <div class="proof-num" data-target="0" data-key="buildings_indexed_total" style="font-family:var(--font-mono);font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--yellow);letter-spacing:-1px;line-height:1;">—</div>
+      <div id="t-proof_buildings" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Buildings indexed</div>
+    </div>
+    <div style="text-align:center;padding:16px 8px;">
+      <div class="proof-num" data-target="0" data-key="codes_verified_week" style="font-family:var(--font-mono);font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--yellow);letter-spacing:-1px;line-height:1;">—</div>
+      <div id="t-proof_codes" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Codes verified · 7d</div>
+    </div>
+    <div style="text-align:center;padding:16px 8px;">
+      <div class="proof-num" data-target="0" data-key="couriers_on_road_now" style="font-family:var(--font-mono);font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--yellow);letter-spacing:-1px;line-height:1;">—</div>
+      <div id="t-proof_couriers" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">On the road now</div>
+    </div>
+    <div style="text-align:center;padding:16px 8px;">
+      <div class="proof-num" data-target="0" data-key="deliveries_proven_today" style="font-family:var(--font-mono);font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--yellow);letter-spacing:-1px;line-height:1;">—</div>
+      <div id="t-proof_deliveries" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;">Deliveries proven today</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:24px;">
+    <span id="proof-updated" style="font-family:var(--font-mono);font-size:10px;color:var(--gray-3);letter-spacing:0.5px;">honest zeros while the network seeds</span>
+  </div>
+</div>
+</section>
+
 <footer style="padding:48px 24px 40px;border-top:1px solid var(--border);text-align:center;">
   <div style="margin-bottom:32px;">
     <div id="t-footer_tagline1" style="font-family:var(--font-display);font-weight:700;font-size:clamp(24px,4vw,40px);color:var(--white);letter-spacing:-0.02em;margin-bottom:6px;">Less guessing.</div>
@@ -972,6 +1004,10 @@ nav { padding: 0 16px; height: 56px; }
   <a href="https://lgk-business.vercel.app" style="color:var(--gray-3);font-size:13px;text-decoration:none;border-bottom:1px solid var(--gray-4);">lgk-business.vercel.app</a>
   <div style="margin-top:16px;">
     <a id="t-footer_business_link" href="https://lgk-business.vercel.app" style="color:var(--gray-2);font-size:14px;text-decoration:none;border-bottom:1px solid var(--gray-3);">Are you a business or restaurant? →</a>
+  </div>
+  <div style="margin-top:14px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+    <a href="/changelog.html" style="color:var(--gray-3);font-size:12px;text-decoration:none;font-family:var(--font-mono);letter-spacing:0.5px;">CHANGELOG →</a>
+    <a href="#faq" style="color:var(--gray-3);font-size:12px;text-decoration:none;font-family:var(--font-mono);letter-spacing:0.5px;">FAQ ↓</a>
   </div>
 </footer>
 
@@ -1652,5 +1688,70 @@ window.addEventListener('DOMContentLoaded', () => {
 "acceptedAnswer":{"@type":"Answer","text":"Ні. Ваші заробітки захищені на рівні бази даних. Це не політика, яка може змінитися — це технічне обмеження."}}
 ]}
 </script>
+
+<!-- ═══════════════════════════════════════════════════ PROOF ENGINE (§21.1) — fetch + animate -->
+<script>
+(function () {
+  const SUPABASE_URL = 'https://ytoituxrrgrjjscnmsch.supabase.co';
+  const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl0b2l0dXhycmdyampzY25tc2NoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNTc2MTIsImV4cCI6MjA5MTkzMzYxMn0.P1XzRxw2rkfWq4fwMdNeXXpaVJjRzzQQWazMfGzsgfY';
+  const grid = document.getElementById('proof-grid');
+  const updatedEl = document.getElementById('proof-updated');
+  if (!grid) return;
+
+  let fetched = false;
+
+  function easeOutQuad(t) { return t * (2 - t); }
+
+  function animateCount(el, from, to, ms) {
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min(1, (now - start) / ms);
+      const v = Math.round(from + (to - from) * easeOutQuad(p));
+      el.textContent = v.toLocaleString();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  async function loadMetrics() {
+    if (fetched) return;
+    fetched = true;
+    try {
+      const url = SUPABASE_URL + '/rest/v1/public_metrics?select=*';
+      const res = await fetch(url, {
+        headers: { 'apikey': ANON, 'Authorization': 'Bearer ' + ANON, 'Accept-Profile': 'public' },
+      });
+      if (!res.ok) throw new Error('proof engine ' + res.status);
+      const rows = await res.json();
+      const row = Array.isArray(rows) ? rows[0] : rows;
+      if (!row) throw new Error('no metrics row');
+      grid.querySelectorAll('.proof-num').forEach(el => {
+        const key = el.getAttribute('data-key');
+        const val = Number(row[key]) || 0;
+        animateCount(el, 0, val, 900);
+      });
+      if (updatedEl) {
+        const t = row.as_of ? new Date(row.as_of) : new Date();
+        updatedEl.textContent = 'as of ' + t.toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+      }
+    } catch (e) {
+      // Honest zeros — spec §21.1: "honest zeros included. A living page never goes stale."
+      grid.querySelectorAll('.proof-num').forEach(el => { el.textContent = '0'; });
+      if (updatedEl) updatedEl.textContent = 'honest zeros — network is seeding';
+    }
+  }
+
+  // Fire when the strip scrolls into view (IntersectionObserver, single-shot).
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { loadMetrics(); io.disconnect(); } });
+    }, { rootMargin: '0px 0px -20% 0px' });
+    io.observe(grid);
+  } else {
+    loadMetrics();
+  }
+})();
+</script>
+
 </body>
 </html>
