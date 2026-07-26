@@ -1,5 +1,17 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/changelog",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/changelog.html",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",

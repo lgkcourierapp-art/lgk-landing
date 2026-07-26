@@ -1,3 +1,27 @@
+<!--
+  DEFERRED 2026-07-26 · public changelog view unpublished.
+  Public access removed because the page was showing a frozen
+  "Loading the log…" state stuck at 2026-07-07 — signalled
+  abandonment on the one surface meant to signal momentum.
+
+  Kept in-repo intentionally per founder directive ("defer,
+  don't delete"). Blocked from public access by:
+    · footer nav link removed (index.html)
+    · /changelog and /changelog.html 307-redirect to / (vercel.json)
+    · noindex + noarchive meta below so crawlers drop this if reached
+    · not in sitemap.xml
+
+  RELAUNCH TODO · public changelog returns POST-LAUNCH as a
+  CURATED public feed — NOT the raw dev log. Rules for the
+  relaunch build:
+    · raw engineering entries (commit hashes, "P0-C firewall",
+      internal terms, scanner/firewall implementation details)
+      stay PRIVATE
+    · a hand-picked, human-worded PUBLIC subset gets published
+    · do NOT auto-feed docs/CHANGELOG.md to this page — that
+      was the original design flaw that caused this defer
+    · content type is marketing / community, not engineering
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +29,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LGK Courier — Changelog · What we shipped, week by week</title>
 <meta name="description" content="Every meaningful change to LGK Courier — the build-in-public log. Verified codes, features, fixes. Honest, chronological, no marketing." />
-<meta name="robots" content="index, follow" />
-<link rel="canonical" href="https://lgk-landing.vercel.app/changelog.html" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<link rel="canonical" href="https://lgk-landing.vercel.app/" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="LGK Courier — Changelog" />
 <meta property="og:description" content="Every meaningful change to LGK Courier — the build-in-public log." />
