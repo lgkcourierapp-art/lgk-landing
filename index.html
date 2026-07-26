@@ -240,28 +240,31 @@ nav { padding: 0 16px; height: 56px; }
   <div>
     <div class="eyebrow">
       <div class="eyebrow-dot"></div>
-      <span class="eyebrow-text" id="t-courier_eyebrow">Szczecin · Beta · 20 founding spots</span>
+      <span class="eyebrow-text" id="t-courier_eyebrow">For couriers. Built by couriers.</span>
     </div>
 
     <h1 id="t-courier_hero_headline" style="font-size:clamp(38px,5.5vw,68px);font-weight:700;margin-bottom:20px;color:var(--white);">
-      Every other app is watching you work.<br>
-      <span style="color:var(--yellow);">This one works for you.</span>
+      Less guessing.<br>
+      <span style="color:var(--yellow);">More doing.</span>
     </h1>
 
-    <p id="t-courier_hero_sub1" style="font-size:clamp(17px,2vw,21px);color:var(--gray-2);margin-bottom:12px;line-height:1.7;max-width:520px;">
-      Gate codes that appear before you ring the bell. All carriers in one view. GPS proof photos that belong to you — not your employer.
+    <p id="t-courier_hero_sub1" style="font-size:clamp(17px,2vw,21px);color:var(--gray-2);margin-bottom:12px;line-height:1.7;max-width:540px;">
+      One app for every parcel. It scans InPost, DPD, DHL and Pocztex labels, builds your route, and shows the entry code — before you step out of the van.
     </p>
 
-    <p id="t-courier_hero_sub2" style="font-size:clamp(16px,1.8vw,19px);color:var(--gray-1);margin-bottom:40px;line-height:1.7;max-width:520px;">
-      Join the founding 20 couriers in Szczecin. Free forever.
+    <p id="t-courier_hero_sub2" style="font-size:clamp(14px,1.5vw,15px);color:var(--gray-3);margin-bottom:32px;line-height:1.7;max-width:540px;font-family:var(--font-mono);letter-spacing:0.3px;">
+      Free in beta · Starting in Szczecin · Be first in your city
     </p>
 
-    <div class="cta-row">
+    <div class="cta-row" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
       <a href="#waitlist" id="t-courier_cta" style="background:var(--yellow);color:#000;padding:16px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;font-family:var(--font-display);letter-spacing:-0.01em;transition:transform 150ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
-        Join the founding 20 couriers — free forever
+        Join the first 20
       </a>
-      <span id="t-courier_cta_sub" style="color:var(--gray-3);font-size:14px;">Free forever · No card · No catch</span>
+      <a href="#how-it-works" id="t-courier_cta_secondary" style="background:transparent;color:var(--white);padding:16px 24px;border-radius:12px;border:1px solid var(--gray-4);font-weight:600;font-size:15px;text-decoration:none;font-family:var(--font-display);transition:border-color 150ms;" onmouseover="this.style.borderColor='var(--yellow)'" onmouseout="this.style.borderColor='var(--gray-4)'">
+        See how it works
+      </a>
     </div>
+    <div id="t-courier_cta_sub" style="color:var(--gray-3);font-size:13px;margin-top:14px;">Be one of the first 10 in your city — Pro forever</div>
 
     <div class="hero-stats">
       <div><span style="font-family:var(--font-mono);font-size:22px;font-weight:600;color:var(--yellow);">1.5M</span><br><span id="t-stats_buildings" style="color:var(--gray-3);font-size:12px;letter-spacing:1px;text-transform:uppercase;">Buildings</span></div>
@@ -302,8 +305,8 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
-<!-- SECTION 2: ROUTE INJECTION -->
-<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<!-- SECTION 2: ROUTE INJECTION · anchor target for hero secondary CTA "See how it works" -->
+<section id="how-it-works" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
 <div class="container">
   <div class="courier-hero-grid">
 
@@ -920,10 +923,14 @@ nav { padding: 0 16px; height: 56px; }
 <!-- ═══════════════════════════════════════════════════ SHARED WAITLIST -->
 <section id="waitlist" style="background:var(--black);border-top:1px solid var(--border);">
 <div class="container" style="max-width:560px;text-align:center;">
-  <h2 id="t-waitlist_headline" style="font-size:clamp(28px,4vw,44px);color:var(--white);margin-bottom:16px;">20 spots. Free forever.</h2>
-  <p id="t-waitlist_sub" style="font-size:18px;color:var(--gray-2);margin-bottom:40px;line-height:1.6;">Join the founding 20 couriers in Szczecin. Be the ones who built the database that every courier in Poland will use.</p>
+  <h2 id="t-waitlist_headline" style="font-size:clamp(28px,4vw,44px);color:var(--white);margin-bottom:16px;">Be one of the first 20 in your city.</h2>
+  <p id="t-waitlist_sub" style="font-size:18px;color:var(--gray-2);margin-bottom:40px;line-height:1.6;">The first 10 couriers in each city who map 20 buildings get Pro forever. No complicated setup — install, scan, drive.</p>
 
   <form id="waitlist-form" style="display:flex;flex-direction:column;gap:12px;" onsubmit="submitWaitlist(event)">
+    <!-- Honeypot · bots fill this, humans don't (offscreen + tabindex=-1 + aria-hidden). -->
+    <!-- Any submission with a non-empty value here is silently dropped by submitWaitlist. -->
+    <input type="text" name="website" id="wl-honeypot" autocomplete="off" tabindex="-1" aria-hidden="true"
+           style="position:absolute;left:-9999px;opacity:0;pointer-events:none;height:0;width:0;">
     <input type="text" id="t-waitlist_name" placeholder="Your name" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
     <input type="email" id="t-waitlist_email" placeholder="Email address" required style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
     <input type="tel" id="t-waitlist_phone" placeholder="+48 XXX XXX XXX" style="padding:16px 20px;background:var(--card);border:1px solid var(--gray-4);border-radius:10px;color:var(--white);font-size:16px;font-family:var(--font-body);outline:none;transition:border-color 150ms;" onfocus="this.style.borderColor='var(--yellow)'" onblur="this.style.borderColor='var(--gray-4)'">
@@ -1070,12 +1077,14 @@ const TRANSLATIONS = {
     nav_business: 'For Business',
     nav_login: 'Business Login',
 
-    courier_eyebrow: 'SZCZECIN · BETA · 20 FOUNDING SPOTS',
-    courier_hero_headline: 'Every other app is watching you work.\nThis one works for you.',
-    courier_hero_sub1: 'Gate codes that appear before you ring the bell. GPS proof photos that belong to you — not your employers. The knowledge couriers have been sharing on WhatsApp groups, organised and available to everyone.',
-    courier_hero_sub2: 'Join the founding 20 couriers in Szczecin. Free forever.',
-    courier_cta: 'Join the founding 20 couriers — free forever',
-    courier_cta_sub: 'Free forever · No card · No catch',
+    courier_eyebrow: 'For couriers. Built by couriers.',
+    courier_hero_headline: 'Less guessing.\nMore doing.',
+    courier_hero_sub1: 'One app for every parcel. It scans InPost, DPD, DHL and Pocztex labels, builds your route, and shows the entry code — before you step out of the van.',
+    courier_hero_sub2: 'Free in beta · Starting in Szczecin · Be first in your city',
+    courier_cta: 'Join the first 20',
+    courier_cta_secondary: 'See how it works',
+    courier_cta_sub: 'Be one of the first 10 in your city — Pro forever',
+    sticky_cta: 'Join the first 20 →',
 
     stats_buildings: 'Buildings',
     stats_cities: 'Polish cities',
@@ -1131,8 +1140,8 @@ const TRANSLATIONS = {
     calc_from_clusters: 'from clustering',
     calc_from_injections: 'route injections',
 
-    waitlist_headline: '20 spots. Free forever.',
-    waitlist_sub: 'Join the founding 20 couriers in Szczecin. Be the ones who built the database that every courier in Poland will use.',
+    waitlist_headline: 'Be one of the first 20 in your city.',
+    waitlist_sub: 'The first 10 couriers in each city who map 20 buildings get Pro forever. No complicated setup — install, scan, drive.',
     waitlist_name: 'Your name',
     waitlist_email: 'Email address',
     waitlist_phone: '+48 XXX XXX XXX',
@@ -1216,12 +1225,14 @@ const TRANSLATIONS = {
     nav_business: 'Dla firm',
     nav_login: 'Logowanie dla firm',
 
-    courier_eyebrow: 'SZCZECIN · BETA · 20 MIEJSC ZAŁOŻYCIELSKICH',
-    courier_hero_headline: 'Każda inna aplikacja Cię obserwuje.\nTa pracuje dla Ciebie.',
-    courier_hero_sub1: 'Kody do bram które pojawiają się zanim zadzwonisz. Zdjęcia GPS które należą do Ciebie — nie do Twoich pracodawców. Wiedza kurierów, która do tej pory ginęła w grupach WhatsApp, zorganizowana i dostępna dla każdego.',
-    courier_hero_sub2: 'Dołącz do pierwszych 20 kurierów w Szczecinie. Bezpłatnie na zawsze.',
-    courier_cta: 'Dołącz do pierwszych 20 kurierów — bezpłatnie',
-    courier_cta_sub: 'Bezpłatnie · Bez karty · Bez zobowiązań',
+    courier_eyebrow: 'Dla kurierów. Zbudowane przez kurierów.',
+    courier_hero_headline: 'Mniej zgadywania.\nWięcej działania.',
+    courier_hero_sub1: 'Jedna aplikacja na wszystkie paczki. Skanuje etykiety InPost, DPD, DHL i Pocztex, układa trasę i pokazuje kod do bramy — zanim wysiądziesz z auta.',
+    courier_hero_sub2: 'Za darmo w wersji beta · Startujemy w Szczecinie · Bądź pierwszy w swoim mieście',
+    courier_cta: 'Dołącz do pierwszych 20',
+    courier_cta_secondary: 'Zobacz, jak to działa',
+    courier_cta_sub: 'Bądź jednym z pierwszych 10 w swoim mieście — Pro na zawsze',
+    sticky_cta: 'Dołączam do pierwszych 20 →',
 
     stats_buildings: 'Budynków',
     stats_cities: 'Polskich miast',
@@ -1277,8 +1288,8 @@ const TRANSLATIONS = {
     calc_from_clusters: 'z grupowania',
     calc_from_injections: 'wstrzyknięcia tras',
 
-    waitlist_headline: '20 miejsc. Bezpłatnie na zawsze.',
-    waitlist_sub: 'Dołącz do pierwszych 20 kurierów w Szczecinie. Bądź tymi, którzy zbudowali bazę danych z której będzie korzystał każdy kurier w Polsce.',
+    waitlist_headline: 'Bądź jednym z pierwszych 20 w swoim mieście.',
+    waitlist_sub: 'Pierwszych 10 kurierów w każdym mieście, którzy zmapują 20 budynków, dostaje Pro na zawsze. Zero skomplikowanego setupu — instalujesz, skanujesz, jedziesz.',
     waitlist_name: 'Twoje imię i nazwisko',
     waitlist_email: 'Adres e-mail',
     waitlist_phone: '+48 XXX XXX XXX',
@@ -1362,12 +1373,14 @@ const TRANSLATIONS = {
     nav_business: 'Для бізнесу',
     nav_login: 'Вхід для бізнесу',
 
-    courier_eyebrow: 'ЩЕЦІН · БЕТА · 20 МІСЦЬ ЗАСНОВНИКІВ',
-    courier_hero_headline: 'Кожен інший додаток спостерігає за тобою.\nЦей працює для тебе.',
-    courier_hero_sub1: 'Коди воріт що з\'являються до того як ти зателефонуєш. GPS-фото що належать тобі — не твоїм роботодавцям. Знання кур\'єрів, яке досі губилось у WhatsApp-групах, організоване та доступне для кожного.',
-    courier_hero_sub2: 'Приєднайся до перших 20 кур\'єрів у Щеціні. Безкоштовно назавжди.',
-    courier_cta: 'Приєднатись до перших 20 кур\'єрів — безкоштовно',
-    courier_cta_sub: 'Безкоштовно · Без картки · Без зобов\'язань',
+    courier_eyebrow: 'Для кур\'єрів. Створено кур\'єрами.',
+    courier_hero_headline: 'Менше здогадок.\nБільше дій.',
+    courier_hero_sub1: 'Один додаток на всі посилки. Сканує етикетки InPost, DPD, DHL і Pocztex, будує маршрут і показує код до брами — перш ніж вийдеш з машини.',
+    courier_hero_sub2: 'Безкоштовно в бета · Стартуємо в Щеціні · Будь першим у своєму місті',
+    courier_cta: 'Приєднатись до перших 20',
+    courier_cta_secondary: 'Подивись, як це працює',
+    courier_cta_sub: 'Будь одним з перших 10 у своєму місті — Pro назавжди',
+    sticky_cta: 'Приєднатись до перших 20 →',
 
     stats_buildings: 'Будівель',
     stats_cities: 'Польських міст',
@@ -1423,8 +1436,8 @@ const TRANSLATIONS = {
     calc_from_clusters: 'від групування',
     calc_from_injections: 'вставки маршруту',
 
-    waitlist_headline: '20 місць. Безкоштовно назавжди.',
-    waitlist_sub: 'Приєднайся до перших 20 кур\'єрів у Щеціні. Будь тими хто побудував базу даних якою буде користуватись кожен кур\'єр в Польщі.',
+    waitlist_headline: 'Будь одним з перших 20 у своєму місті.',
+    waitlist_sub: 'Перших 10 кур\'єрів у кожному місті, які змаплять 20 будинків, отримують Pro назавжди. Ніяких складних налаштувань — встановлюєш, скануєш, їдеш.',
     waitlist_name: 'Твоє ім\'я',
     waitlist_email: 'Адреса електронної пошти',
     waitlist_phone: '+48 XXX XXX XXX',
@@ -1576,6 +1589,15 @@ async function submitWaitlist(e) {
   e.preventDefault();
   const btn = e.target.querySelector('button[type=submit]');
   const msg = document.getElementById('wl-message');
+  // Honeypot check · silently drop bot submissions. Fake a success UX
+  // so the bot thinks it worked and doesn't retry with a different form.
+  const honey = document.getElementById('wl-honeypot');
+  if (honey && honey.value) {
+    e.target.style.opacity = '0.5';
+    btn.textContent = 'Submitted ✓';
+    btn.disabled = true;
+    return;
+  }
   btn.textContent = 'Sending...';
   btn.disabled = true;
   const data = {
@@ -1800,7 +1822,39 @@ window.addEventListener('DOMContentLoaded', () => {
     loadMetrics();
   }
 })();
+
+// ─── Sticky mobile CTA visibility ─────────────────────────────────
+// Hide the sticky bar when the waitlist form is already on screen —
+// duplicating the CTA on top of the form is noise. IntersectionObserver
+// is baseline-supported (all modern mobile browsers).
+(function () {
+  var bar = document.getElementById('sticky-mobile-cta');
+  var target = document.getElementById('waitlist');
+  if (!bar || !target || typeof IntersectionObserver === 'undefined') return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      bar.style.transform = entry.isIntersecting ? 'translateY(120%)' : 'translateY(0)';
+    });
+  }, { threshold: 0.15 });
+  io.observe(target);
+})();
 </script>
+
+<!-- Sticky mobile CTA · always-visible primary action on phones (per the
+     conversion architecture directive). Hidden on tablet+ via media query,
+     hidden dynamically when the waitlist form itself enters the viewport. -->
+<div id="sticky-mobile-cta" style="position:fixed;left:0;right:0;bottom:0;z-index:9998;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,0.92) 30%,rgba(10,10,10,0.98) 100%);transform:translateY(0);transition:transform 220ms ease-out;pointer-events:auto;">
+  <a href="#waitlist" id="t-sticky_cta"
+     style="display:block;background:var(--yellow);color:#000;padding:15px;border-radius:12px;text-align:center;font-weight:800;font-size:16px;text-decoration:none;font-family:var(--font-display);box-shadow:0 8px 24px rgba(212,255,0,0.28),0 2px 6px rgba(0,0,0,0.35);">
+    Join the first 20 →
+  </a>
+</div>
+<style>
+  @media (min-width: 768px) { #sticky-mobile-cta { display: none !important; } }
+  /* Reserve safe padding so the sticky bar never hides the waitlist submit
+     button when the form is scrolled to the bottom of the viewport. */
+  @media (max-width: 767px) { body { padding-bottom: 72px; } }
+</style>
 
 </body>
 </html>
