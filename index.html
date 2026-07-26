@@ -320,8 +320,8 @@ nav { padding: 0 16px; height: 56px; }
         That is <span class="money" data-amount="18">PLN 18</span> you would never have seen on any other app. Not Glovo. Not InPost. Not anyone. Because they only know your orders. LGK knows your route.
       </p>
       <div style="background:var(--card-mid);border-radius:12px;padding:20px;border-left:4px solid var(--warning);">
-        <div id="t-injection_attribution" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">Beta tester · Szczecin · May 2026</div>
-        <div id="t-injection_quote" style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">"I got a route injection heading to my drop-off. PLN 18 I would never have seen. The pickup was literally on the same street I was already on."</div>
+        <div id="t-injection_attribution" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:8px;">Example — illustrative scenario, not a user review</div>
+        <div id="t-injection_quote" style="font-size:16px;color:var(--white);line-height:1.6;font-style:italic;">A courier heading to their drop-off gets a route injection. PLN 18 they would never have seen on any other app. The pickup is on the same street they are already on.</div>
       </div>
     </div>
 
@@ -558,9 +558,8 @@ nav { padding: 0 16px; height: 56px; }
     Every delivery photographed, GPS-stamped, time-locked. <strong>That proof is yours — in the Vault, forever.</strong>
   </p>
   <div style="background:var(--card-mid);border-radius:16px;padding:32px;border:1px solid var(--gray-4);">
-    <div style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:20px;">BETA TESTER · SZCZECIN · MAY 2026</div>
-    <div id="t-alone_quote" style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">"A courier I have never met pinged a warden alert. I parked two streets over. Saved <span class="money" data-amount="120">PLN 120</span>. I sent a code for a building he probably delivers to. That is how this works. We look out for each other."</div>
-    <div style="font-family:var(--font-mono);font-size:11px;color:var(--success);">— Founding tester · Courier · Szczecin</div>
+    <div id="t-alone_attribution" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:20px;">EXAMPLE — ILLUSTRATIVE SCENARIO, NOT A USER REVIEW</div>
+    <div id="t-alone_quote" style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">A courier gets a warden alert from another courier they have never met. They park two streets over. Saves <span class="money" data-amount="120">PLN 120</span>. Later they send back a code for a building the other courier probably delivers to. That is how the network works — couriers looking out for each other.</div>
   </div>
 </div>
 </section>
@@ -604,7 +603,8 @@ nav { padding: 0 16px; height: 56px; }
     <div style="background:var(--yellow);border-radius:14px;padding:28px;text-align:center;" id="calc-result">
       <div id="t-calc_result_label" style="font-family:var(--font-mono);font-size:13px;color:rgba(0,0,0,0.5);letter-spacing:1px;margin-bottom:8px;">YOU COULD RECOVER PER MONTH</div>
       <div id="total-saving" style="font-family:var(--font-mono);font-size:56px;font-weight:700;color:var(--black);line-height:1;letter-spacing:-1px;">PLN 1,265</div>
-      <div id="t-calc_pro_note" style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">Intel Exchange — free for active couriers. Add 3 tips/month, free forever. Pro: PLN 39.99/month or PLN 399/year.</div>
+      <div id="t-calc_disclaimer" style="font-family:var(--font-mono);font-size:11px;color:rgba(0,0,0,0.55);letter-spacing:0.5px;margin-top:6px;">Illustrative estimate — not a guarantee of earnings.</div>
+      <div id="t-calc_pro_note" style="font-size:15px;color:rgba(0,0,0,0.6);margin-top:8px;">Intel Exchange — free for active couriers. Add 3 tips/month, free forever. Pro: PLN 39.99/month or PLN 399/year — billing coming soon.</div>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin-top:20px;">
@@ -742,7 +742,7 @@ nav { padding: 0 16px; height: 56px; }
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-label="proof mark"><circle cx="12" cy="10" r="5.5" stroke="currentColor" stroke-width="1.75" fill="none"/><circle cx="12" cy="10" r="1.6" fill="#D4FF00"/><path d="M12 15.5 C10 18 8 20 8 20 M12 15.5 C14 18 16 20 16 20" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" fill="none"/></svg>
         </div>
         <div style="font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:8px;font-size:17px;">GPS proof on every delivery</div>
-        <div style="color:var(--gray-2);font-size:14px;line-height:1.6;">Photo with GPS coordinates and timestamp. QR-verified collection. Dispute-proof. Insurance at PLN 3.</div>
+        <div style="color:var(--gray-2);font-size:14px;line-height:1.6;">Photo with GPS coordinates and timestamp. QR-verified collection. Dispute-proof. Insurance option coming soon.</div>
       </div>
       <span class="flow-arrow">→</span>
       <div style="background:var(--card-mid);border:1px solid var(--gray-4);border-radius:14px;padding:24px;flex:1;">
@@ -1054,8 +1054,9 @@ const TRANSLATIONS = {
     injection_headline: 'Money that did not exist 60 seconds ago.',
     injection_sub1: 'You are heading to your next drop-off. LGK spots a pickup 200 metres off your route. It takes 3 minutes. It pays PLN 18. You tap ACCEPT without stopping.',
     injection_sub2: 'That is PLN 18 you would never have seen on any other app. Not Glovo. Not InPost. Not anyone.',
-    injection_quote: '"I got a route injection heading to my drop-off. PLN 18 I would never have seen. The pickup was literally on the same street I was already on."',
-    injection_attribution: 'Beta tester · Szczecin · May 2026',
+    injection_quote: 'A courier heading to their drop-off gets a route injection. PLN 18 they would never have seen on any other app. The pickup is on the same street they are already on.',
+    injection_attribution: 'Example — illustrative scenario, not a user review',
+    alone_attribution: 'EXAMPLE — ILLUSTRATIVE SCENARIO, NOT A USER REVIEW',
 
     cluster_eyebrow: 'ZONE CLUSTERING · WORK SMARTER',
     cluster_headline: '47 stops. 8 zones. Done by 2pm.',
@@ -1084,7 +1085,7 @@ const TRANSLATIONS = {
     alone_headline: 'What couriers have known for years is finally in one place.',
     alone_sub1: 'Gate codes. Parking tips. When the warden operates. The side entrance that cuts 4 minutes off the route. All of this exists — in Telegram groups, in phone notes, in the heads of thousands of couriers.<br><br>LGK organises it. Verifies it. And gives it back to every courier who needs it — before they arrive at the address, not after they\'ve already knocked and nobody opened.',
     alone_sub2: 'Your GPS photos. Your mileage. Your earnings. Belong to you and only you. No employer has access. Not because we write it in the terms — because that\'s how the database works.',
-    alone_quote: '"A courier I have never met pinged a warden alert. I parked two streets over. Saved PLN 120. He has never met me. That is how this works."',
+    alone_quote: 'A courier gets a warden alert from another courier they have never met. They park two streets over. Saves PLN 120. Later they send back a code for a building the other courier probably delivers to. That is how the network works — couriers looking out for each other.',
 
     calc_headline: 'How much is the chaos costing you?',
     calc_sub: 'Gates. Criss-crossing. Three apps. Your shift loses money before you deliver a single package.',
@@ -1092,7 +1093,8 @@ const TRANSLATIONS = {
     calc_stops: 'Stops criss-crossing per shift',
     calc_shifts: 'Shifts per month',
     calc_result_label: 'YOU COULD RECOVER PER MONTH',
-    calc_pro_note: 'Intel Exchange — free for active couriers. Add 3 tips/month, free forever. Pro: PLN 39.99/month or PLN 399/year.',
+    calc_pro_note: 'Intel Exchange — free for active couriers. Add 3 tips/month, free forever. Pro: PLN 39.99/month or PLN 399/year — billing coming soon.',
+    calc_disclaimer: 'Illustrative estimate — not a guarantee of earnings.',
     calc_from_gates: 'from BRAMA INTEL',
     calc_from_clusters: 'from clustering',
     calc_from_injections: 'route injections',
@@ -1198,8 +1200,9 @@ const TRANSLATIONS = {
     injection_headline: 'Pieniądze, które nie istniały 60 sekund temu.',
     injection_sub1: 'Jedziesz do kolejnego punktu. LGK widzi odbiór 200 metrów od twojej trasy. Zajmuje 3 minuty. Płaci PLN 18. Klikasz AKCEPTUJ bez zatrzymywania się.',
     injection_sub2: 'To PLN 18, których byś nigdy nie zobaczył w żadnej innej aplikacji. Nie w Glovo. Nie w InPost. W żadnej.',
-    injection_quote: '"Dostałem wstrzyknięcie trasy jadąc do doręczenia. PLN 18, których bym nigdy nie zobaczył. Odbiór był dosłownie na tej samej ulicy, którą już jechałem."',
-    injection_attribution: 'Tester beta · Szczecin · Maj 2026',
+    injection_quote: 'Kurier jadący do doręczenia dostaje wstrzyknięcie trasy. PLN 18, których by nigdy nie zobaczył w innej aplikacji. Odbiór jest na tej samej ulicy, którą już jedzie.',
+    injection_attribution: 'Przykład — ilustracja działania aplikacji, nie recenzja użytkownika',
+    alone_attribution: 'PRZYKŁAD — ILUSTRACJA DZIAŁANIA APLIKACJI, NIE RECENZJA UŻYTKOWNIKA',
 
     cluster_eyebrow: 'GRUPOWANIE STREF · PRACUJ MĄDRZEJ',
     cluster_headline: '47 przystanków. 8 stref. Gotowy o 14:00.',
@@ -1228,7 +1231,7 @@ const TRANSLATIONS = {
     alone_headline: 'To co kurierzy wiedzą od lat, w końcu jest w jednym miejscu.',
     alone_sub1: 'Kody do bram. Wskazówki parkingowe. Godziny pracy strażników. Wejście od tyłu które skraca drogę o 4 minuty. To wszystko istnieje — w grupach Telegram, w notatkach telefonicznych, w głowach tysięcy kurierów.<br><br>LGK to porządkuje. Weryfikuje. I oddaje każdemu kurierowi który potrzebuje tej wiedzy — zanim dotrze pod dany adres, nie po tym jak już zapukał i nikt nie otworzył.',
     alone_sub2: 'Twoje zdjęcia GPS. Twoje kilometry. Twoje zarobki. Należą do Ciebie i tylko do Ciebie. Żaden pracodawca nie ma dostępu. Nie dlatego że tak piszemy w regulaminie — dlatego że tak działa baza danych.',
-    alone_quote: '"Kurier, którego nigdy nie spotkałem, wysłał alert o kontrolerze. Zaparkowałem dwie ulice dalej. Oszczędziłem PLN 120. Tak to działa."',
+    alone_quote: 'Kurier dostaje alert o kontrolerze od innego kuriera, którego nigdy nie spotkał. Parkuje dwie ulice dalej. Oszczędza PLN 120. Później odsyła kod do budynku, do którego tamten prawdopodobnie doręcza. Tak działa sieć — kurierzy dbają o siebie nawzajem.',
 
     calc_headline: 'Ile kosztuje cię ten chaos?',
     calc_sub: 'Bramy. Krążenie. Trzy aplikacje. Twoja zmiana traci pieniądze zanim dostarczysz pierwszą paczkę.',
@@ -1236,7 +1239,8 @@ const TRANSLATIONS = {
     calc_stops: 'Przystanki krzyżujące się na zmianę',
     calc_shifts: 'Zmiany w miesiącu',
     calc_result_label: 'MOŻESZ ODZYSKAĆ MIESIĘCZNIE',
-    calc_pro_note: 'Intel Exchange — darmowy dla aktywnych. Dodaj 3 wskazówki/miesiąc, darmowy na zawsze. Pro: PLN 39,99/miesiąc lub PLN 399/rok.',
+    calc_pro_note: 'Intel Exchange — darmowy dla aktywnych. Dodaj 3 wskazówki/miesiąc, darmowy na zawsze. Pro: PLN 39,99/miesiąc lub PLN 399/rok — płatności wkrótce.',
+    calc_disclaimer: 'Szacunkowy przykład — nie stanowi gwarancji zarobków.',
     calc_from_gates: 'z kodów do bram',
     calc_from_clusters: 'z grupowania',
     calc_from_injections: 'wstrzyknięcia tras',
@@ -1342,8 +1346,9 @@ const TRANSLATIONS = {
     injection_headline: 'Гроші яких не існувало 60 секунд тому.',
     injection_sub1: 'Ти їдеш до наступної точки. LGK бачить забір за 200 метрів від твого маршруту. Займає 3 хвилини. Платить PLN 18. Тикаєш ПРИЙНЯТИ не зупиняючись.',
     injection_sub2: 'Це PLN 18 яких ти ніколи б не побачив в жодному іншому додатку. Ні в Glovo. Ні в InPost. Ні в кого.',
-    injection_quote: '"Отримав вставку маршруту їдучи до доставки. PLN 18 яких би ніколи не побачив. Забір був буквально на тій же вулиці по якій я вже їхав."',
-    injection_attribution: 'Бета-тестер · Щецін · Травень 2026',
+    injection_quote: 'Кур\'єр, який їде до доставки, отримує вставку маршруту. PLN 18, яких би ніколи не побачив в іншому додатку. Забір на тій же вулиці, по якій він уже їде.',
+    injection_attribution: 'Приклад — ілюстрація роботи додатку, не відгук користувача',
+    alone_attribution: 'ПРИКЛАД — ІЛЮСТРАЦІЯ РОБОТИ ДОДАТКУ, НЕ ВІДГУК КОРИСТУВАЧА',
 
     cluster_eyebrow: 'ЗОННЕ ГРУПУВАННЯ · ПРАЦЮЙ РОЗУМНІШЕ',
     cluster_headline: '47 зупинок. 8 зон. Готово о 14:00.',
@@ -1372,7 +1377,7 @@ const TRANSLATIONS = {
     alone_headline: 'Те що кур\'єри знали роками нарешті в одному місці.',
     alone_sub1: 'Коди воріт. Підказки для паркування. Коли працює інспектор. Бічний вхід що скорочує шлях на 4 хвилини. Все це існує — у Telegram-групах, у нотатках телефону, у головах тисяч кур\'єрів.<br><br>LGK це організовує. Верифікує. І повертає кожному кур\'єру який потребує цих знань — до того як він приїде на адресу, а не після того як уже постукав і ніхто не відкрив.',
     alone_sub2: 'Твої GPS-фото. Твій пробіг. Твій заробіток. Належать тобі і тільки тобі. Жоден роботодавець не має доступу. Не тому що ми так пишемо в умовах — тому що так працює база даних.',
-    alone_quote: '"Кур\'єр якого я ніколи не зустрічав надіслав попередження про інспектора. Запаркувався дві вулиці далі. Заощадив PLN 120. Ось як це працює."',
+    alone_quote: 'Кур\'єр отримує попередження про інспектора від іншого кур\'єра, якого ніколи не зустрічав. Паркується дві вулиці далі. Заощаджує PLN 120. Пізніше надсилає код до будинку, куди той інший, ймовірно, доставляє. Ось як працює мережа — кур\'єри дбають одне про одного.',
 
     calc_headline: 'Скільки коштує тобі цей хаос?',
     calc_sub: 'Ворота. Хаотичні маршрути. Три додатки. Твоя зміна втрачає гроші ще до першої доставки.',
@@ -1380,7 +1385,8 @@ const TRANSLATIONS = {
     calc_stops: 'Зупинок що перетинаються за зміну',
     calc_shifts: 'Змін на місяць',
     calc_result_label: 'ТИ МІГ БИ ВІДНОВИТИ НА МІСЯЦЬ',
-    calc_pro_note: 'Intel Exchange — безкоштовно для активних. Додай 3 підказки/місяць, безкоштовно назавжди. Pro: PLN 39,99/місяць або PLN 399/рік.',
+    calc_pro_note: 'Intel Exchange — безкоштовно для активних. Додай 3 підказки/місяць, безкоштовно назавжди. Pro: PLN 39,99/місяць або PLN 399/рік — оплата незабаром.',
+    calc_disclaimer: 'Приклад — не є гарантією заробітку.',
     calc_from_gates: 'від кодів воріт',
     calc_from_clusters: 'від групування',
     calc_from_injections: 'вставки маршруту',
