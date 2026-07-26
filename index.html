@@ -937,6 +937,11 @@ nav { padding: 0 16px; height: 56px; }
     <button type="submit" style="padding:18px;background:var(--yellow);color:#000;border:none;border-radius:10px;font-weight:700;font-size:17px;cursor:pointer;font-family:var(--font-display);transition:transform 150ms;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='none'">
       <span id="t-waitlist_cta">Claim my founding spot →</span>
     </button>
+    <!-- GDPR consent line · shipped 2026-07-26 · required immediately because the form takes data today. -->
+    <!-- Link points to lgk-business /privacy while lgk-landing does not host its own /privacy yet — update to /privacy once landing has the mirrored route. -->
+    <div id="t-waitlist_consent_wrap" style="font-size:12px;color:var(--gray-3);line-height:1.5;text-align:center;padding:4px 8px 0;">
+      <span id="t-waitlist_consent">By joining, you accept the </span><a id="t-waitlist_consent_link" href="https://lgk-business.vercel.app/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--yellow);text-decoration:underline;text-underline-offset:2px;">Privacy Policy</a>.
+    </div>
     <div id="wl-message" style="font-size:14px;min-height:20px;"></div>
   </form>
 
@@ -1105,6 +1110,8 @@ const TRANSLATIONS = {
     waitlist_cta: 'Claim my founding spot →',
     waitlist_success: '✓ Spot claimed. You will hear from us within 48 hours.',
     waitlist_duplicate: 'You are already on the list. We will be in touch.',
+    waitlist_consent: 'By joining, you accept the ',
+    waitlist_consent_link: 'Privacy Policy',
     waitlist_error: 'Something went wrong. Email lgkcourierapp@gmail.com directly.',
     waitlist_benefit1: 'Pro tier free for life — saves PLN 40/month',
     waitlist_benefit2: 'Priority onboarding and direct support',
@@ -1247,6 +1254,8 @@ const TRANSLATIONS = {
     waitlist_cta: 'Zarezerwuj miejsce założyciela →',
     waitlist_success: '✓ Miejsce zarezerwowane. Odezwiemy się w ciągu 48 godzin.',
     waitlist_duplicate: 'Jesteś już na liście. Skontaktujemy się z tobą.',
+    waitlist_consent: 'Zapisując się, akceptujesz ',
+    waitlist_consent_link: 'Politykę Prywatności',
     waitlist_error: 'Coś poszło nie tak. Napisz bezpośrednio na lgkcourierapp@gmail.com',
     waitlist_benefit1: 'Pro bezpłatnie dożywotnio — oszczędzasz PLN 40/miesiąc',
     waitlist_benefit2: 'Priorytetowe wdrożenie i wsparcie bezpośrednie',
@@ -1389,6 +1398,8 @@ const TRANSLATIONS = {
     waitlist_cta: 'Забронювати місце засновника →',
     waitlist_success: '✓ Місце заброньовано. Ми зв\'яжемося з тобою протягом 48 годин.',
     waitlist_duplicate: 'Ти вже в списку. Ми зв\'яжемося з тобою.',
+    waitlist_consent: 'Реєструючись, приймаєте ',
+    waitlist_consent_link: 'Політику Конфіденційності',
     waitlist_error: 'Щось пішло не так. Напиши напряму на lgkcourierapp@gmail.com',
     waitlist_benefit1: 'Pro рівень безкоштовно довічно — економиш PLN 40/місяць',
     waitlist_benefit2: 'Пріоритетне впровадження та пряма підтримка',
