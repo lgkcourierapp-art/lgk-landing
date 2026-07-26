@@ -305,8 +305,36 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
-<!-- SECTION 2: ROUTE INJECTION · anchor target for hero secondary CTA "See how it works" -->
-<section id="how-it-works" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<!-- SECTION 3 · HOW IT WORKS · compact 3-step overview · anchor target for
+     hero secondary CTA. Placed here so scrolling from the hero lands on
+     the short answer before the elaborate feature sections that follow. -->
+<section id="how-it-works" style="background:var(--black);padding:96px 24px;border-top:1px solid var(--border);">
+<div class="container" style="max-width:900px;">
+  <div style="text-align:center;margin-bottom:56px;">
+    <h2 id="t-hiw_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:12px;line-height:1.2;">Trzy kroki. Zero główkowania.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;">
+    <div style="background:var(--card);border-radius:16px;padding:28px;border:1px solid var(--gray-4);">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--yellow);letter-spacing:2px;margin-bottom:14px;">01</div>
+      <div id="t-hiw_step1_title" style="font-size:22px;font-weight:800;font-family:var(--font-display);color:var(--white);margin-bottom:12px;letter-spacing:-0.01em;">SKANUJ</div>
+      <p id="t-hiw_step1_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Wyceluj aparat w etykietę. LGK rozpoznaje przewoźnika, wyciąga odbiorcę i sprawdza adres — nawet gdy etykieta jest zniszczona albo pofałdowana.</p>
+    </div>
+    <div style="background:var(--card);border-radius:16px;padding:28px;border:1px solid var(--gray-4);">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--yellow);letter-spacing:2px;margin-bottom:14px;">02</div>
+      <div id="t-hiw_step2_title" style="font-size:22px;font-weight:800;font-family:var(--font-display);color:var(--white);margin-bottom:12px;letter-spacing:-0.01em;">TRASA</div>
+      <p id="t-hiw_step2_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Stos pomieszanych paczek zamienia się w gotową trasę. Poukładaną po budynkach, nie po przypadku.</p>
+    </div>
+    <div style="background:var(--card);border-radius:16px;padding:28px;border:1px solid var(--gray-4);">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--yellow);letter-spacing:2px;margin-bottom:14px;">03</div>
+      <div id="t-hiw_step3_title" style="font-size:22px;font-weight:800;font-family:var(--font-display);color:var(--white);margin-bottom:12px;letter-spacing:-0.01em;">WEJDŹ</div>
+      <p id="t-hiw_step3_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Podjeżdżasz — a kod do bramy już czeka na ekranie. Od kurierów, którzy byli tu przed Tobą.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 2: ROUTE INJECTION · elaboration on the how-it-works overview above -->
+<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
 <div class="container">
   <div class="courier-hero-grid">
 
@@ -432,49 +460,32 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
-<!-- SECTION 4: FIVE PROBLEMS -->
-<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-<div class="container">
-  <div style="text-align:center;margin-bottom:64px;">
-    <h2 id="t-problems_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);margin-bottom:16px;">You know this feeling.</h2>
-    <p id="t-problems_sub" style="font-size:18px;color:var(--gray-2);max-width:500px;margin:0 auto;">You're standing outside a locked gate. You've tried three apps. Nothing. So you leave a card and move on — and somewhere a manager marks your scan rate down.<br><br>You have three carriers in the same building but nobody told you. You'll be back tomorrow.<br><br>A customer says it never arrived. You have nothing. Word against word. The dispute goes against you.<br><br>End of shift — tired not from delivering, but from thinking.</p>
+<!-- SECTION 2 · WOUND · 4 fast pain lines + closing turn to the LGK pivot -->
+<section style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:96px 24px;">
+<div class="container" style="max-width:780px;">
+  <div style="text-align:center;margin-bottom:48px;">
+    <h2 id="t-wound_headline" style="font-size:clamp(30px,4vw,52px);color:var(--white);margin-bottom:16px;line-height:1.2;">Znasz to uczucie.</h2>
   </div>
-  <div class="problems-grid" style="background:var(--gray-4);border-radius:16px;overflow:hidden;">
-    <div style="background:var(--card);padding:32px;">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 01</div>
-      <div id="t-problem1_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Locked gate. No code.</div>
-      <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">4 minutes standing outside. Missed delivery card. Scan rate drops. Manager notices. Repeat tomorrow.</p>
-      <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: BRAMA INTEL at 100m. Access code, building notes, parking. GPS-verified. 4 couriers confirmed it.</div>
+  <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:48px;">
+    <div style="display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:var(--card-mid);border-radius:12px;border-left:3px solid var(--danger);">
+      <div style="font-family:var(--font-mono);color:var(--danger);font-size:12px;font-weight:700;flex-shrink:0;padding-top:2px;">01</div>
+      <p id="t-wound_line1" style="color:var(--white);font-size:17px;line-height:1.6;margin:0;">Stoisz pod bramą. Kod jest w jakimś czacie, którego nie znajdziesz.</p>
     </div>
-    <div style="background:var(--card);padding:32px;">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 02</div>
-      <div id="t-problem2_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Three apps. One building.</div>
-      <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">InPost, DPD, Amazon all in the same block. Three separate apps. You visit twice because nobody told you all three were there.</p>
-      <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: All carriers in one view. Cluster shows everything in the building.</div>
+    <div style="display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:var(--card-mid);border-radius:12px;border-left:3px solid var(--danger);">
+      <div style="font-family:var(--font-mono);color:var(--danger);font-size:12px;font-weight:700;flex-shrink:0;padding-top:2px;">02</div>
+      <p id="t-wound_line2" style="color:var(--white);font-size:17px;line-height:1.6;margin:0;">Trzy aplikacje na jeden blok. InPost, DPD, Amazon — i podwójny kurs.</p>
     </div>
-    <div style="background:var(--card);padding:32px;">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 03</div>
-      <div id="t-problem3_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;"><span class="mono">PLN 120</span> ticket. Zero warning.</div>
-      <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">The warden operates 9am–1pm. You find out with a fine on your windscreen. Other couriers knew. Nobody said anything.</p>
-      <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: Community fine zone alert before you park. Real. GPS-accurate.</div>
+    <div style="display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:var(--card-mid);border-radius:12px;border-left:3px solid var(--danger);">
+      <div style="font-family:var(--font-mono);color:var(--danger);font-size:12px;font-weight:700;flex-shrink:0;padding-top:2px;">03</div>
+      <p id="t-wound_line3" style="color:var(--white);font-size:17px;line-height:1.6;margin:0;">Mandat za postój, o którym nikt Cię nie uprzedził.</p>
     </div>
-    <div style="background:var(--card);padding:32px;">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 04</div>
-      <div id="t-problem4_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">No proof. No case.</div>
-      <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">Customer says it never arrived. Your word against theirs. Dispute goes against you. Rating drops. You know you delivered it.</p>
-      <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: GPS-stamped proof photo. Your coordinates. Your timestamp. Case closed.</div>
+    <div style="display:flex;gap:16px;align-items:flex-start;padding:20px 22px;background:var(--card-mid);border-radius:12px;border-left:3px solid var(--danger);">
+      <div style="font-family:var(--font-mono);color:var(--danger);font-size:12px;font-weight:700;flex-shrink:0;padding-top:2px;">04</div>
+      <p id="t-wound_line4" style="color:var(--white);font-size:17px;line-height:1.6;margin:0;">Klient mówi, że paczka nie doszła. Twoje słowo przeciwko jego.</p>
     </div>
-    <div style="background:var(--card);padding:32px;">
-      <div style="font-family:var(--font-mono);font-size:10px;color:var(--danger);letter-spacing:2px;margin-bottom:12px;">PROBLEM 05</div>
-      <div id="t-problem5_title" style="font-size:20px;font-weight:700;font-family:var(--font-display);color:var(--white);margin-bottom:10px;">Mental load. All shift.</div>
-      <p style="color:var(--gray-2);font-size:14px;line-height:1.7;margin-bottom:16px;">Navigator. Dispatcher. Customer service. Accountant. Simultaneously. By end of shift you are exhausted from thinking, not delivering.</p>
-      <div style="padding:12px;background:var(--yellow-muted);border-radius:8px;border-left:3px solid var(--yellow);font-family:var(--font-mono);font-size:12px;color:var(--yellow);">LGK: Right information. Right moment. Nothing more. Your co-pilot.</div>
-    </div>
-    <div style="background:var(--yellow);padding:32px;display:flex;align-items:center;justify-content:center;">
-      <div style="text-align:center;">
-        <div id="t-positioning" style="font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--black);line-height:1.3;">"Every other app is watching you work.<br>This one works for you."</div>
-      </div>
-    </div>
+  </div>
+  <div style="background:var(--yellow);border-radius:16px;padding:32px 28px;text-align:center;">
+    <p id="t-wound_turn" style="font-family:var(--font-display);font-size:clamp(19px,2.4vw,26px);font-weight:700;color:var(--black);line-height:1.4;margin:0;letter-spacing:-0.01em;">System nie był zbudowany dla Ciebie. Był zbudowany, żeby Cię pilnować. <span style="border-bottom:3px solid var(--black);">LGK to zmienia.</span></p>
   </div>
 </div>
 </section>
@@ -547,20 +558,31 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
-<!-- SECTION 6: YOU ARE NOT ALONE -->
-<section style="background:var(--card);border-top:1px solid var(--border);">
-<div class="container" style="max-width:800px;text-align:center;">
-  <h2 id="t-alone_headline" style="font-size:clamp(28px,4vw,52px);color:var(--white);margin-bottom:24px;">
-    LGK organises<br>
-    <span style="color:var(--yellow);">what couriers already know.</span>
-  </h2>
-  <p id="t-alone_sub1" style="font-size:19px;color:var(--gray-2);margin-bottom:20px;line-height:1.8;">
-    Gate codes shared between thousands of couriers — verified, GPS-gated, appearing on your phone 100 metres before you arrive. Before you knock. All your carriers in one list. Clustered by building. You visit each building once.
-  </p>
-  <p id="t-alone_sub2" style="font-size:19px;color:var(--gray-1);margin-bottom:40px;line-height:1.8;">
-    Every delivery photographed, GPS-stamped, time-locked. <strong>That proof is yours — in the Vault, forever.</strong>
-  </p>
-  <div style="background:var(--card-mid);border-radius:16px;padding:32px;border:1px solid var(--gray-4);">
+<!-- SECTION 5 · DIFFERENCE · 3 ownership pillars · the wedge no competitor can copy -->
+<section style="background:var(--card);border-top:1px solid var(--border);padding:96px 24px;">
+<div class="container" style="max-width:900px;">
+  <div style="text-align:center;margin-bottom:56px;">
+    <h2 id="t-diff_headline" style="font-size:clamp(28px,4vw,52px);color:var(--white);line-height:1.25;">
+      <span id="t-diff_headline_a">Każda inna aplikacja patrzy, jak pracujesz.</span><br>
+      <span id="t-diff_headline_b" style="color:var(--yellow);">Ta pracuje dla Ciebie.</span>
+    </h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-bottom:48px;">
+    <div style="background:var(--card-mid);border-radius:14px;padding:24px 22px;border:1px solid var(--gray-4);border-top:3px solid var(--yellow);">
+      <p id="t-diff_pillar1" style="color:var(--white);font-size:15px;line-height:1.65;margin:0;font-weight:500;">Twoje zdjęcia dowodów, trasy i zarobki należą do Ciebie. Nie do firmy.</p>
+    </div>
+    <div style="background:var(--card-mid);border-radius:14px;padding:24px 22px;border:1px solid var(--gray-4);border-top:3px solid var(--yellow);">
+      <p id="t-diff_pillar2" style="color:var(--white);font-size:15px;line-height:1.65;margin:0;font-weight:500;">Zmieniasz firmę — Twoja wiedza idzie z Tobą.</p>
+    </div>
+    <div style="background:var(--card-mid);border-radius:14px;padding:24px 22px;border:1px solid var(--gray-4);border-top:3px solid var(--yellow);">
+      <p id="t-diff_pillar3" style="color:var(--white);font-size:15px;line-height:1.65;margin:0;font-weight:500;">Zarobki widzisz tylko Ty. Zablokowane na poziomie bazy danych.</p>
+    </div>
+  </div>
+  <!-- SECTION 6 · illustrative proof scenario · testimonial card labelled per founder rule -->
+  <div style="text-align:center;margin-bottom:24px;">
+    <h3 id="t-proof_headline" style="font-size:clamp(20px,2.6vw,28px);color:var(--white);margin:0 0 8px 0;font-weight:700;">Zbudowane pod realia trasy.</h3>
+  </div>
+  <div style="background:var(--card-mid);border-radius:16px;padding:32px;border:1px solid var(--gray-4);max-width:720px;margin:0 auto;">
     <div id="t-alone_attribution" style="font-family:var(--font-mono);font-size:11px;color:var(--gray-3);letter-spacing:1px;margin-bottom:20px;">EXAMPLE — ILLUSTRATIVE SCENARIO, NOT A USER REVIEW</div>
     <div id="t-alone_quote" style="font-size:18px;color:var(--white);line-height:1.7;font-style:italic;margin-bottom:16px;">A courier gets a warden alert from another courier they have never met. They park two streets over. Saves <span class="money" data-amount="120">PLN 120</span>. Later they send back a code for a building the other courier probably delivers to. That is how the network works — couriers looking out for each other.</div>
   </div>
@@ -1085,6 +1107,29 @@ const TRANSLATIONS = {
     courier_cta_secondary: 'See how it works',
     courier_cta_sub: 'Be one of the first 10 in your city — Pro forever',
     sticky_cta: 'Join the first 20 →',
+    // Section 2 · WOUND
+    wound_headline: 'You know the feeling.',
+    wound_line1: "You're at the gate. The code is in some chat you can't find.",
+    wound_line2: 'Three apps for one block. And you walk it twice.',
+    wound_line3: 'A parking fine no one warned you about.',
+    wound_line4: 'Customer says it never arrived. Your word against theirs.',
+    wound_turn: "The system wasn't built for you. It was built to watch you. LGK changes that.",
+    // Section 3 · HOW IT WORKS
+    hiw_headline: 'Three steps. Zero head-scratching.',
+    hiw_step1_title: 'SCAN',
+    hiw_step1_body: 'Point your camera at the label. LGK recognises the carrier, pulls the recipient and checks the address — even when the label is worn or folded.',
+    hiw_step2_title: 'ROUTE',
+    hiw_step2_body: 'A pile of mixed parcels becomes a ready route. Ordered by building, not by chance.',
+    hiw_step3_title: 'GET IN',
+    hiw_step3_body: 'You pull up — and the entry code is already on screen. From couriers who were here before you.',
+    // Section 5 · DIFFERENCE (3 ownership pillars)
+    diff_headline_a: 'Every other app watches you work.',
+    diff_headline_b: 'This one works for you.',
+    diff_pillar1: 'Your proof photos, routes and earnings belong to you. Not your employer.',
+    diff_pillar2: 'Change companies — your knowledge comes with you.',
+    diff_pillar3: 'Only you see your earnings. Locked at the database level.',
+    // Section 6 · PROOF headline
+    proof_headline: 'Built for the reality of the road.',
 
     stats_buildings: 'Buildings',
     stats_cities: 'Polish cities',
@@ -1233,6 +1278,29 @@ const TRANSLATIONS = {
     courier_cta_secondary: 'Zobacz, jak to działa',
     courier_cta_sub: 'Bądź jednym z pierwszych 10 w swoim mieście — Pro na zawsze',
     sticky_cta: 'Dołączam do pierwszych 20 →',
+    // Section 2 · RANA (wound) — Brian's exact PL from directive
+    wound_headline: 'Znasz to uczucie.',
+    wound_line1: 'Stoisz pod bramą. Kod jest w jakimś czacie, którego nie znajdziesz.',
+    wound_line2: 'Trzy aplikacje na jeden blok. InPost, DPD, Amazon — i podwójny kurs.',
+    wound_line3: 'Mandat za postój, o którym nikt Cię nie uprzedził.',
+    wound_line4: 'Klient mówi, że paczka nie doszła. Twoje słowo przeciwko jego.',
+    wound_turn: 'System nie był zbudowany dla Ciebie. Był zbudowany, żeby Cię pilnować. LGK to zmienia.',
+    // Section 3 · JAK TO DZIAŁA — Brian's exact PL
+    hiw_headline: 'Trzy kroki. Zero główkowania.',
+    hiw_step1_title: 'SKANUJ',
+    hiw_step1_body: 'Wyceluj aparat w etykietę. LGK rozpoznaje przewoźnika, wyciąga odbiorcę i sprawdza adres — nawet gdy etykieta jest zniszczona albo pofałdowana.',
+    hiw_step2_title: 'TRASA',
+    hiw_step2_body: 'Stos pomieszanych paczek zamienia się w gotową trasę. Poukładaną po budynkach, nie po przypadku.',
+    hiw_step3_title: 'WEJDŹ',
+    hiw_step3_body: 'Podjeżdżasz — a kod do bramy już czeka na ekranie. Od kurierów, którzy byli tu przed Tobą.',
+    // Section 5 · RÓŻNICA (3 filary własności) — Brian's exact PL
+    diff_headline_a: 'Każda inna aplikacja patrzy, jak pracujesz.',
+    diff_headline_b: 'Ta pracuje dla Ciebie.',
+    diff_pillar1: 'Twoje zdjęcia dowodów, trasy i zarobki należą do Ciebie. Nie do firmy.',
+    diff_pillar2: 'Zmieniasz firmę — Twoja wiedza idzie z Tobą.',
+    diff_pillar3: 'Zarobki widzisz tylko Ty. Zablokowane na poziomie bazy danych.',
+    // Section 6 · nagłówek dowodu
+    proof_headline: 'Zbudowane pod realia trasy.',
 
     stats_buildings: 'Budynków',
     stats_cities: 'Polskich miast',
@@ -1381,6 +1449,29 @@ const TRANSLATIONS = {
     courier_cta_secondary: 'Подивись, як це працює',
     courier_cta_sub: 'Будь одним з перших 10 у своєму місті — Pro назавжди',
     sticky_cta: 'Приєднатись до перших 20 →',
+    // Section 2 · РАНА (wound)
+    wound_headline: 'Знайоме відчуття.',
+    wound_line1: 'Стоїш під брамою. Код у якомусь чаті, якого не знайдеш.',
+    wound_line2: 'Три додатки на один будинок. InPost, DPD, Amazon — і подвійна ходка.',
+    wound_line3: 'Штраф за стоянку, про який ніхто не попередив.',
+    wound_line4: 'Клієнт каже, що посилка не дійшла. Твоє слово проти його.',
+    wound_turn: 'Систему створили не для тебе. Її створили, щоб тебе контролювати. LGK це змінює.',
+    // Section 3 · ЯК ЦЕ ПРАЦЮЄ
+    hiw_headline: 'Три кроки. Жодних роздумів.',
+    hiw_step1_title: 'СКАНУЙ',
+    hiw_step1_body: 'Наведи камеру на етикетку. LGK розпізнає перевізника, витягає одержувача і перевіряє адресу — навіть коли етикетка зім\'ята чи пошкоджена.',
+    hiw_step2_title: 'МАРШРУТ',
+    hiw_step2_body: 'Купа перемішаних посилок перетворюється на готовий маршрут. Впорядкований за будинками, а не випадково.',
+    hiw_step3_title: 'ЗАХОДЬ',
+    hiw_step3_body: 'Під\'їжджаєш — а код до брами вже на екрані. Від кур\'єрів, які були тут до тебе.',
+    // Section 5 · РІЗНИЦЯ (3 стовпи власності)
+    diff_headline_a: 'Кожен інший додаток дивиться, як ти працюєш.',
+    diff_headline_b: 'Цей працює для тебе.',
+    diff_pillar1: 'Твої фото доставки, маршрути і заробіток належать тобі. Не компанії.',
+    diff_pillar2: 'Змінюєш роботу — твої знання йдуть з тобою.',
+    diff_pillar3: 'Заробіток бачиш лише ти. Заблоковано на рівні бази даних.',
+    // Section 6 · заголовок дowoду
+    proof_headline: 'Створено під реалії маршруту.',
 
     stats_buildings: 'Будівель',
     stats_cities: 'Польських міст',
