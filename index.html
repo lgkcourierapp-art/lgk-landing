@@ -1073,6 +1073,11 @@ nav { padding: 0 16px; height: 56px; }
   <div style="margin-top:14px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
     <!-- CHANGELOG link deferred 2026-07-26 · returns post-launch as CURATED public feed (not raw dev log). -->
     <a href="#faq" style="color:var(--gray-3);font-size:12px;text-decoration:none;font-family:var(--font-mono);letter-spacing:0.5px;">FAQ ↓</a>
+    <!-- Legal footer 2026-07-27 · lifts privacy/terms from being buried near the waitlist submit.
+         Points OUT to lgk-business EN docs · honest interim state · PL/EN localized version
+         queued as 02_queue/03_terms_privacy_pl_translation (gated on entity + counsel). -->
+    <a id="t-footer_privacy" href="https://lgk-business.vercel.app/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--gray-3);font-size:12px;text-decoration:none;font-family:var(--font-mono);letter-spacing:0.5px;">Privacy ↗</a>
+    <a id="t-footer_terms" href="https://lgk-business.vercel.app/terms" target="_blank" rel="noopener noreferrer" style="color:var(--gray-3);font-size:12px;text-decoration:none;font-family:var(--font-mono);letter-spacing:0.5px;">Terms ↗</a>
   </div>
 </footer>
 
@@ -1275,6 +1280,8 @@ const TRANSLATIONS = {
     carrier_cluster_stat: '47 stops → 8 zones → done by 2pm',
 
     footer_business_link: 'Are you a business or restaurant? →',
+    footer_privacy: 'Privacy ↗',
+    footer_terms: 'Terms ↗',
 
     faq_eyebrow: 'FAQ · Before you sign up',
     faq_headline: "The questions you'd ask over coffee.",
@@ -1456,6 +1463,8 @@ const TRANSLATIONS = {
     carrier_cluster_stat: '47 przystanków → 8 stref → koniec o 14:00',
 
     footer_business_link: 'Jesteś firmą lub restauracją? →',
+    footer_privacy: 'Polityka Prywatności ↗',
+    footer_terms: 'Regulamin ↗',
 
     faq_eyebrow: 'FAQ · Zanim się zarejestrujesz',
     faq_headline: 'Pytania, które zadałbyś przy kawie.',
@@ -1637,6 +1646,8 @@ const TRANSLATIONS = {
     carrier_cluster_stat: '47 зупинок → 8 зон → готово о 14:00',
 
     footer_business_link: 'Ти бізнес або ресторан? →',
+    footer_privacy: 'Політика Конфіденційності ↗',
+    footer_terms: 'Умови користування ↗',
 
     faq_eyebrow: 'FAQ · Перш ніж зареєструватися',
     faq_headline: 'Питання, які ти задав би за кавою.',
