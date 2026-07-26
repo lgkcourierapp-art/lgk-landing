@@ -490,6 +490,37 @@ nav { padding: 0 16px; height: 56px; }
 </div>
 </section>
 
+<!-- SECTION 4 · FEATURES · 4 benefit cards · what + how per card -->
+<section style="background:var(--black);padding:96px 24px;border-top:1px solid var(--border);">
+<div class="container" style="max-width:1040px;">
+  <div style="text-align:center;margin-bottom:56px;">
+    <h2 id="t-feat_headline" style="font-size:clamp(28px,4vw,48px);color:var(--white);line-height:1.2;margin:0;">Co dokładnie robi LGK.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+    <div style="background:var(--card);border-radius:16px;padding:28px 26px;border:1px solid var(--gray-4);">
+      <div style="font-size:28px;line-height:1;margin-bottom:16px;">⚡</div>
+      <div id="t-feat_c1_title" style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--yellow);letter-spacing:0.3px;margin-bottom:10px;text-transform:uppercase;">Wszyscy przewoźnicy, jeden skan</div>
+      <p id="t-feat_c1_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">LGK rozpoznaje formaty ponad 15 przewoźników w Polsce i regionie — InPost, DPD, DHL, Pocztex, GLS i dalej. Aparat sam dobiera sposób odczytu do przewoźnika.</p>
+    </div>
+    <div style="background:var(--card);border-radius:16px;padding:28px 26px;border:1px solid var(--gray-4);">
+      <div style="font-size:28px;line-height:1;margin-bottom:16px;">📍</div>
+      <div id="t-feat_c2_title" style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--yellow);letter-spacing:0.3px;margin-bottom:10px;text-transform:uppercase;">Odbiorca, nie nadawca</div>
+      <p id="t-feat_c2_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Silnik oddziela nadawcę od odbiorcy i sprawdza adres, zanim trafi na trasę. Jeśli czegoś nie jest pewien — mówi Ci wprost, zamiast zgadywać. Zero cichych błędów.</p>
+    </div>
+    <div style="background:var(--card);border-radius:16px;padding:28px 26px;border:1px solid var(--gray-4);">
+      <div style="font-size:28px;line-height:1;margin-bottom:16px;">🚀</div>
+      <div id="t-feat_c3_title" style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--yellow);letter-spacing:0.3px;margin-bottom:10px;text-transform:uppercase;">Szybki skan, ciągły rytm</div>
+      <p id="t-feat_c3_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Skanuj paczkę za paczką bez przerw. Łatwe etykiety czyta od razu na telefonie; trudne dosyła do odczytu w tle — a Ty skanujesz dalej. Punkt, sygnał, następna.</p>
+    </div>
+    <div style="background:var(--card);border-radius:16px;padding:28px 26px;border:1px solid var(--gray-4);">
+      <div style="font-size:28px;line-height:1;margin-bottom:16px;">🗺️</div>
+      <div id="t-feat_c4_title" style="font-family:var(--font-display);font-size:15px;font-weight:800;color:var(--yellow);letter-spacing:0.3px;margin-bottom:10px;text-transform:uppercase;">Stos paczek → gotowa trasa</div>
+      <p id="t-feat_c4_body" style="color:var(--gray-2);font-size:15px;line-height:1.7;margin:0;">Jednym dotknięciem układasz pomieszane paczki w trasę poukładaną po budynkach i strefach. Ostatnia paczka najgłębiej, pierwsza przy drzwiach.</p>
+    </div>
+  </div>
+</div>
+</section>
+
 <!-- SECTION 5: THE WARDEN PING (SOLIDARITY) -->
 <section>
 <div class="container" style="max-width:900px;">
@@ -1130,6 +1161,16 @@ const TRANSLATIONS = {
     diff_pillar3: 'Only you see your earnings. Locked at the database level.',
     // Section 6 · PROOF headline
     proof_headline: 'Built for the reality of the road.',
+    // Section 4 · FEATURES · 4 benefit cards
+    feat_headline: 'What LGK actually does.',
+    feat_c1_title: 'Every carrier, one scan',
+    feat_c1_body: 'LGK recognises 15+ carrier formats across Poland and the region — InPost, DPD, DHL, Pocztex, GLS and beyond. The camera adapts its reading strategy to the carrier itself.',
+    feat_c2_title: 'The recipient, not the sender',
+    feat_c2_body: "The engine separates sender from recipient and checks the address before it hits your route. When it isn't sure, it tells you — instead of guessing. No silent errors.",
+    feat_c3_title: 'Fast scan, unbroken rhythm',
+    feat_c3_body: 'Scan parcel after parcel, no pauses. Easy labels read instantly on the phone; hard ones resolve in the background while you keep going. Point, beep, next.',
+    feat_c4_title: 'A pile of parcels → a ready route',
+    feat_c4_body: 'One tap turns mixed parcels into a route ordered by building and zone. Last parcel deepest, first one by the door.',
 
     stats_buildings: 'Buildings',
     stats_cities: 'Polish cities',
@@ -1301,6 +1342,16 @@ const TRANSLATIONS = {
     diff_pillar3: 'Zarobki widzisz tylko Ty. Zablokowane na poziomie bazy danych.',
     // Section 6 · nagłówek dowodu
     proof_headline: 'Zbudowane pod realia trasy.',
+    // Section 4 · FUNKCJE · 4 karty korzyści — Brian's exact PL
+    feat_headline: 'Co dokładnie robi LGK.',
+    feat_c1_title: 'Wszyscy przewoźnicy, jeden skan',
+    feat_c1_body: 'LGK rozpoznaje formaty ponad 15 przewoźników w Polsce i regionie — InPost, DPD, DHL, Pocztex, GLS i dalej. Aparat sam dobiera sposób odczytu do przewoźnika.',
+    feat_c2_title: 'Odbiorca, nie nadawca',
+    feat_c2_body: 'Silnik oddziela nadawcę od odbiorcy i sprawdza adres, zanim trafi na trasę. Jeśli czegoś nie jest pewien — mówi Ci wprost, zamiast zgadywać. Zero cichych błędów.',
+    feat_c3_title: 'Szybki skan, ciągły rytm',
+    feat_c3_body: 'Skanuj paczkę za paczką bez przerw. Łatwe etykiety czyta od razu na telefonie; trudne dosyła do odczytu w tle — a Ty skanujesz dalej. Punkt, sygnał, następna.',
+    feat_c4_title: 'Stos paczek → gotowa trasa',
+    feat_c4_body: 'Jednym dotknięciem układasz pomieszane paczki w trasę poukładaną po budynkach i strefach. Ostatnia paczka najgłębiej, pierwsza przy drzwiach.',
 
     stats_buildings: 'Budynków',
     stats_cities: 'Polskich miast',
@@ -1472,6 +1523,16 @@ const TRANSLATIONS = {
     diff_pillar3: 'Заробіток бачиш лише ти. Заблоковано на рівні бази даних.',
     // Section 6 · заголовок дowoду
     proof_headline: 'Створено під реалії маршруту.',
+    // Section 4 · ФУНКЦІЇ · 4 картки переваг
+    feat_headline: 'Що саме робить LGK.',
+    feat_c1_title: 'Усі перевізники, один скан',
+    feat_c1_body: 'LGK розпізнає формати понад 15 перевізників у Польщі та регіоні — InPost, DPD, DHL, Pocztex, GLS та інші. Камера сама обирає спосіб зчитування під перевізника.',
+    feat_c2_title: 'Одержувач, не відправник',
+    feat_c2_body: 'Двигун відокремлює відправника від одержувача і перевіряє адресу, перш ніж вона потрапить у маршрут. Якщо чогось не впевнений — говорить тобі прямо, замість вгадувати. Ніяких прихованих помилок.',
+    feat_c3_title: 'Швидкий скан, безперервний ритм',
+    feat_c3_body: 'Скануй посилку за посилкою без перерв. Легкі етикетки читає одразу на телефоні; складні дочитує у фоні — а ти скануєш далі. Точка, сигнал, наступна.',
+    feat_c4_title: 'Купа посилок → готовий маршрут',
+    feat_c4_body: 'Одним дотиком складаєш перемішані посилки в маршрут, впорядкований за будинками та зонами. Остання посилка найглибше, перша при дверях.',
 
     stats_buildings: 'Будівель',
     stats_cities: 'Польських міст',
